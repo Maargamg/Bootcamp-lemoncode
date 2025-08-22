@@ -22,7 +22,7 @@ const dameUrlCarta = (carta: number) => {
     case 4:
       return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg';
     case 5:
-      'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg';
+      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg';
     case 6:
       return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg';
     case 7:
@@ -31,7 +31,7 @@ const dameUrlCarta = (carta: number) => {
       return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg';
     case 11:
       return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg';
-    case 12:
+     case 12:
       return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg';
     default:
       return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg';
@@ -68,19 +68,61 @@ const mostrarScore = () => {
    }
 }
 
-const comprobarPartida = () => {
-  if (score < 4) {
-    console.log ('Has sido muy conservador');
+const dameMensajePartidaCuandoMePlanto = () => {
+  if (score < 5) {
+    return 'Has sido muy conservador';
   } else if (score === 7.5) {
-    console.log ('¡¡¡Enhorabuena, has ganado!!!');
-  } else if (score === 5){
-    console.log ('Te ha entrado el canguelo eh?');
+    return '¡¡¡Enhorabuena, has ganado!!!';
+  } else if (score === 5 || score < 7){
+    return 'Te ha entrado el canguelo eh?';
   } else if (score === 7) {
-    console.log ('Casi casi..');
+    return 'Casi casi..';
   } else if (score > 7.5) {
-    console.log ('GAME OVER');
+    return'GAME OVER';
   }
+  return 'Este mensaje no deberia de estar saliendo';
   }
+
+  const desahabilitarBotonDameCarta = (estaDeshabilitado: boolean) => {
+    const botonDameCarta = document.getElementById('dameCarta');
+    if (botonDameCarta !== null && botonDameCarta !== undefined && botonDameCarta instanceof HTMLButtonElement) {
+      botonDameCarta.disabled = estaDeshabilitado;
+    }
+  }
+
+  const mostratMensaje = (mensaje: string) => {
+    const elementoMensaje = document.getElementById('mensaje');
+    if(elementoMensaje !== null && elementoMensaje !== undefined && elementoMensaje instanceof HTMLDivElement) {
+      elementoMensaje.textContent = mensaje;
+    }
+  }
+
+ const desahabilitarBotonMePlanto = (estaDeshabilitado: boolean) => {
+    const botonMePlanto = document.getElementById('mePlanto');
+    if (botonMePlanto !== null && botonMePlanto !== undefined && botonMePlanto instanceof HTMLButtonElement) {
+      botonMePlanto.disabled = estaDeshabilitado;
+    }
+  }
+
+  const deshabilitarBotonQueHabriaPasado = (estaDeshabilitado: boolean) => {
+    const botonQueHabriaPasado = document.getElementById('queHabriaPasado');
+    if (botonQueHabriaPasado !== null && botonQueHabriaPasado !== undefined && botonQueHabriaPasado instanceof HTMLButtonElement) {
+      botonQueHabriaPasado.disabled = estaDeshabilitado;
+    }
+  }
+
+
+
+  const comprobarPartida = () => {
+    if (score > 7.5){
+     mostratMensaje ('GAME OVER');
+     desahabilitarBotonDameCarta(true);
+    }else if (score === 7.5) { 
+     mostratMensaje ('¡¡¡Enhorabuena, has ganado!!!');
+     desahabilitarBotonDameCarta(true);
+    }
+  }
+
 
 const dameCarta = () => {
   const numeroAleatorio = generarNumeroAleatorio();
@@ -92,6 +134,7 @@ const dameCarta = () => {
   actualizarScore(puntosSumados);
   mostrarScore();
   comprobarPartida();
+  deshabilitarBotonQueHabriaPasado(true);
 }
 
 const botonDameCarta = document.getElementById('dameCarta') 
@@ -102,30 +145,50 @@ if (botonDameCarta !== null && botonDameCarta !== undefined && botonDameCarta in
   })
 }
 
+const newGame = () => {
+    actualizarScore(0);
+    mostrarUrlCarta(" https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg");
+    mostratMensaje('');
+    mostrarScore();
+    desahabilitarBotonDameCarta(false);
+    desahabilitarBotonMePlanto(false);
+    deshabilitarBotonQueHabriaPasado(true);
+}
 
-/*
+const mePlanto = () => {
+ const mensaje = dameMensajePartidaCuandoMePlanto();
+  desahabilitarBotonDameCarta(true);
+  mostratMensaje(mensaje);
+  desahabilitarBotonMePlanto(true);
+  deshabilitarBotonQueHabriaPasado(false);
 
-const botonNewGame = document.getelementbyid('newGame')
-  if(botonNewGame !== null && botonNewGame !== undifined && botonNewGame instanceof HTMLButtonElement) {
-  botonNewGame.addEventlistener('click', () => {
+}
+
+const quehabriaPasado = () => {
+ desahabilitarBotonDameCarta(true);
+ desahabilitarBotonMePlanto(true);
+ dameCarta();
+} 
+
+
+
+const botonNewGame = document.getElementById('newGame')
+if (botonNewGame !== null && botonNewGame !== undefined && botonNewGame instanceof HTMLButtonElement) {
+ botonNewGame.addEventListener('click', () => {
+  newGame();
+ })
+}
+
+const botonMePlanto = document.getElementById('mePlanto')
+ if(botonMePlanto !== null && botonMePlanto !== undefined && botonMePlanto instanceof HTMLButtonElement) {
+  botonMePlanto.addEventListener('click', () => {
+    mePlanto();
+  })
+ }
+
+ const botonQueHabriaPasado = document.getElementById('queHabriaPasado');
+  if(botonQueHabriaPasado !== null && botonQueHabriaPasado !== undefined && botonQueHabriaPasado instanceof HTMLButtonElement) {
+    botonQueHabriaPasado.addEventListener('click', () => {
+    quehabriaPasado();
   })
   }
-
-
-const botonMePlanto = document.getelementbyid('mePlanto') 
-  if(botonMePlanto !== null && botonMePlanto !== undefined && botonMePlanto instanceof HTMLButtonElement) {
-  botonMePlanto.addEventlistener('click', () => {
-})}
-
-
-document.addEventListener('DOMContentLoaded', comprobarPartida);
-
-
-
-
-  - Funcionalidad a los botones mePlanto y newGame.
-  - Deshabilitar botón Dame carta cuando haya un game over.
-  - Que habría pasado.
-  - Mostrar mensajes por pantalla y que el mensaje solo sea visible al pulsar el botón mePlanto.
-  - Repositorio github.
-*/  
