@@ -1,6 +1,6 @@
 let score: number = 0;
 
-const generarNumeroAleatorio = () : number => { return Math.floor(Math.random() * 10 );
+const generarNumeroAleatorio = () : number => { return Math.floor(Math.random() * 11 );
 }
 
 const dameNumeroCarta = (aleatorio : number) => {
