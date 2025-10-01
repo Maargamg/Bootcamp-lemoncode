@@ -1,126 +1,145 @@
-let score: number = 0;
+type Especialidad = "Medico de familia" | "Pediatra" | "Cardiólogo";
 
-const generarNumeroAleatorio = () : number => { return Math.floor(Math.random() * 10 );
+interface Pacientes {
+  id: number;
+  nombre: string;
+  apellidos: string;
+  sexo: string;
+  temperatura: number;
+  frecuenciaCardiaca: number;
+  especialidad: Especialidad;
+  edad: number;
 }
 
-const dameNumeroCarta = (aleatorio : number) => {
-  if (aleatorio > 7) {
-    return aleatorio + 2;
+const pacientes: Pacientes[] = [
+  {
+    id: 1,
+    nombre: "John",
+    apellidos: "Doe",
+    sexo: "Male",
+    temperatura: 36.8,
+    frecuenciaCardiaca: 80,
+    especialidad: "Medico de familia",
+    edad: 44,
+  },
+  {
+    id: 2,
+    nombre: "Jane",
+    apellidos: "Doe",
+    sexo: "Female",
+    temperatura: 36.8,
+    frecuenciaCardiaca: 70,
+    especialidad: "Medico de familia",
+    edad: 43,
+  },
+  {
+    id: 3,
+    nombre: "Junior",
+    apellidos: "Doe",
+    sexo: "Male",
+    temperatura: 36.8,
+    frecuenciaCardiaca: 90,
+    especialidad: "Pediatra",
+    edad: 8,
+  },
+  {
+    id: 4,
+    nombre: "Mary",
+    apellidos: "Wien",
+    sexo: "Female",
+    temperatura: 36.8,
+    frecuenciaCardiaca: 120,
+    especialidad: "Medico de familia",
+    edad: 20,
+  },
+  {
+    id: 5,
+    nombre: "Scarlett",
+    apellidos: "Somez",
+    sexo: "Female",
+    temperatura: 36.8,
+    frecuenciaCardiaca: 110,
+    especialidad: "Cardiólogo",
+    edad: 30,
+  },
+  {
+    id: 6,
+    nombre: "Brian",
+    apellidos: "Kid",
+    sexo: "Male",
+    temperatura: 39.8,
+    frecuenciaCardiaca: 80,
+    especialidad: "Pediatra",
+    edad: 11,
+  },
+];
+
+//APARTADO1:
+// Pacientes asignados a pediatria:
+
+const obtenPacientesAsignadosAPediatria = (pacientes: Pacientes[]): Pacientes[] => {
+  // Tu implementación aquí :)
+  let i = 0;
+  while (i < pacientes.length) {
+ if(pacientes[i].especialidad === "Pedriatria" +1)
   }
+  i++;
+};
 
-  return aleatorio;
+//Pacientes asignados a pediatria <10 años:
+
+const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
+  pacientes: Pacientes[]
+): Pacientes[] => {
+  // Tu implementación aquí :)
+};
+
+//APARTADO2:
+
+/*Queremos activar el protocolo de urgencia si cualquier de los pacientes tiene un ritmo cardíaco
+ superior a 100 pulsaciones por minuto y una temperatura corporal superior a 39 grados:*/
+
+ const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
+  let activarProctolo = false;
+
+  // Tu implementación aquí :)
+
+  return activarProctolo;
+};
+
+//APARTADO3:
+
+//Reasignar los pacientes asignados a la especialidad de pediatría a la de medico de familia:
+
+
+const reasignaPacientesAMedicoFamilia = (
+  pacientes: Pacientes[]
+): Pacientes[] => {
+  // Tu implementación aquí :)
+};
+
+//APARTADO4:
+
+/*Queremos saber si podemos mandar al Pediatra a casa (si no tiene pacientes asignados),
+ comprobar si en la lista hay algún paciente asignado a pediatría*/
+
+ const HayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
+  // Tu implementación aquí :)
+};
+
+//OPCIONAL:
+
+/*Queremos calcular el número total de pacientes que están asignados a la especialidad de Medico de familia, 
+y lo que están asignados a Pediatría y a cardiología*/
+
+interface NumeroPacientesPorEspecialidad {
+  medicoDeFamilia: number;
+  pediatria: number;
+  cardiologia: number;
 }
 
-const dameUrlCarta = (carta: number) => {
-  switch(carta) {
-      case 1:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg';
-    case 2:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg';
-    case 3:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/3_tres-copas.jpg';
-    case 4:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg';
-    case 5:
-      'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg';
-    case 6:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg';
-    case 7:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg';
-    case 10:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg';
-    case 11:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg';
-    case 12:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg';
-    default:
-      return 'https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg';
-  }
-}
-
-const mostrarUrlCarta = (urlCarta: string) => {
-  const elementoImagen = document.getElementById('carta')
-   if (elementoImagen !== null !== undefined && elementoImagen instanceof HTMLImageElement) {
-    elementoImagen.src = urlCarta;
-   }
-
-}
-
-const damePuntosCarta = (carta : number) => {
- if (carta > 7){
-  return 0.5;
- }
-
- return carta;
-}
-
-const sumarPuntos = (puntosCarta: number) => {
-  return puntosCarta + score;
-}
-const actualizarScore = (nuevosPuntos : number) => {
- score = nuevosPuntos;
-}
-
-const mostrarScore = () => {
-  const elementoDiv = document.getElementById('score');
-   if (elementoDiv !== null && elementoDiv !== undefined && elementoDiv instanceof HTMLDivElement) {
-    elementoDiv.textContent = score.toString();
-   }
-}
-
-const comprobarPartida = () => {
-  if (score < 4) {
-    console.log ('Has sido muy conservador');
-  } else if (score === 7.5) {
-    console.log ('¡¡¡Enhorabuena, has ganado!!!');
-  } else if (score === 5){
-    console.log ('Te ha entrado el canguelo eh?');
-  } else if (score === 7) {
-    console.log ('Casi casi..');
-  } else if (score > 7.5) {
-    console.log ('GAME OVER');
-  }
-  }
-
-const dameCarta = () => {
-  const numeroAleatorio = generarNumeroAleatorio();
-  const numeroCarta = dameNumeroCarta(numeroAleatorio);
-  const urlCarta = dameUrlCarta(numeroCarta);
-  mostrarUrlCarta(urlCarta);
-  const puntosCarta = damePuntosCarta(numeroCarta);
-  const puntosSumados = sumarPuntos(puntosCarta);
-  actualizarScore(puntosSumados);
-  mostrarScore();
-  comprobarPartida();
-}
-
-const botonDameCarta = document.getElementById('dameCarta') 
-    
-if (botonDameCarta !== null && botonDameCarta !== undefined && botonDameCarta instanceof HTMLButtonElement) {
-  botonDameCarta.addEventListener('click', () => {
-  dameCarta()
-  })
-}
-
-/*
-
-const botonNewGame = document.getelementbyid('newGame')
-  if(botonNewGame !== null && botonNewGame !== undifined && botonNewGame instanceof HTMLButtonElement) {
-  botonNewGame.addEventlistener('click', () => {
-  })
-  }
-
-
-const botonMePlanto = document.getelementbyid('mePlanto') 
-  if(botonMePlanto !== null && botonMePlanto !== undefined && botonMePlanto instanceof HTMLButtonElement) {
-  botonMePlanto.addEventlistener('click', () => {
-})}
-
-
-
-
-  - Funcionalidad a los botones mePlanto y newGame.
-  - Deshabilitar botón cuando haya un game over.
-  - Que habría pasado.
-  - Mostrar mensajes por pantalla y que le mensaje solo sea visible al pusar el botón mePlanto.
-*/  
+const cuentaPacientesPorEspecialidad = (
+  pacientes: Pacientes[]
+): NumeroPacientesPorEspecialidad => {
+  // Tu implementación aquí :)
+};
