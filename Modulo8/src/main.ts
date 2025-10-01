@@ -1,6 +1,6 @@
 type Especialidad = "Medico de familia" | "Pediatra" | "Cardiólogo";
 
-interface Pacientes {
+interface Paciente {
   id: number;
   nombre: string;
   apellidos: string;
@@ -11,7 +11,7 @@ interface Pacientes {
   edad: number;
 }
 
-const pacientes: Pacientes[] = [
+const pacientes: Paciente[] = [
   {
     id: 1,
     nombre: "John",
@@ -77,16 +77,21 @@ const pacientes: Pacientes[] = [
 //APARTADO1:
 // Pacientes asignados a pediatria:
 
-const obtenPacientesAsignadosAPediatria = (pacientes: Pacientes[]): Pacientes[] => {
+const obtenPacientesAsignadosAPediatria = (pacientes: Paciente[]): Paciente[] => {
   // Tu implementación aquí :)
+  let pacientesDePediatria : Paciente [] = [];
   let i = 0;
   while (i < pacientes.length) {
- if(pacientes[i].especialidad === "Pedriatria" +1)
+ if(pacientes[i].especialidad === "Pediatra" ) {
+   pacientesDePediatria = [...pacientesDePediatria, pacientes[i]];
+ }
+ i++;
   }
-  i++;
+  return pacientesDePediatria;
 };
 
-//Pacientes asignados a pediatria <10 años:
+console.log(obtenPacientesAsignadosAPediatria(pacientes));
+/*//Pacientes asignados a pediatria <10 años:
 
 const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
   pacientes: Pacientes[]
