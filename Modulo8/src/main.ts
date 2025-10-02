@@ -136,7 +136,7 @@ console.log("Activar protocolo de urgencia", activarProtocoloUrgencia(pacientes)
 /*const reasignaPacientesAMedicoFamilia = (
   pacientes: Paciente[]
 ): Paciente[] => {
-  // Tu implementación aquí :)
+  Tu implementación aquí :)
 };
 
 //APARTADO4:
