@@ -113,7 +113,7 @@ console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes));
 /*Queremos activar el protocolo de urgencia si cualquier de los pacientes tiene un ritmo cardíaco
  superior a 100 pulsaciones por minuto y una temperatura corporal superior a 39 grados:*/
 
- const activarProtocoloUrgencia = (pacientes: Paciente[]): boolean => {
+const activarProtocoloUrgencia = (pacientes: Paciente[]): boolean => {
   let activarProctolo = false;
   let i = 0;
   while(i < pacientes.length) {
@@ -166,7 +166,7 @@ const pacientesReasignados = (pacientes: Paciente[]): Paciente[] => {
 /*Queremos saber si podemos mandar al Pediatra a casa (si no tiene pacientes asignados),
  comprobar si en la lista hay algún paciente asignado a pediatría*/
 
- const hayPacientesDePediatria = (pacientes: Paciente[]): boolean => {
+const hayPacientesDePediatria = (pacientes: Paciente[]): boolean => {
 let i = 0;
 while (i < pacientes.length) {
   if(pacientes[i].especialidad === "Pediatra"){
@@ -184,16 +184,31 @@ console.log("¿Hay pacientes de pediatria?", hayPacientesDePediatria(pacientes))
 /*Queremos calcular el número total de pacientes que están asignados a la especialidad de Medico de familia, 
 y lo que están asignados a Pediatría y a cardiología*/
 
-/*interface NumeroPacientesPorEspecialidad {
+//Antonio aqui me he hecho un lio :(
+
+interface NumeroPacientesPorEspecialidad {
   medicoDeFamilia: number;
   pediatria: number;
   cardiologia: number;
 }
 
-const cuentaPacientesPorEspecialidad = (
-  pacientes: Paciente[]
-): NumeroPacientesPorEspecialidad => {
-  // Tu implementación aquí :)
-};*/
+const cuentaPacientesPorEspecialidad = (pacientes: Paciente[]): NumeroPacientesPorEspecialidad => {
+let totalPacientes: Paciente[] = [];
+let i = 0;
+while(i < pacientes.length) {
+  (pacientes[i].especialidad === "Pediatra"){
+    (pacientes[i].especialidad === "Cardiólogo") {
+      (pacientes[i].especialidad === "Medico de familia")
+    }
+    i++;
+  }
+  break;
+}
+return totalPacientes; 
+};
+
+console.log(cuentaPacientesPorEspecialidad(pacientes));
+
+
 
 
