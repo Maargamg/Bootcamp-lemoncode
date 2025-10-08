@@ -77,7 +77,7 @@ const pacientes: Paciente[] = [
 //APARTADO1:
 // Pacientes asignados a pediatria:
 
-/*const obtenPacientesAsignadosAPediatria = (pacientes: Paciente[]): Paciente[] => {
+const obtenPacientesAsignadosAPediatria = (pacientes: Paciente[]): Paciente[] => {
   let pacientesDePediatria : Paciente [] = [];
   let i = 0;
   while (i < pacientes.length) {
@@ -89,12 +89,12 @@ const pacientes: Paciente[] = [
   return pacientesDePediatria;
 };
 
-console.log(obtenPacientesAsignadosAPediatria(pacientes));*/
+console.log(obtenPacientesAsignadosAPediatria(pacientes));
 
 
 //Pacientes asignados a pediatria <10 años:
 
-/*const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (pacientes: Paciente[]): Paciente[] => {
+const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (pacientes: Paciente[]): Paciente[] => {
   let pacientesPediatraMenoresDeDiez : Paciente [] = [];
   let i = 0;
   while ( i < pacientes.length) {
@@ -106,14 +106,14 @@ console.log(obtenPacientesAsignadosAPediatria(pacientes));*/
   return pacientesPediatraMenoresDeDiez;
 };
 
-console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes));*/
+console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes));
 
 //APARTADO2:
 
 /*Queremos activar el protocolo de urgencia si cualquier de los pacientes tiene un ritmo cardíaco
  superior a 100 pulsaciones por minuto y una temperatura corporal superior a 39 grados:*/
 
-/* const activarProtocoloUrgencia = (pacientes: Paciente[]): boolean => {
+ const activarProtocoloUrgencia = (pacientes: Paciente[]): boolean => {
   let activarProctolo = false;
   let i = 0;
   while(i < pacientes.length) {
@@ -126,7 +126,7 @@ i++;
     return activarProctolo;
 };
 
-console.log("Activar protocolo de urgencia", activarProtocoloUrgencia(pacientes));*/
+console.log("Activar protocolo de urgencia", activarProtocoloUrgencia(pacientes));
 
 //APARTADO3:
 
@@ -144,20 +144,22 @@ const reasignaPacientesAMedicoFamilia = (pacientes: Paciente[]): Paciente[] => {
   }
   return reasignarPacientes;
 
-  const pacientesReasignados = (pacientes: Paciente[]): Paciente[] => {
-    let nuevoListadoPacientes : Paciente[] = [];
-    let i = 0;
-    while(i <pacientes.length) {
-      if (pacientes[i].especialidad === "Medico de familia") {
-        nuevoListadoPacientes = [...nuevoListadoPacientes, ...reasignarPacientes, pacientes[i]];
-      }
-      i++;
-    }
-    return nuevoListadoPacientes;
-  }
+}
 
-  console.log(pacientesReasignados(pacientes));
-};
+const pacientesReasignados = (pacientes: Paciente[]): Paciente[] => {
+  const reasignarPacientes = reasignaPacientesAMedicoFamilia(pacientes);
+  let nuevoListadoPacientes : Paciente[] = [];
+  let i = 0;
+  while(i < pacientes.length) {
+    if(pacientes[i].especialidad === "Medico de familia") {
+      nuevoListadoPacientes = [...nuevoListadoPacientes, pacientes[i], ...reasignarPacientes];
+    }
+    i++;
+  }
+  return nuevoListadoPacientes;
+ }
+
+ console.log(pacientesReasignados(pacientes));
 
 //APARTADO4:
 
