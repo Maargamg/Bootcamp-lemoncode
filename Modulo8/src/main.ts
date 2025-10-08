@@ -166,9 +166,18 @@ const pacientesReasignados = (pacientes: Paciente[]): Paciente[] => {
 /*Queremos saber si podemos mandar al Pediatra a casa (si no tiene pacientes asignados),
  comprobar si en la lista hay algún paciente asignado a pediatría*/
 
- /*const HayPacientesDePediatria = (pacientes: Paciente[]): boolean => {
-  // Tu implementación aquí :)
+ const hayPacientesDePediatria = (pacientes: Paciente[]): boolean => {
+let i = 0;
+while (i < pacientes.length) {
+  if(pacientes[i].especialidad === "Pediatra"){
+    return true;
+  }
+  i++;
+  }
+  return false;
 };
+
+console.log("¿Hay pacientes de pediatria?", hayPacientesDePediatria(pacientes));
 
 //OPCIONAL:
 
