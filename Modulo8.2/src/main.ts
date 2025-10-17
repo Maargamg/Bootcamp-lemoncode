@@ -86,7 +86,7 @@ console.log (obtenPacientesAsignadosAPediatria);
 /*Queremos extraer la lista de pacientes asignados a Pediatría y que tengan una edad menor de 10 años. ==> filter*/
 
 const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = pacientes.filter((pacientes): boolean => 
-  pacientes.especialidad === "Pediatria" && pacientes.edad <= 10
+  pacientes.especialidad === "Pediatra" && pacientes.edad <= 10
 );
 
 console.log(obtenPacientesAsignadosAPediatria);
