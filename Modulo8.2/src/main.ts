@@ -92,7 +92,7 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = pacientes.filter((pac
 console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios);
 //Apartado 2
 /*Queremos activar el protocolo de urgencia si cualquier de los pacientes tiene un ritmo cardíaco superior a 100 pulsaciones
- por minuto y una temperatura corporal superior a 39 grados ==> every*/
+ por minuto y una temperatura corporal superior a 39 grados/*/
 
 
 const activarProtocoloUrgencia = pacientes.every((pacientes): boolean => {
@@ -107,9 +107,18 @@ console.log(activarProtocoloUrgencia);
 /*El pediatra no puede atender hoy a los pacientes, queremos reasignar los pacientes asignados 
 a la especialidad de pediatría a la de medico de familia. ==?*/
 
-const reasignaPacientesAMedicoFamilia = (pacientes: Paciente[]): Paciente[] => {
-  // Tu implementación aquí :)
-};
+const reasignaPacientesAMedicoFamilia = pacientes.map(paciente => {
+    if (paciente.especialidad === "Pediatra") {
+      return { ...paciente, especialidad: "Medico de familia" };
+    }
+    return paciente;
+  });
+
+console.log(reasignaPacientesAMedicoFamilia);
+
+  
+  
+
 //Apartado 4
 /*Queremos saber si podemos mandar al Pediatra a casa (si no tiene pacientes asignados), 
 comprobar si en la lista hay algún paciente asignado a pediatría  ==> find*/
