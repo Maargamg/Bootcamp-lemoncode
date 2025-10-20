@@ -75,7 +75,7 @@ const pacientes: Paciente[] = [
 ];
 
 //Apartado 1
-/*Queremos extraer la lista de paciente que están asignados a la especialidad de Pediatría  ==> filter*/
+/*Queremos extraer la lista de paciente que están asignados a la especialidad de Pediatría */
 
 
 const obtenPacientesAsignadosAPediatria = pacientes.filter((pacientes) => pacientes.especialidad === "Pediatra");
@@ -83,25 +83,26 @@ const obtenPacientesAsignadosAPediatria = pacientes.filter((pacientes) => pacien
 console.log (obtenPacientesAsignadosAPediatria);
 
 
-/*Queremos extraer la lista de pacientes asignados a Pediatría y que tengan una edad menor de 10 años. ==> filter*/
+/*Queremos extraer la lista de pacientes asignados a Pediatría y que tengan una edad menor de 10 años.*/
 
 const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = pacientes.filter((pacientes): boolean => 
   pacientes.especialidad === "Pediatra" && pacientes.edad <= 10
 );
 
-console.log(obtenPacientesAsignadosAPediatria);
+console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios);
 //Apartado 2
 /*Queremos activar el protocolo de urgencia si cualquier de los pacientes tiene un ritmo cardíaco superior a 100 pulsaciones
  por minuto y una temperatura corporal superior a 39 grados ==> every*/
 
 
-const activarProtocoloUrgencia = (pacientes: Paciente[]): boolean => {
+const activarProtocoloUrgencia = pacientes.every((pacientes): boolean => {
+ pacientes.frecuenciaCardiaca !>= 100 && pacientes.temperatura !>= 39
   let activarProctolo = false;
-
-  // Tu implementación aquí :)
-
   return activarProctolo;
-};
+});
+
+console.log(activarProtocoloUrgencia);
+
 //Apartado 3
 /*El pediatra no puede atender hoy a los pacientes, queremos reasignar los pacientes asignados 
 a la especialidad de pediatría a la de medico de familia. ==?*/
