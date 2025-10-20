@@ -105,7 +105,7 @@ console.log(activarProtocoloUrgencia);
 
 //Apartado 3
 /*El pediatra no puede atender hoy a los pacientes, queremos reasignar los pacientes asignados 
-a la especialidad de pediatría a la de medico de familia. ==?*/
+a la especialidad de pediatría a la de medico de familia.*/
 
 const reasignaPacientesAMedicoFamilia = pacientes.map(paciente => {
     if (paciente.especialidad === "Pediatra") {
@@ -123,9 +123,14 @@ console.log(reasignaPacientesAMedicoFamilia);
 /*Queremos saber si podemos mandar al Pediatra a casa (si no tiene pacientes asignados), 
 comprobar si en la lista hay algún paciente asignado a pediatría  ==> find*/
 
-const HayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
-  // Tu implementación aquí :)
-};
+const HayPacientesDePediatria = pacientes.find(paciente => {
+ if(paciente.especialidad === "Pediatra") {
+  return true;
+ }
+ return false;
+}); 
+
+console.log(HayPacientesDePediatria);
 
 //Apartado 5
 /*Queremos calcular el número total de pacientes que están asignados a la especialidad de Medico de familia,
