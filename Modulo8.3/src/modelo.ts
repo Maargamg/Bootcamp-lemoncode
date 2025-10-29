@@ -8,3 +8,10 @@ export interface Pelicula {
     fechasEstreno: Date;
     imagen: string;
 }
+
+export const nombreClases = {
+    peliculas: "peliculas",
+    listaPeliculas: "lista-peliculas",
+    peliculasContenedor: "peliculas-contenedor",
+    pelicula: "pelicula",
+}
