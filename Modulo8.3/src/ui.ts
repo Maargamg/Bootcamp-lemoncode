@@ -1,10 +1,10 @@
-const crearTiltulo = (tituloSeccion: string): HTMLHeadingElement => {
+const crearTitulo = (tituloSeccion: string): HTMLHeadingElement => {
    const titulo = document.createElement("h2");
    titulo.textContent = tituloSeccion;
    return titulo;
 };
 
-const crearContenedor = (nombreClase: string): HTMLDivElement  {
+const crearContenedor = (nombreClase: string): HTMLDivElement => {
   const listaPeliculas = document.createElement("div");
   listaPeliculas.classList.add(nombreClase);
   listaPeliculas.id = nombreClase;
@@ -12,7 +12,7 @@ const crearContenedor = (nombreClase: string): HTMLDivElement  {
 };
 
 import { Pelicula } from "./modelo";
-export pintarListaPeliculas = (
+export const pintarListaPeliculas = (
   tituloSeccion: string,
   listaPeliculas: Pelicula[],
 ): void => {
@@ -21,12 +21,12 @@ export pintarListaPeliculas = (
   //comprobar que existe
   if(appDiv && appDiv instanceof HTMLDivElement) {
     //crear un div para las peliculas
-    const crearDivPeliculas = crearContenerdor("peliculas");
+    const crearDivPeliculas = crearContenedor("peliculas");
     // añadir el div de peliculas al div principal
     appDiv.appendChild(crearDivPeliculas);
 
     // crear titulo
-    const titulo = crearTilulo(tituloSeccion);
+    const titulo = crearTitulo(tituloSeccion);
     //añadir el titulo al div de peliculas
     crearDivPeliculas.appendChild(titulo);
 
