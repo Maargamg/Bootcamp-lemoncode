@@ -42,7 +42,7 @@ export const peliculas: Pelicula[] = [
  premiosGalardon: false,
  fechasEstreno: new Date("1990-12-21"),
  imagen:
- "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/mflix/poliguarderia.png",
+ "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/mflix/poli-guarderia.png",
  },
  {
  titulo: "El príncipe de Zamunda",
