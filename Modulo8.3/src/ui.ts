@@ -46,7 +46,7 @@ listaPeliculas.forEach((pelicula) => {
 const divPelicula = crearContenedor(nombreClases.pelicula);
 // añadimos datos a la pelicula
 divPelicula.innerHTML =
-`<img src=${pelicula.imagen}" alt="${pelicula.titulo}"/>
+`<img src="${pelicula.imagen}" alt="${pelicula.titulo}"/>
 <h3>${pelicula.titulo}</h3>
 `;
 //añadir div pelicula al div contenedor de pelicula
