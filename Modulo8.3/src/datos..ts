@@ -109,7 +109,7 @@ export const peliculas: Pelicula[] = [
  premiosGalardon: false,
  fechasEstreno: new Date("2011-07-29"),
  imagen:
- "https://raw.githubusercontent.com/Lemoncode/fotosejemplos/main/mflix/pitufos.png",
+ "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/mflix/pitufos.png",
  },
  {
  titulo: "El cazador y la reina del hielo",
@@ -153,7 +153,7 @@ export const peliculas: Pelicula[] = [
  premiosGalardon: false,
  fechasEstreno: new Date("2014-02-14"),
  imagen:
- "https://raw.githubusercontent.com/Lemoncode/fotosejemplos/main/mflix/vampire-academy.png",
+ "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/mflix/vampire-academy.png",
  },
  {
  titulo: "Warcraft: El origen",

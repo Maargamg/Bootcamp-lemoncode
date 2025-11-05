@@ -4,14 +4,75 @@ const crearTitulo = (tituloSeccion: string): HTMLHeadingElement => {
    return titulo;
 };
 
-const crearContenedor = (nombreClase: string): HTMLDivElement => {
-  const listaPeliculas = document.createElement("div");
-  listaPeliculas.classList.add(nombreClase);
-  listaPeliculas.id = nombreClase;
-  return listaPeliculas;
+const crearContenedor = (nombreClase: string, contenedor: HTMLDivElement): HTMLDivElement => {
+  const div = document.createElement("div");
+  div.classList.add(nombreClase);
+  div.id = nombreClase;
+  contenedor.appendChild(div);
+  return div;
 };
 
-import { Pelicula , nombreClases} from "./modelo";
+import { flechas } from "./constantes";
+import { Pelicula,nombreClases, TipoFlecha } from "./modelo";
+
+ const añadirFlecha = (contenedor: HTMLDivElement,tipo: TipoFlecha,): void => {
+   const divFlecha = document.createElement("div");
+    divFlecha.className = `flecha-${tipo}`;
+
+   const imgFlecha = document.createElement("img");
+   imgFlecha.src = tipo === "izquierda" ? flechas.left : flechas.right;
+   divFlecha.appendChild(imgFlecha);
+
+
+ divFlecha.addEventListener("click", () => {
+ if (tipo === "izquierda") {
+   contenedor.scrollBy({
+   left: -contenedor.clientWidth,
+    behavior: "smooth",
+});
+ } else {
+contenedor.scrollBy({
+ left: contenedor.clientWidth,
+ behavior: "smooth",
+ });
+}
+});
+ contenedor.appendChild(divFlecha);
+ };
+
+const agregarTitulo = (
+  tituloSeccion: string,
+  contenerdor: HTMLDivElement,
+): void =>{
+  const titulo = crearTitulo(tituloSeccion);
+  contenerdor.appendChild(titulo);
+};
+
+const pintarFlechas = (peliculaContenedor: HTMLDivElement): void => {
+  añadirFlecha(peliculaContenedor, "izquierda");
+  añadirFlecha(peliculaContenedor, "derecha");
+};
+
+const pintarPelicula = (
+  pelicula: Pelicula,
+  peliculaContenedor: HTMLDivElement
+): void => {
+ const divPelicula = crearContenedor(nombreClases.pelicula, peliculaContenedor);
+ divPelicula.innerHTML = `<img src="${pelicula.imagen}" alt="${pelicula.titulo}"/>
+<h3>${pelicula.titulo}</h3>
+`;
+};
+
+const pintarPeliculas = (
+  peliculas: Pelicula[],
+  peliculaContenedor: HTMLDivElement
+):void => {
+peliculas.forEach((pelicula) => {
+ pintarPelicula(pelicula, peliculaContenedor);
+});
+};
+
+
 export const pintarListaPeliculas = (
   tituloSeccion: string,
   listaPeliculas: Pelicula[],
@@ -21,39 +82,23 @@ export const pintarListaPeliculas = (
   //comprobar que existe
   if(appDiv && appDiv instanceof HTMLDivElement) {
     //crear un div para las peliculas
-    const crearDivPeliculas = crearContenedor(nombreClases.peliculas);
-    // añadir el div de peliculas al div principal
-    appDiv.appendChild(crearDivPeliculas);
+    const crearDivPeliculas = crearContenedor(nombreClases.peliculas, appDiv);
 
-    // crear titulo
-    const titulo = crearTitulo(tituloSeccion);
-    //añadir el titulo al div de peliculas
-    crearDivPeliculas.appendChild(titulo);
+   //crear titulo
+
+  agregarTitulo(tituloSeccion, crearDivPeliculas);
 
     // crear div lista ded peliculas
-   const divListaPeliculas = crearContenedor(nombreClases.listaPeliculas);
-   // añadir div lista de peliculas
-   crearDivPeliculas.appendChild(divListaPeliculas);
+   const divListaPeliculas = crearContenedor(nombreClases.listaPeliculas, crearDivPeliculas);
 
    //crear div contenedor de peliculas
-   const divPeliculasContenedor = crearContenedor(nombreClases.peliculasContenedor);
-   //añadir div contenerdor de peliculas al div lista de peliculas
-   divListaPeliculas.appendChild(divPeliculasContenedor);
+   const divPeliculasContenedor = crearContenedor(nombreClases.peliculasContenedor, divListaPeliculas);
 
+   //añadir flechas
+   pintarFlechas(divPeliculasContenedor);
    // pintar peliculas
-listaPeliculas.forEach((pelicula) => {
-// crear div pelicula
-const divPelicula = crearContenedor(nombreClases.pelicula);
-// añadimos datos a la pelicula
-divPelicula.innerHTML =
-`<img src="${pelicula.imagen}" alt="${pelicula.titulo}"/>
-<h3>${pelicula.titulo}</h3>
-`;
-//añadir div pelicula al div contenedor de pelicula
-divPeliculasContenedor.appendChild(divPelicula);
-})
-
-  }else {
+ pintarPeliculas(listaPeliculas, divPeliculasContenedor);
+}else {
     console.log ("No se encontro el elemento");
   }
-}
+};

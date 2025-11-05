@@ -14,4 +14,6 @@ export const nombreClases = {
     listaPeliculas: "lista-peliculas",
     peliculasContenedor: "peliculas-contenedor",
     pelicula: "pelicula",
-}
+};
+
+export type TipoFlecha = "izquierda" | "derecha";
