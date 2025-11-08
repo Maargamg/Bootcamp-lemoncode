@@ -27,3 +27,9 @@ export interface FiltroPeliculas {
  caracteristicas: TipoCaracteristicas;
 }
 
+export interface ListaPeliculasConfiguracion {
+    titulo: string;
+    filtro?: FiltroPeliculas;
+
+}
+

@@ -13,7 +13,8 @@ const crearContenedor = (nombreClase: string, contenedor: HTMLDivElement): HTMLD
 };
 
 import { flechas } from "./constantes";
-import { Pelicula,nombreClases, TipoFlecha } from "./modelo";
+import { Pelicula,nombreClases, TipoFlecha, ListaPeliculasConfiguracion } from "./modelo";
+import { filtrarPeliculas } from "./motor";
 
  const añadirFlecha = (contenedor: HTMLDivElement,tipo: TipoFlecha,): void => {
    const divFlecha = document.createElement("div");
@@ -74,8 +75,8 @@ peliculas.forEach((pelicula) => {
 
 
 export const pintarListaPeliculas = (
-  tituloSeccion: string,
   listaPeliculas: Pelicula[],
+  configuracion: ListaPeliculasConfiguracion
 ): void => {
   //obtener div principal
   const appDiv = document.getElementById("principal");
@@ -86,7 +87,7 @@ export const pintarListaPeliculas = (
 
    //crear titulo
 
-  agregarTitulo(tituloSeccion, crearDivPeliculas);
+  agregarTitulo(configuracion.titulo, crearDivPeliculas);
 
     // crear div lista ded peliculas
    const divListaPeliculas = crearContenedor(nombreClases.listaPeliculas, crearDivPeliculas);
@@ -96,8 +97,11 @@ export const pintarListaPeliculas = (
 
    //añadir flechas
    pintarFlechas(divPeliculasContenedor);
+
+   const peliculasFiltradas = filtrarPeliculas(listaPeliculas, configuracion.filtro);
+
    // pintar peliculas
- pintarPeliculas(listaPeliculas, divPeliculasContenedor);
+ pintarPeliculas(peliculasFiltradas, divPeliculasContenedor);
 }else {
     console.log ("No se encontro el elemento");
   }

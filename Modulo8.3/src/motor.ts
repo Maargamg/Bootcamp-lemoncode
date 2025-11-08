@@ -1,5 +1,4 @@
-import { peliculas, TipoGenero } from "./datos.";
-import { FiltroPeliculas } from "./modelo";
+import { FiltroPeliculas , TipoGenero} from "./modelo";
 
 export const filtrarPeliculasPorGenero = (
     peliculas: Pelicula[],
