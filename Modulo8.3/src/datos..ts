@@ -58,7 +58,7 @@ export const peliculas: Pelicula[] = [
  {
  titulo: "Angry Birds",
  resumen: "Una pelicula de los pajaros de angry birds",
- genero: "Animacion",
+ genero: "Animación",
  masVisto: false,
  calificacionImdb: 6.3,
  premiosGalardon: false,
@@ -70,7 +70,7 @@ export const peliculas: Pelicula[] = [
  titulo: "Los Croods",
  resumen:
  "Una familia de cavernicolas que se encuentra con un hombre moderno",
- genero: "Animacion",
+ genero: "Animación",
  masVisto: false,
  calificacionImdb: 7.2,
  premiosGalardon: false,
@@ -81,7 +81,7 @@ export const peliculas: Pelicula[] = [
  {
  titulo: "José, el rey de los sueños",
  resumen: "La historia de José de la biblia",
- genero: "Animacion",
+ genero: "Animación",
  masVisto: false,
  calificacionImdb: 6.5,
  premiosGalardon: false,
@@ -92,7 +92,7 @@ export const peliculas: Pelicula[] = [
  {
  titulo: "La patrulla canina",
  resumen: "Una pelicula de la patrulla canina",
- genero: "Animacion",
+ genero: "Animación",
  masVisto: false,
  calificacionImdb: 4.7,
  premiosGalardon: false,
@@ -103,7 +103,7 @@ export const peliculas: Pelicula[] = [
  {
  titulo: "Los pitufos",
  resumen: "Una pelicula de los pitufos",
- genero: "Animacion",
+ genero: "Animación",
  masVisto: false,
  calificacionImdb: 5.4,
  premiosGalardon: false,
