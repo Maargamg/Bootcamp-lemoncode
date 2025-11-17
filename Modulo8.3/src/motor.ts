@@ -5,6 +5,19 @@ export const filtrarPeliculasPorGenero = (
     genero?:  TipoGenero,
 ): Pelicula[] => peliculas.filter((pelicula) => pelicula.genero === genero);
 
+const filtrarPeliculasPorPremio = (
+    peliculas: Pelicula[],
+): Pelicula[] => peliculas.filter((pelicula) => pelicula.premiosGalardon);
+
+const filtrarPeliculasMasVistas = (
+    peliculas: Pelicula[],
+): Pelicula[] => peliculas.filter((pelicula) => pelicula.masVisto);
+
+const ordenarPeliculasPorCalificacion = (
+    peliculas: Pelicula[]
+): Pelicula[] => peliculas.sort((peliculaA, peliculaB) => peliculaB.calificacionImdb - peliculaA.calificacionImdb);
+
+
 export const filtrarPeliculas = (
     peliculas: Pelicula[],
     filtro?: FiltroPeliculas
@@ -14,7 +27,13 @@ export const filtrarPeliculas = (
 
 switch(filtro.caracteristicas) {
     case "genero": 
-    return filtrarPeliculasPorGenero (peliculas, filtro.genero);
+     return filtrarPeliculasPorGenero (peliculas, filtro.genero);
+    case "premios":
+     return filtrarPeliculasPorPremio(peliculas);
+    case "masVistas":
+     return filtrarPeliculasMasVistas(peliculas);
+    case "calificación":
+     return ordenarPeliculasPorCalificacion(peliculas);
     default:
         return peliculas;
 }

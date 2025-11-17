@@ -17,4 +17,20 @@ document.addEventListener("DOMContentLoaded", () =>{
     titulo: "Películas de Animación",
     filtro: {genero: "Animación", caracteristicas: "genero"},
   });
+
+  pintarListaPeliculas(peliculas, {
+    titulo: "Películas más vistas",
+    filtro: {caracteristicas: "masVistas"},
+  });
+
+  pintarListaPeliculas(peliculas, {
+     titulo: "Películas con mejor calificación",
+     filtro: {caracteristicas: "calificación"},
+  });
+
+  pintarListaPeliculas(peliculas, {
+     titulo: "Películas con premios",
+     filtro: {caracteristicas: "premios"},
+  });
+
 });

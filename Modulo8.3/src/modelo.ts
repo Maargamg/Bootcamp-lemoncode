@@ -20,7 +20,7 @@ export type TipoFlecha = "izquierda" | "derecha";
 
 export type TipoGenero = "Familiar" | "Aventuras" | "Animación";
 
-type TipoCaracteristicas = "genero";
+type TipoCaracteristicas = "genero" | "premios" | "masVistas" | "calificación";
 
 export interface FiltroPeliculas {
  genero?: TipoGenero;
