@@ -1,3 +1,8 @@
+import { flechas } from "./constantes";
+import { Pelicula,nombreClases, TipoFlecha, ListaPeliculasConfiguracion } from "./modelo";
+import { filtrarPeliculas } from "./motor";
+
+
 const crearTitulo = (tituloSeccion: string): HTMLHeadingElement => {
    const titulo = document.createElement("h2");
    titulo.textContent = tituloSeccion;
@@ -12,11 +17,7 @@ const crearContenedor = (nombreClase: string, contenedor: HTMLDivElement): HTMLD
   return div;
 };
 
-import { flechas } from "./constantes";
-import { Pelicula,nombreClases, TipoFlecha, ListaPeliculasConfiguracion } from "./modelo";
-import { filtrarPeliculas } from "./motor";
-
- const añadirFlecha = (contenedor: HTMLDivElement,tipo: TipoFlecha,): void => {
+const añadirFlecha = (contenedor: HTMLDivElement,tipo: TipoFlecha,): void => {
    const divFlecha = document.createElement("div");
     divFlecha.className = `flecha-${tipo}`;
 
