@@ -1,3 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: "Roboto";
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #121213;
+  height: 100vh;
+  margin: 0;
+  color: #ffffff;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contenedor {
+  text-align: center;
+  width: 100%;
+}
+
+.juego {
+  background-color: #1a1a1b;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.intentos {
+  text-align: right;
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.superior {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedorImagen img {
+  width: 100px;
+  height: auto;
+  filter: invert(1);
+}
+
+.contenedorLetras {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
 .letra {
   width: 40px;
   height: 40px;
@@ -13,4 +76,64 @@
 
 .letra:focus-visible {
   outline: none;
+}
+
+.botonesLetras {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.botonesLetras input {
+  background-color: #818384;
+  color: #ffffff;
+  border: none;
+  height: 50px;
+  width: 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.botonesLetras input:hover {
+  background-color: #565758;
+}
+
+.empezarPartida,
+.volverEmpezar {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #538d4e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.empezarPartida:hover,
+.volverEmpezar:hover {
+  background-color: #3c6e3f;
+}
+
+.mensaje {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.ocultar {
+  display: none;
+}
+
+.inferior {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
 }
