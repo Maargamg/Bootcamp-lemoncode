@@ -37,10 +37,11 @@ const palabra: string[] =[
   "orden","equilibrio","sencillez","unidad","memoria","sueño","pasión","talento","felicidad","destino"
 ];
 
+
 export const palabraElegida: string = palabra[Math.floor(Math.random() * palabra.length)];
 export const listadoLetrasletras: string[] = palabraElegida.split('');
 
-const dameListaIndicesEncontrados = (listadoPalabras: string[], letraABuscar: string): number[] => {
+export const dameListaIndicesEncontrados = (listadoPalabras: string[], letraABuscar: string): number[] => {
   return listadoPalabras.reduce((resultado: number[], letra: string, index: number) =>{
     if (letra === letraABuscar) {
         resultado.push(index);

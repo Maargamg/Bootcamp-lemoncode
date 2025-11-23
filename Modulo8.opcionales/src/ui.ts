@@ -1,6 +1,6 @@
 import { listadoLetrasletras, palabraElegida } from "./motor";
 
-const falloAhorcado = (imagen: string | number) => {
+export const falloAhorcado = (imagen: string | number) => {
     switch (imagen) {
      case 1:
      return "C:\Users\Marga\OneDrive\Escritorio\Contenido Lemoncamp\Bootcamp-lemoncode\Modulo8.opcionales\imagenes\ahorcado-pie.png";
@@ -26,28 +26,28 @@ const falloAhorcado = (imagen: string | number) => {
     }
 };
 
-const mostrarAhorcado = (urlAhorcado: string) => {
+export const mostrarAhorcado = (urlAhorcado: string) => {
  const elementoImagen = document.getElementById("contenedorImagen")
  if (elementoImagen !== null && elementoImagen !== undefined && elementoImagen instanceof HTMLImageElement) {
     elementoImagen.src = urlAhorcado;
     }
 };
 
-const desahabilitarBotonEmpezarPartida = (estaDeshabilitado: boolean) => {
+export const desahabilitarBotonEmpezarPartida = (estaDeshabilitado: boolean) => {
     const botonEmpezarPartida = document.getElementById("empezarPartida");
     if (botonEmpezarPartida !== null && botonEmpezarPartida !== undefined && botonEmpezarPartida instanceof HTMLButtonElement) {
         botonEmpezarPartida.disabled = estaDeshabilitado;
     }
 };
 
-const deshabilitarBotonVolverEmpezar = (estaDeshabilitado: boolean) => {
+export const deshabilitarBotonVolverEmpezar = (estaDeshabilitado: boolean) => {
     const botonVolverEmpezar = document.getElementById("volverEmpezar");
     if (botonVolverEmpezar !== null && botonVolverEmpezar !== undefined && botonVolverEmpezar instanceof HTMLButtonElement) {
         botonVolverEmpezar.disabled = estaDeshabilitado
     }
 }
 
-const empezarPartida = () => {
+export const empezarPartida = () => {
   mostrarAhorcado("C:\Users\Marga\OneDrive\Escritorio\Contenido Lemoncamp\Bootcamp-lemoncode\Modulo8.opcionales\imagenes\ahorcado-pie.png");
   desahabilitarBotonEmpezarPartida(false);
   deshabilitarBotonVolverEmpezar(true);
