@@ -54,7 +54,7 @@ const empezarPartida = () => {
 }
 
 
-const inicializaAhorcado = () => {
+export const inicializaAhorcado = () => {
   const botonNewGame = document.getElementById("empezarPartida")
   if (botonNewGame !== null && botonNewGame !== undefined && botonNewGame instanceof HTMLButtonElement) {
     botonNewGame.addEventListener('click', () => {
