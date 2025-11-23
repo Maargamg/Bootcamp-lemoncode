@@ -30,7 +30,7 @@ const dameUrlCarta = (carta: number) => {
 
 const mostrarUrlCarta = (urlCarta: string) => {
   const elementoImagen = document.getElementById('carta')
-  if (elementoImagen !== null !== undefined && elementoImagen instanceof HTMLImageElement) {
+  if (elementoImagen !== null && elementoImagen !== undefined && elementoImagen instanceof HTMLImageElement) {
     elementoImagen.src = urlCarta;
   }
 

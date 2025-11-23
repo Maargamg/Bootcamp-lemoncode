@@ -137,3 +137,20 @@ h1 {
   align-items: center;
   margin-top: auto;
 }
+
+.letra {
+  width: 40px;
+  height: 40px;
+  font-size: 1.25rem;
+  background-color: #3a3a3c;
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: none;
+  text-align: center;
+  line-height: 40px;
+}
+
+.letra:focus-visible {
+  outline: none;
+}
