@@ -48,7 +48,7 @@ const deshabilitarBotonVolverEmpezar = (estaDeshabilitado: boolean) => {
 }
 
 const empezarPartida = () => {
-  mostrarAhorcado( "C:\Users\Marga\OneDrive\Escritorio\Contenido Lemoncamp\Bootcamp-lemoncode\Modulo8.opcionales\imagenes\ahorcado-pie.png");
+  mostrarAhorcado("C:\Users\Marga\OneDrive\Escritorio\Contenido Lemoncamp\Bootcamp-lemoncode\Modulo8.opcionales\imagenes\ahorcado-pie.png");
   desahabilitarBotonEmpezarPartida(false);
   deshabilitarBotonVolverEmpezar(true);
 }

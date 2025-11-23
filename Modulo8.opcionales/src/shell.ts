@@ -1,5 +1,5 @@
-import { inicializarPartida} from './ui';
+import { inicializaAhorcado} from './ui';
 
 document.addEventListener('DOMContentLoaded,', () => {
-    inicializarPartida();
+    inicializaAhorcado();
 });
