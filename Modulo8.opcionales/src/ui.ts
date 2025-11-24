@@ -1,4 +1,4 @@
-import { listadoLetrasletras, palabraElegida } from "./motor";
+/*import { dameListaIndicesEncontrados, listadoLetras, palabraElegida } from "./motor";
 
 export const falloAhorcado = (imagen: string | number) => {
     switch (imagen) {
@@ -60,4 +60,60 @@ export const inicializaAhorcado = () => {
     botonNewGame.addEventListener('click', () => {
       empezarPartida();
     })
-}}
+}}*/
+
+const crearInput = (indice: number) => {
+  const elementoInput = document.createElement ("input");
+  elementoInput.classList.add("letra");
+  elementoInput.classList.add(`letra-${indice}`);
+  elementoInput.disabled = true;
+  elementoInput.maxLength = 1;
+  return elementoInput;
+}
+
+const dameListaIndicesEncontrados = (listadoLetras: string[], letraABuscar: string) => {
+  return listadoLetras.reduce((acc: number[], letra: string, indice: number) => {
+        if(letraABuscar === letra) {
+          acc = [...acc, indice]
+        } 
+        return acc;
+       },[]);
+}
+
+export const cargarBotonesLetras = () => {
+  const totalBotones = 27;
+  let palabra = "arbol";
+  const listadoLetras = palabra.split('');
+  for (let i = 0; i < totalBotones; i++) {
+    const inputLetra = document.getElementById(`boton-letra-${i}`);
+    if ( inputLetra !== null && inputLetra !== undefined && inputLetra instanceof HTMLInputElement) {
+      inputLetra.addEventListener("click", () => {
+       const letraABuscar = inputLetra.value.toLocaleLowerCase();
+       const indicesEncontrados = dameListaIndicesEncontrados(listadoLetras, letraABuscar);
+       for (let index = 0; index < indicesEncontrados.length; index++){
+        const indiceLetra = indicesEncontrados[index];
+        const input = document.querySelector(`.letra-${indiceLetra}`);
+        if( input !== null && input !== undefined && input instanceof HTMLInputElement) {
+          input.value = listadoLetras[indiceLetra];
+        }
+       }
+       console.log(indicesEncontrados);
+      });
+    }
+
+  }
+}
+
+export const cargarJuego = () => {
+  let palabra = "arbol";
+  const listadoLetras = palabra.split('');
+  const contenedorLetras = document.querySelector ('.contenedorLetras');
+   if ( contenedorLetras !== null && contenedorLetras !== undefined && contenedorLetras instanceof HTMLDivElement) {
+    for (let i = 0; i < listadoLetras.length; i++) {
+      const elementoInput = crearInput(i);
+      contenedorLetras.appendChild(elementoInput);
+    }
+   }
+};
+
+

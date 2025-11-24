@@ -1,4 +1,4 @@
-const palabra: string[] =[
+/*const palabra: string[] =[
   "ser","estar","tener","hacer","poder","decir","ir","ver","dar","saber",
   "querer","llegar","pasar","deber","poner","parecer","quedar","creer","hablar","llevar",
   "dejar","seguir","encontrar","llamar","venir","pensar","salir","volver","tomar","conocer",
@@ -39,13 +39,20 @@ const palabra: string[] =[
 
 
 export const palabraElegida: string = palabra[Math.floor(Math.random() * palabra.length)];
-export const listadoLetrasletras: string[] = palabraElegida.split('');
+export const listadoLetras: string[] = palabraElegida.split('');
 
-export const dameListaIndicesEncontrados = (listadoPalabras: string[], letraABuscar: string): number[] => {
+
+/*let i = 0;
+while (i < listadoLetras.length) {
+  
+}*/
+
+/*export const dameListaIndicesEncontrados = (listadoPalabras: string[], letraABuscar: string): number[] => {
+  console.log(listadoLetras);
   return listadoPalabras.reduce((resultado: number[], letra: string, index: number) =>{
     if (letra === letraABuscar) {
         resultado.push(index);
     }
     return resultado;
   }, []);
-};
+};*/

@@ -1,5 +1,6 @@
-import { inicializaAhorcado} from './ui';
+import { cargarJuego, cargarBotonesLetras } from './ui';
 
-document.addEventListener('DOMContentLoaded,', () => {
-    inicializaAhorcado();
+document.addEventListener('DOMContentLoaded', () => {
+    cargarJuego();
+    cargarBotonesLetras();
 });
