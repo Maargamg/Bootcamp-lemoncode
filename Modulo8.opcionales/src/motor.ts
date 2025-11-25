@@ -37,22 +37,3 @@ export const palabras: string[] =[
   "orden","equilibrio","sencillez","unidad","memoria","sueño","pasión","talento","felicidad","destino"
 ];
 
-
-//export const palabraElegida: string = palabra[Math.floor(Math.random() * palabra.length)];
-//export const listadoLetras: string[] = palabraElegida.split('');
-
-
-/*let i = 0;
-while (i < listadoLetras.length) {
-  
-}*/
-
-/*export const dameListaIndicesEncontrados = (listadoPalabras: string[], letraABuscar: string): number[] => {
-  console.log(listadoLetras);
-  return listadoPalabras.reduce((resultado: number[], letra: string, index: number) =>{
-    if (letra === letraABuscar) {
-        resultado.push(index);
-    }
-    return resultado;
-  }, []);
-};*/
