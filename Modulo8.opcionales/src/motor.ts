@@ -1,4 +1,4 @@
-/*const palabra: string[] =[
+export const palabras: string[] =[
   "ser","estar","tener","hacer","poder","decir","ir","ver","dar","saber",
   "querer","llegar","pasar","deber","poner","parecer","quedar","creer","hablar","llevar",
   "dejar","seguir","encontrar","llamar","venir","pensar","salir","volver","tomar","conocer",
@@ -38,8 +38,8 @@
 ];
 
 
-export const palabraElegida: string = palabra[Math.floor(Math.random() * palabra.length)];
-export const listadoLetras: string[] = palabraElegida.split('');
+//export const palabraElegida: string = palabra[Math.floor(Math.random() * palabra.length)];
+//export const listadoLetras: string[] = palabraElegida.split('');
 
 
 /*let i = 0;

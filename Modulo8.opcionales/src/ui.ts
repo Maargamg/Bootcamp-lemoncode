@@ -1,6 +1,6 @@
-/*import { dameListaIndicesEncontrados, listadoLetras, palabraElegida } from "./motor";
-
-export const falloAhorcado = (imagen: string | number) => {
+import {juego} from './modelo';
+import { palabras } from './motor';
+/*export const falloAhorcado = (imagen: string | number) => {
     switch (imagen) {
      case 1:
      return "C:\Users\Marga\OneDrive\Escritorio\Contenido Lemoncamp\Bootcamp-lemoncode\Modulo8.opcionales\src\imagenes\ahorcado-pie.png";
@@ -80,32 +80,51 @@ const dameListaIndicesEncontrados = (listadoLetras: string[], letraABuscar: stri
        },[]);
 }
 
-export const cargarBotonesLetras = () => {
+const letraEncontrada = (indicesEncontrados: number[], listadoLetras: string[]) => {
+ for (let index = 0; index < indicesEncontrados.length; index++){
+        const indiceLetra = indicesEncontrados[index];
+        const input = document.querySelector(`.letra-${indiceLetra}`);
+        if( input !== null && input !== undefined && input instanceof HTMLInputElement) {
+          input.value = listadoLetras[indiceLetra].toLocaleLowerCase();
+        }
+       }
+}
+
+export const cargarBotonesLetras = (palabra: string) => {
   const totalBotones = 27;
-  let palabra = "arbol";
   const listadoLetras = palabra.split('');
   for (let i = 0; i < totalBotones; i++) {
     const inputLetra = document.getElementById(`boton-letra-${i}`);
     if ( inputLetra !== null && inputLetra !== undefined && inputLetra instanceof HTMLInputElement) {
       inputLetra.addEventListener("click", () => {
-       const letraABuscar = inputLetra.value.toLocaleLowerCase();
-       const indicesEncontrados = dameListaIndicesEncontrados(listadoLetras, letraABuscar);
-       for (let index = 0; index < indicesEncontrados.length; index++){
-        const indiceLetra = indicesEncontrados[index];
-        const input = document.querySelector(`.letra-${indiceLetra}`);
-        if( input !== null && input !== undefined && input instanceof HTMLInputElement) {
-          input.value = listadoLetras[indiceLetra];
-        }
-       }
-       console.log(indicesEncontrados);
-      });
+      const letraABuscar = inputLetra.value.toLocaleLowerCase();
+      const indicesEncontrados = dameListaIndicesEncontrados(listadoLetras, letraABuscar);
+    if (indicesEncontrados.length > 0) {
+      letraEncontrada(indicesEncontrados, listadoLetras);
+    }else {
+      letraNoEncontrada();
     }
+  });
+  }}
+}
 
+const letraNoEncontrada = () => {
+  juego.totalIntentos++;
+  mostrarImagenAhorcado(juego.totalIntentos);
+  if( juego.totalIntentos === 8) {
+    console.log("Game over");
   }
 }
 
-export const cargarJuego = () => {
-  let palabra = "arbol";
+const mostrarImagenAhorcado = (totalIntentos: number) => {
+const elementoImagen = document.getElementById("imagenAhorcado");
+if (elementoImagen !== null && elementoImagen  !== undefined && elementoImagen instanceof HTMLImageElement) {
+  elementoImagen.src = `src/imagenes/ahorcado-${totalIntentos}.png` ;
+}
+}
+
+export const cargarJuego = (palabra: string) => {
+  
   const listadoLetras = palabra.split('');
   const contenedorLetras = document.querySelector ('.contenedorLetras');
    if ( contenedorLetras !== null && contenedorLetras !== undefined && contenedorLetras instanceof HTMLDivElement) {
