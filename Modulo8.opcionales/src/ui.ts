@@ -15,6 +15,7 @@ export const iniciarPartida = () => {
   document.querySelector('.intentos')!.textContent = 'intentos: 0';
 
   cargarJuego(palabra);
+  resetearBotonesLetras();
   cargarBotonesLetras(palabra);
 
   document.querySelector('.empezarPartida')!.classList.add('ocultar');
@@ -57,7 +58,7 @@ const letraEncontrada = (indicesEncontrados: number[], listadoLetras: string[]) 
         const indiceLetra = indicesEncontrados[index];
         const input = document.querySelector(`.letra-${indiceLetra}`);
         if( input !== null && input !== undefined && input instanceof HTMLInputElement) {
-          input.value = listadoLetras[indiceLetra].toLocaleLowerCase();
+          input.value = listadoLetras[indiceLetra].toLocaleUpperCase();
           juego.listadoLetrasEncontradas.push(listadoLetras[indiceLetra]);
         }
        }
@@ -66,6 +67,8 @@ const letraEncontrada = (indicesEncontrados: number[], listadoLetras: string[]) 
 
 const comprobarVictoria = () => {
   const letrasUnicas = [...new Set(juego.listadoLetras)];
+  if (juego.listadoLetras.length === 0) return;
+
 
   if (letrasUnicas.every(letra => juego.listadoLetrasEncontradas.includes(letra))) {
     document.querySelector('.mensaje')!.textContent = '🎉 Palabra acertada';
@@ -131,6 +134,18 @@ if (elementoImagen !== null && elementoImagen  !== undefined && elementoImagen i
   elementoImagen.src = `src/imagenes/ahorcado-${totalIntentos}.png` ;
 }
 }
+
+const resetearBotonesLetras = () => {
+  for (let i = 0; i < 27; i++) {
+    const boton = document.getElementById(`boton-letra-${i}`) as HTMLInputElement;
+    if (boton) {
+      boton.disabled = false;
+      boton.style.backgroundColor = '';
+      boton.replaceWith(boton.cloneNode(true)); 
+    }
+  }
+};
+
 
 export const cargarJuego = (palabra: string) => {
   

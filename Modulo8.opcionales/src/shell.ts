@@ -1,6 +1,8 @@
 import { palabras } from './motor';
 import { cargarJuego, cargarBotonesLetras, iniciarPartida, resetearJuego} from './ui';
-import { juego } from './modelo';
+
+document.querySelector('.botonesLetras')!.classList.add('ocultar');
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const numeroAleatorio = Math.floor(Math.random() * 401);
