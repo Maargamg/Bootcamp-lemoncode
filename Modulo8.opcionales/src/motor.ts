@@ -37,3 +37,9 @@ export const palabras: string[] =[
   "orden","equilibrio","sencillez","unidad","memoria","sueño","pasión","talento","felicidad","destino"
 ];
 
+/* To do:
+* Dar funcionalidad y deshabilitar botones.
+* Poner al inicio solo botón empezar partida e imagen del ahorcado completa.
+* Si superas el límite de intentos , que aparezca por pantalla Game over y el botón de volver a empezar.
+* Que aparezca la palabra a acertar cuando se hayan superado el límite de intentos.
+* Asignar color verde cuando se acierte una letra y rojo cuando se falla.*/
