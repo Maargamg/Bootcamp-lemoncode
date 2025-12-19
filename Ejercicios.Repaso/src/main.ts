@@ -96,6 +96,14 @@ console.log(datosPersonales);
 
 //Implementa una función que admita un parámetro, de cualquier tipo, y que compruebe si el parámetro es undefined o null .
 
+const parametroCualquiera = (valor: any): boolean => {
+  return valor == null || valor == undefined;
+};
+
+console.log(parametroCualquiera(null));
+console.log(parametroCualquiera(undefined));
+console.log(parametroCualquiera(0));
+console.log(parametroCualquiera("Margarita"));
 
 //Implementa una función que admita un número como parámetro y devuelva si el número es positivo o negativo.
 
