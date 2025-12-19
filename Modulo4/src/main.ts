@@ -124,3 +124,6 @@ const botonMePlanto = document.getelementbyid('mePlanto')
   - Que habría pasado.
   - Mostrar mensajes por pantalla y que le mensaje solo sea visible al pusar el botón mePlanto.
 */  
+
+
+
