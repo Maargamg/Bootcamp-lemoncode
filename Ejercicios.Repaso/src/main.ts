@@ -77,8 +77,6 @@ console.log(resultadoEsperado);
 
 //Implementa una función que admita como parámetro un objeto y añada a dicho objeto una propiedad llamada ‘id’inicializada a null.
 
-// Función que añade la propiedad 'id' con valor null a cualquier objeto
-
 const agregarId = (objeto: any) => {
   objeto.id = null;
 };
@@ -91,12 +89,6 @@ ciudad : "Puigcerdà"
 
 agregarId(datosPersonales);
 console.log(datosPersonales);
-
-
-
-
-
-
 
 
 //Funciones con if/else, switches y comprobaciones
