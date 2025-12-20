@@ -6,6 +6,7 @@ console.log(saludos);
 
 //Implementa una función que admita como parámetro un nombre y salude por consola a dicha persona.
 
+//Lo he hecho de dos formas una añadiendole más complejidad y otra más sencilla para prácticar.
 interface Persona {
   nombre1: string,
   nombre2: string,
@@ -26,6 +27,14 @@ const saludo = (datosPersona: Persona): void => {
 };
 
 saludo(datosPersona);
+
+
+const helloName = (name : string) => {
+console.log(`Hola ${name}`);
+};
+
+helloName("Marc");
+helloName("Marga");
 
 
 //Implementa una función que dado un string como parámetro devuelva el string en mayúsculas.
@@ -108,22 +117,152 @@ console.log(parametroCualquiera("Margarita"));
 //Implementa una función que admita un número como parámetro y devuelva si el número es positivo o negativo.
 
 
+//Con string para que me debuelva la palabra.
+const comprobarNumero = (numero: number): string => {
+  if( numero < 0) {
+    return "Es negativo";
+  } else {
+    if(numero > 0) {
+      return "Es positivo";
+    }else {
+      return "Cero";
+    }}
+};
+console.log(comprobarNumero(1));
+console.log(comprobarNumero(-2));
+console.log(comprobarNumero(0));
+
+//Usando boolean para que me diga si es true si el número es positivo o si es false si el número es negativo.
+
+const comporbarNumeroPeroConBoolean = (numeros : number): boolean => {
+   if (numeros > 0){
+    return true;
+   } else {
+    return false;
+   }
+};
+
+console.log(comporbarNumeroPeroConBoolean(2));
+console.log(comporbarNumeroPeroConBoolean(-3));
+console.log(comporbarNumeroPeroConBoolean(0));
+
+//Una manera que me he encontrado por internet:
+
+const esPositivo = (numero: number): boolean => Math.sign(numero) === 1;
+
+console.log(esPositivo(5));
+console.log(esPositivo(-3));
+console.log(esPositivo(0));
+
+
+
+
 //Implementa una función que admita un número como parámetro y diga, por consola, si es mayor que 100, menor que 100 o exactamente 100.
+
+const comprobarNumeroCien = (dato: number): string => {
+  if(dato === 100) {
+   return "Cien";
+  } else if(dato < 100) {
+   return "Menor que cien";
+    }else {
+      return "Mayor que cien";
+  }
+}; 
+
+console.log(comprobarNumeroCien(15));
+console.log(comprobarNumeroCien(100));
+console.log(comprobarNumeroCien(115));
 
 
 //Implementa una función que admita como parámetro un objeto y devuelva si dicho objeto tiene una propiedad ‘name’o no.
 
+const personaAdmitida = {
+  name: "Margarita",
+  surname: "Moreno",
+  age: 30,
+  city: "Sant Fruitós de Bages",
+  Job: "Stradivarius"
+}
+
+
+const comprobarPropiedad = (personaAdmitida: object): boolean => {
+if ("name" in personaAdmitida) {
+  return true;
+} else {
+  return false;
+}
+};
+
+console.log(comprobarPropiedad(personaAdmitida));
+
 
 //Implementa una función que admita 2 números como argumento y compruebe si el primero es divisible por el segundo.
+
+const numerosDivisibles = (x: number, y: number): boolean => {
+ return x % y === 0;
+};
+
+console.log(numerosDivisibles(25,5));
+console.log(numerosDivisibles(3, 9));
 
 
 //Implementa una función que admita un string y un número como parámetro, y comprobar que tienen ese número de caracteres.
 
+const comprobacionesRamdon = (caracteres:string, numero: number): boolean => {
+ return caracteres.length === numero;
+};
+
+console.log(comprobacionesRamdon("tres", 4));
+console.log(comprobacionesRamdon("Uno",1));
 
 //Implementa una función que admita un día de la semana en formato número (del 1 al 7) y devuelva que día de la semana es (en texto).
 
+const diasDeLaSemana = (dias: number): string => {
+switch(dias) {
+  case 1: return "Lunes";
+  case 2: return "Martes";
+  case 3: return "Miercoles";
+  case 4: return "Jueves";
+  case 5: return "Viernes";
+  case 6: return "Sábado";
+  case 7: return "Domingo";
+  default: return "Algo no ha salido bien";
+}
+};
+console.log(diasDeLaSemana(3));
+console.log(diasDeLaSemana(1));
+console.log(diasDeLaSemana(0));
+
+//Con array:
+
+const diaxDeLaSemana = (numero: number): string => {
+  const diax = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+  return diax[numero - 1] ?? "Número inválido";
+};
+
+console.log(diaxDeLaSemana(3));
+console.log(diaxDeLaSemana(0));
+console.log(diaxDeLaSemana(1));
 
 //Implementa un función que dado un número (del 1 al 12), diga a qué mes corresponde en texto.
+
+const mes = {
+Enero: 1,
+Febrero: 2,
+Marzo: 3,
+Abril: 4,
+Mayo: 5,
+Junio: 6,
+Julio: 7,
+Agosto: 8,
+Septiembre: 9,
+Octubre: 10,
+Noviembre: 11,
+Diciembre: 12
+};
+
+//Seguir en este ejercicio
+
 
 
 //Implementa una función que admita 2 arrays como argumento, y devuelva el array más largo.
