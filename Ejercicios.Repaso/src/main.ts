@@ -237,7 +237,7 @@ console.log(diasDeLaSemana(0));
 
 const diaxDeLaSemana = (numero: number): string => {
   const diax = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
-  return diax[numero - 1] ?? "Número inválido";
+  return diax[numero - 1] ?? "Los dias de la semana van de 1 al 7";
 };
 
 console.log(diaxDeLaSemana(3));
@@ -246,22 +246,42 @@ console.log(diaxDeLaSemana(1));
 
 //Implementa un función que dado un número (del 1 al 12), diga a qué mes corresponde en texto.
 
-const mes = {
-Enero: 1,
-Febrero: 2,
-Marzo: 3,
-Abril: 4,
-Mayo: 5,
-Junio: 6,
-Julio: 7,
-Agosto: 8,
-Septiembre: 9,
-Octubre: 10,
-Noviembre: 11,
-Diciembre: 12
-};
+const mesesDelAño = (meses: number): string => {
+  switch(meses) {
+    case 1: return "Enero";
+    case 2: return "Febrero";
+    case 3: return "Marzo";
+    case 4: return "Abril";
+    case 5: return "Mayo";
+    case 6: return "Junio";
+    case 7: return "Julio";
+    case 8: return "Agosto";
+    case 9: return "Septiembre";
+    case 10: return "Octubre";
+    case 11: return "Noviembre";
+    case 12: return "Diciembre";
+    default: return "¡¡Los meses del año van del 1 al 12!!";
 
-//Seguir en este ejercicio
+  }
+} ;
+
+console.log(mesesDelAño(1));
+console.log(mesesDelAño(13));
+
+///////////////////////////////////////////////////
+
+
+const comprobarMes = (mes: number): string => {
+  const mesDelaño = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  return mesDelaño[mes - 1] ?? "Los meses del año van del 1 al 12";
+};
+console.log(comprobarMes(1));
+console.log(comprobarMes(13));
+
+
+
+
+
 
 
 
