@@ -280,28 +280,78 @@ console.log(comprobarMes(13));
 
 
 
-
-
-
-
-
 //Implementa una función que admita 2 arrays como argumento, y devuelva el array más largo.
+
+const nombresChica: string [] = ["Belén", "Olga", "Susana", "Camila", "Margarita"];
+const nombresChico: string[] = ["Giovanni", "Marc", "Pol"];
+
+const tamañoArray = (chicos: string[], chicas: string[] ): string[] => {
+return chicos.length >= chicas.length ? chicos : chicas;
+}
+const resultadoNombres: string[] = tamañoArray(nombresChico, nombresChica);
+console.log(resultadoNombres);
 
 
 //Implementa una función que admita 2 arrays como argumento, y devuelva si el primer elemento de ambos arrays es igual o no.
 
+const animales: string[] = ["Pollo", "Vaca", "Elefante", "Cocodrilo"];
+const comidas: string[] = ["Pollo", "Patatas", "Espaguetis", "Sopa"];
 
-//Funciones con arrays
+const mismoElemento = (array1: string[], array2: string[]): boolean => {
+ return array1[0] === array2[0];
+};
+
+const resultadoArrays = mismoElemento(animales, comidas);
+console.log(resultadoArrays);
+
 
 //Implementa una función que admita un array de números, y devuelva el segundo elemento, y en caso de no existir, devuelva ‘undefined’ .
+
+const arrayNumeros: number[] = [1, 2, 3 , 4 ,5];
+
+const funcionNumeros = (numeroArray: number[]): number | undefined => {
+ return numeroArray[1];
+};
+
+const solucion = funcionNumeros(arrayNumeros);
+console.log(solucion);
 
 
 //Implementa una función que admita un string como parámetro y devuelva la última letra.
 
+const ultimaLetra = (letra: string): string | undefined => {
+  if (letra.length === 0)  return undefined;
+  return letra[letra.length -1];
+};
+
+console.log(ultimaLetra("Palo"));
+console.log(ultimaLetra("Fuente"));
+
 
 //Implementa una función que dado un array, intercambie el primer elemento por el último. Muestra por consola el resultado.
+//spread operator:
+const marcasMoviles: string[] = ["Iphone", "Samsung", "Readme","Nokia"];
+
+const intercambioPosicion = (posicion: string []): string[] => {
+  if (posicion.length < 2) return [...posicion];
+  const nuevaPosicion: string[] = [...posicion];
+  [nuevaPosicion[0], nuevaPosicion[nuevaPosicion.length -1]] = [nuevaPosicion[nuevaPosicion.length -1], nuevaPosicion[0]];
+  return nuevaPosicion;
+};
+
+const resultadoPosicion = intercambioPosicion(marcasMoviles);
+console.log("Original:",marcasMoviles);
+console.log("Intercambio:", resultadoPosicion);
 
 
+
+const cantantes: string[] = ["Robe", "Melendi", "Rosalia", "BadGyal"];
+
+const intercambioArrays = (arrays: string []): string[] => {
+  [arrays[0], arrays[arrays.length -1]] = [arrays[arrays.length -1], arrays[0]];
+  return arrays;
+};
+console.log(intercambioArrays(cantantes));
 //Funciones con bucles
 
 
