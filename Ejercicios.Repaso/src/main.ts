@@ -352,13 +352,39 @@ const intercambioArrays = (arrays: string []): string[] => {
   return arrays;
 };
 console.log(intercambioArrays(cantantes));
+
+
 //Funciones con bucles
 
 
 //Implementa una función que admita 2 parámetros, un número y un texto, y que muestre por consola dicho texto tantas veces como indique el número.
 
+const funcionConBucles = (numero: number, texto: string): void => {
+   for ( let i = 0; i < numero; i++ ){ 
+   console.log(texto);
+   }
+};
+
+funcionConBucles(5, "Hola mundo");
+
 
 //Implementa una función que admita como parámetro un objeto cualquiera y devuelva el número de propiedades que tiene el objeto.
+
+const datosEmpleado = {
+  nombre: "Borja",
+  apellido: "Esturriaca",
+  edad: "22",
+  id: "253789"
+};
+
+const funcionCualquiera = (datos: object): number => {
+return Object.keys(datos).length;
+};
+console.log(funcionCualquiera(datosEmpleado));
+
+/*Los objetos no tienen propiedad length ,length solo existe en arrays y strings, no en objetos normales. Un objeto como { a: 1, b: 2 } no tiene length.
+No puedes acceder a las propiedades con un índice numérico como en un array (obj[0], obj[1])
+Las propiedades de un objeto son claves, no posiciones.*/
 
 
 //Implementa una función que admita como parámetro un objeto y muestre por consola los valores de sus propiedades.
