@@ -389,13 +389,65 @@ Las propiedades de un objeto son claves, no posiciones.*/
 
 //Implementa una función que admita como parámetro un objeto y muestre por consola los valores de sus propiedades.
 
+const mostrarObjeto = (objeto: object): void => {
+  Object.values(objeto).forEach(valor => console.log(valor));
+};
+
+const personaNueva = {
+  nombre: "Ana",
+  apellido: "Moreno"
+};
+
+mostrarObjeto(personaNueva);
 
 /*Implementa una función que admita un array de números y otro parámetro que sea un número y sume cada elemento
 del array multiplicado por dicho número. Devuelve el resultado.*/
 
+//Usando for:
+
+const sumarMultiplicacion = (numeros: number[], multiplicador: number): number => {
+  let suma = 0;
+  for ( let i = 0; i < numeros.length; i++) {
+    suma += numeros[i] * multiplicador;
+  }
+  return suma;
+}
+
+console.log(sumarMultiplicacion([1, 2, 3, 4], 2));
+
+//Usando reduce:
+
+const sumarMultiplicador = (numeros: number[], multiplicador: number): number =>
+  numeros.reduce((acumulador, numero) => acumulador + numero * multiplicador, 0);
+
+
+const numerosArray :number[] = [1, 2, 3, 4];
+console.log(sumarMultiplicador(numerosArray, 2));
+
+
 
 //Implementa una función que dado un string como parámetro y también un carácter, devuelva cuantas veces aparece dicho carácter en el string.
 
+// For:
+
+const sumarCaracteres = (texto: string, caracter: string): number => {
+  let contador = 0;
+  for (let i = 0; i < texto.length; i++) {
+    if(texto[i] === caracter) {
+      contador++;
+    }
+  }
+  return contador;
+}
+
+console.log(sumarCaracteres("programacion","o"));
+
+//split:
+
+const contarCaracterSplit = (texto: string, caracter: string): number =>
+  texto.split(caracter).length - 1;
+
+console.log(contarCaracterSplit("Typescript", "i"));
 
 //Implementa una función que dado un array de cualquier tipo, lo recorra del primer al último elemento, mostrando cada elemento por consola.
 
