@@ -451,15 +451,56 @@ console.log(contarCaracterSplit("Typescript", "i"));
 
 //Implementa una función que dado un array de cualquier tipo, lo recorra del primer al último elemento, mostrando cada elemento por consola.
 
+const ciudadesEspaña: string[] = ["León", "Murcia", "Barcelono", "Bilbao"];
 
-//Implementa una función que dado un array de cualquier tipo, lo recorra desde el último elemento al primero, y lo muestre por consola.
+const recorrerArray = (ciudad: any[]): void => {
+  for (let i = 0; i < ciudad.length; i++){
+    console.log(ciudad[i]);
+  }
+ };
+
+recorrerArray(ciudadesEspaña);
 
 
 //Implementa una función que dado un array de números, y otro parámetro que sea un número, diga cuantos elementos son menores a dicho número, y cuántos no.
 
+const arrayNumero: number[] = [1, 2, 3, 4, 5];
+
+const funcionNumerosArray = (arrayNumber: number[], numeroSolo:number): {menores: number; noMenores: number} => {
+ let menores = 0;
+ let noMenores = 0;
+ 
+  for (let i = 0; i < arrayNumber.length; i++){
+    if( arrayNumber[i] < numeroSolo){
+      menores++;
+    } else{
+      noMenores++;
+    }
+  }
+    return {
+    menores,
+    noMenores
+  }
+};
+
+console.log(funcionNumerosArray(arrayNumero, 2));
 
 //Implementa una función que admita 2 arrays como argumento, y diga si el elemento del primero, se encuentra en el segundo.
 
+const arrayObjetos : string[] = ["Mesa", "Silla", "Vela", "Espejo"];
+const segundoArrayObjetos :string[] = ["Puerta", "Mesa", "Barco", "Raqueta"];
+
+const encuentraArray = (arr1: string[], arr2: string[]): void => {
+  for (let i = 0; i < arr1.length; i++) {
+ if(arr2.includes(arr1[i])){
+  console.log(`${arr1[i]} está en el segundo array`);
+ }else {
+  console.log(`${arr1[i]} no está en el segundo array`);
+  }
+ }
+};
+
+encuentraArray(arrayObjetos, segundoArrayObjetos);
 
 /*Implementa una función que admita 2 arrays como argumento, y intercambia los elementos del primero en el segundo
 y viceversa. Muestra los arrays transformados por consola.*/
