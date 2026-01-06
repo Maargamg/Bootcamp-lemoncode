@@ -535,10 +535,10 @@ los elementos del array en propiedades indexadas, del tipo ‘prop1’, ‘prop2
 //For
 
 function arrayAObjetx(arr: any[]): object {
-  const obj: { [key: string]: any } = {}; // objeto vacío
+  const obj: { [key: string]: any } = {}; 
 
   for (let i = 0; i < arr.length; i++) {
-    obj[`prop${i + 1}`] = arr[i]; // prop1, prop2, prop3...
+    obj[`prop${i + 1}`] = arr[i]; 
   }
 
   return obj;
