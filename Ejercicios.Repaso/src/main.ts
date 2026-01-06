@@ -505,9 +505,64 @@ encuentraArray(arrayObjetos, segundoArrayObjetos);
 /*Implementa una función que admita 2 arrays como argumento, y intercambia los elementos del primero en el segundo
 y viceversa. Muestra los arrays transformados por consola.*/
 
+const array1: string[] = ["Rojo", "Rosa", "Verde", "Amarillo"];
+const array2: string[] = ["Perro", "Gato", "Elefante", "Vaca"];
+
+const intercambioElementos = (arrxi1: string[], arrxi2: string[]): void => {
+const nuevoArray1 = [...arrxi1];
+const nuevoArray2 = [...arrxi2];
+
+const intercambio = Math.min(arrxi1.length, arrxi2.length);
+
+for ( let i = 0; i < intercambio; i++) {
+  const nuevaDisposicion = nuevoArray1[i];
+  nuevoArray1[i] = nuevoArray2[i];
+  nuevoArray2[i] = nuevaDisposicion;
+}
+console.log("Nuevo array 1:", nuevoArray1);
+console.log("Nuevo array 2:",nuevoArray2);
+};
+intercambioElementos(array1, array2);
+
+
+
+
 
 /*Implementa una función que admita un array como argumento, y construya un objeto en el que almacene cada uno de
 los elementos del array en propiedades indexadas, del tipo ‘prop1’, ‘prop2’, ‘prop3’, etc.*/
+
+
+//For
+
+function arrayAObjetx(arr: any[]): object {
+  const obj: { [key: string]: any } = {}; // objeto vacío
+
+  for (let i = 0; i < arr.length; i++) {
+    obj[`prop${i + 1}`] = arr[i]; // prop1, prop2, prop3...
+  }
+
+  return obj;
+}
+
+
+const color = ["Rojo", "Verde", "Azul", "Amarillo"];
+const resultados = arrayAObjetx(color);
+
+console.log(resultados);
+
+//Reduce
+const arrayAObjeto = (arr: any[]): object => {
+  return arr.reduce((obj, valor, indice) => {
+    obj[`prop${indice + 1}`] = valor; 
+    return obj; 
+  }, {} as { [key: string]: any });
+};
+
+
+const colores = ["Rojo", "Verde", "Azul", "Amarillo"];
+const resultadoX = arrayAObjeto(colores);
+
+console.log(resultadoX);
 
 
 /*Implementa una función que admita un array y un número, y empieza a recorrer dicho array por el número dado.
