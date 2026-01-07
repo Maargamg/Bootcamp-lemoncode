@@ -534,39 +534,46 @@ los elementos del array en propiedades indexadas, del tipo ‘prop1’, ‘prop2
 
 //For
 
-function arrayAObjetx(arr: any[]): object {
-  const obj: { [key: string]: any } = {}; 
+const color: string[] = ["Rojo", "Rosa", "Verde","Azul"];
 
+const arrayObjec = (arr: string[]): object => {
+  const obj: { [key : string]: any} = {};
   for (let i = 0; i < arr.length; i++) {
-    obj[`prop${i + 1}`] = arr[i]; 
+    obj[`prop${i + 1}`] = arr[i];
   }
-
   return obj;
 }
 
-
-const color = ["Rojo", "Verde", "Azul", "Amarillo"];
-const resultados = arrayAObjetx(color);
-
-console.log(resultados);
+console.log(arrayObjec(color));
 
 //Reduce
+
+const colores: string [] = ["Rojo", "Verde", "Azul", "Amarillo"];
+
 const arrayAObjeto = (arr: any[]): object => {
   return arr.reduce((obj, valor, indice) => {
-    obj[`prop${indice + 1}`] = valor; 
-    return obj; 
-  }, {} as { [key: string]: any });
+    obj[`prop${indice + 1}`] = valor;
+    return obj;
+  }, {} as { [key: string]: any});
 };
 
-
-const colores = ["Rojo", "Verde", "Azul", "Amarillo"];
-const resultadoX = arrayAObjeto(colores);
-
-console.log(resultadoX);
+console.log(arrayAObjeto(colores));
 
 
 /*Implementa una función que admita un array y un número, y empieza a recorrer dicho array por el número dado.
 Muestra por consola cada elemento por el que iteres.*/
+
+const arraiEjemplo: number[] = [1, 2, 3, 4, 5];
+
+const recorrerArrays = <T>(arrai: T[], inicio: number): T[] => {
+const resultadoEsperadoX : T[] = [];  
+ for( let i = inicio; i < arrai.length; i++ ) {
+resultadoEsperadoX.push(arrai[i]);
+ }
+ return resultadoEsperadoX;
+};
+
+console.log(recorrerArrays(arraiEjemplo, 3));
 
 
 //Implementa una función que dado un array de strings y otro parámetro como string diga si existe en el array.
