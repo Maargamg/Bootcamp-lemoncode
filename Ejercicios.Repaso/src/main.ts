@@ -578,6 +578,44 @@ console.log(recorrerArrays(arraiEjemplo, 3));
 
 //Implementa una función que dado un array de strings y otro parámetro como string diga si existe en el array.
 
+//For
+const arrayMaquillaje : string[] = ["Cacao", "Gloss", "Lápiz", "Máscara", "Colorete"];
+
+const comprobarParametro = (arraySt: string[], propiedad: string): boolean => {
+  for (let i = 0; i < arraySt.length; i++) {
+   if (arraySt[i] === propiedad) {
+   return true;
+   } 
+  }
+  return false;
+};
+
+console.log(comprobarParametro(arrayMaquillaje, "Cacao"));
+console.log(comprobarParametro(arrayMaquillaje, "Pintalabios"));
+
+//Includes
+
+const arrayMakeUp : string[] = ["Pintalabios", "Gel Cejas", "Corrector", "Iluminador"];
+
+const comprobarIncludes = (arraiSt: string[], elemento: string): boolean => {
+ return arraiSt.includes(elemento);
+};
+
+console.log(comprobarIncludes(arrayMakeUp, "Pintalabios"));
+console.log(comprobarIncludes(arrayMakeUp, "Cacao"));
+
+//Some
+
+const masMaquillaje : string[] = ["Sombras ojos", "Broncer", "Eyeliner"];
+
+const comprobarSome = (arraiStr: string[], palabra: string): boolean => {
+  return arraiStr.some(elemento => elemento === palabra);
+}; 
+
+console.log(comprobarSome(masMaquillaje, "Broncer"));
+console.log(comprobarSome(masMaquillaje, "Brocha"));
+
+
 
 /*Implementa un array que contenga nombres de frutas en Español y otro array con las mismas frutas en el mismo orden
 pero en ingles. Implementa una función de traducción, que dada una fruta en español, diga la traducción en Inglés, y
