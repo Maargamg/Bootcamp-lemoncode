@@ -621,6 +621,33 @@ console.log(comprobarSome(masMaquillaje, "Brocha"));
 pero en ingles. Implementa una función de traducción, que dada una fruta en español, diga la traducción en Inglés, y
 otra función equivalente que haga la traducción inversa.*/
 
+const frutaEspañol : string[] = ["Nectarina", "Albaricoque", "Piña", "Sandia"];
+const frutaIngles : string[] = ["Nectarine", "Apricot", "Pineapple", "Watermelon"];
+
+const traducirEspañol = (fruta: string): string => {
+fruta = fruta.toLowerCase();
+ for (let i = 0; i < frutaEspañol.length; i++){
+  if(frutaEspañol[i].toLowerCase() === fruta){
+    return frutaIngles[i];
+  }
+ }
+ return "Esa fruta no está dentro del array";
+};
+
+const traducirIngles = (fruit: string): string => {
+  fruit = fruit.toLowerCase();
+  for (let i = 0; i < frutaIngles.length; i++) {
+    if(frutaIngles[i].toLocaleLowerCase() === fruit){
+      return frutaEspañol[i];
+    }
+  }
+  return "That fruit isnt in the array";
+};
+
+console.log(traducirEspañol("Nectarina"));
+console.log(traducirIngles("Watermelon"));
+
+
 
 //Implementa una función que admita un texto por parámetro y lo devuelva por consola al revés.
 
