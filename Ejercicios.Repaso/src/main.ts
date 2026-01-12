@@ -637,7 +637,7 @@ fruta = fruta.toLowerCase();
 const traducirIngles = (fruit: string): string => {
   fruit = fruit.toLowerCase();
   for (let i = 0; i < frutaIngles.length; i++) {
-    if(frutaIngles[i].toLocaleLowerCase() === fruit){
+    if(frutaIngles[i].toLowerCase() === fruit){
       return frutaEspañol[i];
     }
   }
@@ -651,9 +651,57 @@ console.log(traducirIngles("Watermelon"));
 
 //Implementa una función que admita un texto por parámetro y lo devuelva por consola al revés.
 
+//For
+ const textoLReves = (text: string): void => {
+  let resultadoAlReves = "";
+  for(let i = text.length -1; i >= 0; i--){
+    resultadoAlReves += text[i];
+  }
+  console.log(resultadoAlReves);
+ }
+
+ textoLReves("dev");
+
+ //Split:
+  const textoReves = (textoo: string): void => {
+    const resultadoReves = textoo.split("").reverse().join("");
+    console.log(resultadoReves);
+  }
+   textoReves("junior");
+
 
 //Implementa una función que admita un texto por parámetro y lo devuelva en formato ‘EsTe Es Mi TeXtO’.
+
+const mayusculasYMinusculas = (minYman: string): string => {
+  let resultados = "";
+  for ( let i = 0; i < minYman.length; i++) {
+    if(i % 2 === 0){
+    resultados += minYman[i].toLocaleUpperCase();
+    } else {
+      resultados += minYman[i].toLocaleLowerCase();
+    }
+  }
+     return resultados;
+};
+
+console.log(mayusculasYMinusculas("hola mundo"));
 
 
 /*Implementa una función que admita como parámetro un array de arrays. La función debe recorrer todos los elementos
 de cada subarray y mostrarlos por consola.*/
+
+const arrayDeArrays = (arrays: any [][]): void => {
+  for(let i = 0; i < arrays.length; i++){
+    for(let j = 0; j < arrays[i].length; j++){
+      console.log(arrays[i][j]);
+    }
+  }
+};
+
+const deTodoUnPoco = [
+  [1, 2, 3],
+  ["a", "b", "c"],
+  ["True", "False"]
+];
+
+arrayDeArrays(deTodoUnPoco);
