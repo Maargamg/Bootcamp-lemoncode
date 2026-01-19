@@ -451,7 +451,7 @@ console.log(contarCaracterSplit("Typescript", "i"));
 
 //Implementa una función que dado un array de cualquier tipo, lo recorra del primer al último elemento, mostrando cada elemento por consola.
 
-const ciudadesEspaña: string[] = ["León", "Murcia", "Barcelono", "Bilbao"];
+const ciudadesEspaña: string[] = ["León", "Murcia", "Barcelona", "Bilbao"];
 
 const recorrerArray = (ciudad: any[]): void => {
   for (let i = 0; i < ciudad.length; i++){

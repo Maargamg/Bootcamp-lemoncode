@@ -1,14 +1,104 @@
 //Más ejercicios básicos
+
 //Resta, multiplicación y división: Pide dos números y muestra: La resta, La multiplicación, La división.
+const resta = (a: number, b: number): number => {
+    return a - b;
+};
+
+const multiplicacion = (a: number, b: number): number => {
+    return a * b; 
+};
+
+const division = (a : number, b: number): number => {
+    return a / b;
+};
+
+console.log(resta(6, 3));
+console.log(multiplicacion(3, 2));
+console.log(division(25, 5));
+
+
 //Número par o impar: Pide un número entero e indica si es par o impar.
+
+const numeroParImpar = (numero: number): string => {
+    if( numero % 2 === 0) {
+        return "Par";
+    } else{
+     return "Impar";
+    }
+};
+
+console.log(numeroParImpar(8));
+
+//Otra forma:
+
+const numeroParEImpar = (numero: number): string => {
+ return numero % 2 === 0 ? "Es par" : "Es impar";
+};
+ console.log(numeroParEImpar(7));
+
+
+
 //Mayor de tres números: Pide tres números y muestra cuál es el mayor.
+
+//Math.max
+const numeroMayor = (a: number, b: number, c : number): number => {
+    return Math.max(a, b, c);
+};
+
+console.log(numeroMayor(5, 2, 6));
+
+//if/else:
+const numerosMayor = (a: number, b: number, c: number): number => {
+    if (a >= b && a >= c) {
+        return a;
+    } else if (b >= a && b >= c) {
+        return b;
+    } else {
+        return c;
+    }
+};
+
+console.log(numeroMayor(5, 2, 6)); // 6
+
 /*Calcular el área de un rectángulo:Pide la base y la altura de un rectángulo y muestra su área.
 Fórmula: Área = base × altura*/
+
+const areaRectangulo = ( base: number, altura: number): number => {
+    return base * altura;
+};
+
+console.log(areaRectangulo(9, 3));
+
+
 /*Conversión de grados Celsius a Fahrenheit
 Pide una temperatura en grados Celsius y conviértela a Fahrenheit.
 Fórmula: F = (C × 9/5) + 32*/
+
+const conversionGrados = (C: number): number => {
+    return (C * 9/5) + 32;
+};
+
+console.log(conversionGrados(40));
+
+
 /*Calculadora simple: Pide dos números y una operación (+, -, *, /) y muestra el resultado según la operación
 elegida.*/
+
+const calculadora = (a: number, b: number, operacion : string): number | string => {
+ switch(operacion) {
+    case "+" : return a + b;
+    case "-" : return a - b;
+    case "*" : return a * b;
+    case "/" : return a / b;
+    default : return "Operación no valida";
+ }
+}; 
+
+console.log(calculadora(10, 5, "+"));
+
+
+
 //Calcular el salario: Pide el número de horas trabajadas y el precio por hora. Calcula y muestra el salario total
 /*Descuento en una compra: Pide el precio de un producto.
 Si el precio es mayor a 100, aplica un 10% de descuento
