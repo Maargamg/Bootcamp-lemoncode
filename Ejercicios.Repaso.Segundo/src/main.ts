@@ -100,35 +100,189 @@ console.log(calculadora(10, 5, "+"));
 
 
 //Calcular el salario: Pide el número de horas trabajadas y el precio por hora. Calcula y muestra el salario total
+
+const calcularSalario = ( horas: number, precioHora: number): number => {
+    return horas * precioHora;
+};
+console.log(calcularSalario(40, 8));
+
+
 /*Descuento en una compra: Pide el precio de un producto.
 Si el precio es mayor a 100, aplica un 10% de descuento
 Si no, muestra el precio sin descuento*/
+
+const compra = (precio: number): number => {
+    if (precio > 100) {
+       return precio - (precio * 0.10);
+    } else {
+        return precio;
+    }
+};
+
+console.log(compra(120));
+console.log(compra(80));
+
 /*/Cálculo de una factura: Pide la cantidad total de una compra y muestra el desglose de una factura:
 Subtotal.
 Precio iva (por ejemplo el 21%).
 Total (subtotal + iva).*/
+
+const factura = (subtotal: number): { subtotal: number, iva: number, total: number } => {
+   const iva = subtotal * 0.21;
+   const total = subtotal + iva;
+  return {subtotal, iva, total};
+};
+
+const facturaNueva = factura(100);
+console.log(`Subtotal: ${facturaNueva.subtotal}€`);
+console.log(`IVA(21%): ${facturaNueva.iva}€`);
+console.log(`Total: ${facturaNueva.total}€`);
+
 //Como el anterior: Ten en cuenta que si es mayor a 100 aplica un 10% de descuento. Desglosa el detalle de la factura.
+
+const controlGasto = (subtotal: number) : {subtotal: number, IVA: number, descuento: number, total: number } => {
+    const IVA = subtotal * 0.21;
+    let total = subtotal + IVA;
+    let descuento = 0;
+      if (total > 100) {
+     descuento = total * 0.10;
+     total = total - descuento;
+ }
+
+    return { subtotal, IVA, descuento, total};
+};
+
+const facturaSupermercado = controlGasto(200);
+console.log(`Subtotal: ${facturaSupermercado.subtotal}€`);
+console.log(`IVA(21%): ${facturaSupermercado.IVA}€`);
+console.log(`Descuento: ${facturaSupermercado.descuento}€`);
+console.log(`Total: ${facturaSupermercado.total}€`);
+
+
 /*Intercambiar dos valores:
 Pide dos variables A y B y muestra sus valores intercambiados.
 Ejemplo:
 Antes: A = 5, B = 10 Después: A = 10, B = 5*/
+
+let a = 5;
+let b = 10;
+
+[a, b] = [b, a];
+
+console.log(a, b);
+
+
 //Calcular el promedio de dos notas: Pide dos notas y muestra el promedio. Indica si el promedio es aprobado (≥ 5) o suspendido.
+
+const calcularPromedio = (nota:{ [asignatura: string]: number }): string => {
+  const valores = Object.values(nota); 
+    const total = valores.reduce((acum, val) => acum + val, 0);
+    const promedio = total / valores.length;
+    return promedio >= 5 
+        ? `Promedio: ${promedio.toFixed(2)} → Has aprobado ✅`
+        : `Promedio: ${promedio.toFixed(2)} → Has suspendido ❌`;
+};
+
+const boletin = {
+    lengua: 8,
+    matematicas: 9,
+    ingles: 7,
+    biologia: 8
+};
+
+console.log(calcularPromedio(boletin));
+
+
 //Número dentro de un rango: Pide un número e indica si está entre 1 y 100 (incluidos).
+
+const comprobarNumero = (numero: number): string => {
+    if (numero >= 1 && numero <= 100) {
+        return `El número ${numero} está`;
+    } else {
+        return `El número ${numero} no está`;
+    }
+};
+
+console.log(comprobarNumero(3));
+console.log(comprobarNumero(105));
+
 //Comparar dos edades: Pide la edad de dos personas e indica quién es mayor o si tienen la misma edad.
+
+const comprobarEdades = (edadAna: number, edadMaria: number): string => {
+if (edadAna > edadMaria) {
+    return `Ana tiene ${edadAna}, es mayor que Maria`;
+} else if (edadMaria > edadAna) {
+  return `Maria tiene ${edadMaria}, es mayoe que Ana`;
+ } else {
+  return `Tienen la misma edad`;
+}
+};
+
+console.log(comprobarEdades(20, 35));
+
+
+
 /*Convertir minutos a horas y minutos:
 Pide una cantidad de minutos y conviértela a horas y minutos.
 Ejemplo: 130 minutos → 2 horas y 10 minutos*/
+
+const convertirAMinutos = (minutos: number): string => {
+    const horas = Math.floor(minutos / 60); 
+    const minutosRestantes = minutos % 60;
+
+    return `${minutos} minutos son ${horas} horas y ${minutosRestantes} minutos`;
+};
+
+
+console.log(convertirAMinutos(130)); 
+console.log(convertirAMinutos(75)); 
+console.log(convertirAMinutos(45));  
+
+
 /*Clasificación de un número
 Pide un número e indica si es:
 Menor que 10
 Entre 10 y 100
 Mayor que 100*/
+
+const numeroSobreCien = (numero: number): string => {
+    if (numero < 10) {
+        return `El número ${numero} es menor que 10`;
+    } else if (numero >= 10 && numero <= 100) {
+        return `El número ${numero} está entre 10 y 100`;
+    } else {
+        return `El número ${numero} es mayor que 100`;
+    }
+};
+
+console.log(numeroSobreCien(5));   
+console.log(numeroSobreCien(50));   
+console.log(numeroSobreCien(150));  
+
 /*Calcular el perímetro de un cuadrado
 Pide el lado de un cuadrado y muestra su perímetro.
 Fórmula: Perímetro = 4 × lado*/
-/*18 Validar contraseña simple:
+
+const perimetroDeUnCuadrado = (lado: number): number => {
+  return  4 * lado;
+};
+console.log(perimetroDeUnCuadrado(5));
+
+
+/* Validar contraseña simple:
 Pide una contraseña y verifica si es igual a "1234". Muestra Acceso permitido o Acceso
 denegado.*/
+
+const validarContraseña = (contraseña: number): string => {
+    if (contraseña === 1234) {
+        return "Acceso permitido"
+    } else {
+        return "Acceso denegado"
+    }
+};
+
+console.log(validarContraseña(1234));
+console.log(validarContraseña(1111));
 
 
 
