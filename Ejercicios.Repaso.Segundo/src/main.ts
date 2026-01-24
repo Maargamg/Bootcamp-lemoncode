@@ -292,9 +292,11 @@ console.log(validarContraseña(1111));
 //Ejercicios para modificar el DOM:
 
 
-//Cambiar texto de un párrafo: Crea un párrafo con un id. Al pulsar un botón, cambia su texto por otro diferente.
 
-/*const parrafo = document.getElementById("parrafo");
+
+/*Ejercicio 1:
+//Cambiar texto de un párrafo: Crea un párrafo con un id. Al pulsar un botón, cambia su texto por otro diferente:
+const parrafo = document.getElementById("parrafo");
 if (parrafo !== undefined && parrafo !== null && parrafo instanceof HTMLParagraphElement) {
  const boton = document.getElementById("boton");
  if (boton !== null && boton !== undefined && boton instanceof HTMLButtonElement) {
@@ -306,10 +308,13 @@ if (parrafo !== undefined && parrafo !== null && parrafo instanceof HTMLParagrap
 
 
 
-//Cambiar el color de un texto: Al hacer clic en un botón, cambia el color de un texto a rojo.
 
 
-/*const textoHtml = document.getElementById("texto");
+
+/*Ejercicio 2:
+//Cambiar el color de un texto: Al hacer clic en un botón, cambia el color de un texto a rojo:
+
+const textoHtml = document.getElementById("texto");
 if (textoHtml !== null && textoHtml !== undefined && textoHtml instanceof HTMLParagraphElement){  
 const cambiarColor = document.getElementById("botonRojo"); 
  if (cambiarColor !== null && cambiarColor !== undefined && cambiarColor instanceof HTMLButtonElement) {
@@ -321,24 +326,120 @@ const cambiarColor = document.getElementById("botonRojo");
 
 
 
-//Mostrar un mensaje oculto: Crea un texto oculto (display: none). Al pulsar un botón, haz que el texto se muestre.
-//Ocultar un elemento: Al pulsar un botón, oculta un párrafo de la página.
-//Cambiar el tamaño de la letra: Al hacer clic en un botón, aumenta el tamaño de la letra de un texto
-//Cambiar el texto usando un input: Crea un input y un botón. Al pulsar el botón, el texto del input debe aparecer en un párrafo.
+
+
+/*Ejercicio 3:
+//Mostrar un mensaje oculto: Crea un texto oculto (display: none). Al pulsar un botón,haz que el texto se muestre:
+
+const mostrarTexto = document.getElementById("textoOculto");
+if (mostrarTexto !== null && mostrarTexto !== undefined && mostrarTexto instanceof HTMLParagraphElement) {
+    const botonTexto = document.getElementById("mostrar");
+    if(botonTexto !== null && botonTexto !== undefined && botonTexto instanceof HTMLButtonElement) {
+        botonTexto.addEventListener("click", () => {
+            mostrarTexto.style.display = "block" ;
+        })
+    }
+};*/
+
+
+
+/*Ejercicio 4:
+//Ocultar un elemento: Al pulsar un botón, oculta un párrafo de la página:
+const ocultarTexto = document.getElementById("parrafo");
+    if(ocultarTexto !== null && ocultarTexto !== undefined && ocultarTexto instanceof HTMLParagraphElement) {
+        const botonOcultar = document.getElementById("boton");
+        if(botonOcultar !== null && botonOcultar !== undefined && botonOcultar instanceof HTMLButtonElement){
+            botonOcultar.addEventListener("click", () => {
+                ocultarTexto.style.display = "none";
+            })
+        }
+    };*/
+
+
+/* Ejercicio 5:
+//Cambiar el tamaño de la letra: Al hacer clic en un botón, aumenta el tamaño de la letra de un texto:
+
+const cambiarTamaño = document.getElementById("parrafo");
+if(cambiarTamaño !== null && cambiarTamaño !== undefined && cambiarTamaño instanceof HTMLParagraphElement) {
+    const botonTamaño = document.getElementById("boton");
+    if(botonTamaño !== null && botonTamaño !== undefined && botonTamaño instanceof HTMLButtonElement){
+        botonTamaño.addEventListener("click", () => {
+            cambiarTamaño.style.fontSize = "50px";
+        })
+    }
+} ;*/
+
+
+/*Ejercicio 6:
+//Cambiar el texto usando un input: Crea un input y un botón. Al pulsar el botón, el texto del input debe aparecer en un párrafo:
+
+const añadirTexto = document.getElementById("parrafo");
+if(añadirTexto !== null && añadirTexto !== undefined && añadirTexto instanceof HTMLParagraphElement){
+    const inputTexto = document.getElementById("input");
+    if(inputTexto !== null && inputTexto !== undefined && inputTexto instanceof HTMLInputElement){
+        const botonAñadirTexto = document.getElementById("boton");
+        if(botonAñadirTexto !== null && botonAñadirTexto !== undefined && botonAñadirTexto instanceof HTMLButtonElement) {
+            botonAñadirTexto.addEventListener("click", () => {
+                añadirTexto.textContent = inputTexto.value;
+            })
+        }
+    }
+};*/
+
+/*Ejercicio 7:
 //Cambiar una imagen: Muestra una imagen. Al pulsar un botón, cambia la imagen por otra diferente.
+
+const cambiarFoto = document.getElementById("foto");
+if(cambiarFoto !== null && cambiarFoto !== undefined && cambiarFoto instanceof HTMLImageElement){
+    const cambiarBoton = document.getElementById("boton");
+    if(cambiarBoton !== null && cambiarBoton !== undefined && cambiarBoton instanceof HTMLButtonElement){
+        cambiarBoton.addEventListener("click", () => {
+            cambiarFoto.src = "src/img/cat-5361405_1920.jpg";
+        })
+    }
+};*/
+
+/*Ejercicio 8:
 //Cambiar el fondo de la página: Al pulsar un botón, cambia el color de fondo del body.
-//Activar y desactivar una clase: Crea un botón que añada o quite una clase CSS a un elemento.
-//Contador simple (sin bucles):Crea un número inicial (por ejemplo 0). Cada vez que se pulse un botón, el número debe aumentar en 1 y mostrarse en pantalla.
-//Cambiar texto al pasar el ratón: Cuando el usuario pase el ratón sobre un texto (mouseover), cambia su contenido. Cuandosalga (mouseout), vuelve al texto original.
-//Validar un input vacío: Crea un input y un botón. Si el usuario pulsa el botón sin escribir nada, muestra un mensajede error.
-/*Cambiar texto según una condición:
+*/
+
+/*Ejercicio 9:
+//Activar y desactivar una clase: Crea un botón que añada o quite una clase CSS a un elemento.*/
+
+/*Ejercicio 10:
+//Contador simple (sin bucles):Crea un número inicial (por ejemplo 0). Cada vez que se pulse un botón, el número debe aumentar en 1 y mostrarse en pantalla.*/
+
+/*Ejercicio 11:
+//Cambiar texto al pasar el ratón: Cuando el usuario pase el ratón sobre un texto (mouseover), cambia su contenido. Cuandosalga (mouseout), vuelve al texto original.*/
+
+/*Ejercicio 12:
+//Validar un input vacío: Crea un input y un botón. Si el usuario pulsa el botón sin escribir nada, muestra un mensajede error.*/
+
+
+/*Ejercicio 13:
+Cambiar texto según una condición:
 Crea un botón que:
 Muestre “Encendido” si el texto actual es “Apagado”
 Muestre “Apagado” si el texto actual es “Encendido”*/
-//Cambiar el contenido de un div: Crea un div vacío. Al pulsar un botón, añade texto dentro del div.
-//Mostrar la hora actual: Al pulsar un botón, muestra la hora actual dentro de un párrafo usando Date.
-//Cambiar el texto de varios elementos (sin bucles): Crea dos o tres elementos con distintos id. Al pulsar un botón, cambia el texto de cada uno manualmente.
-//Cambiar atributo disabled: Crea un botón deshabilitado. Al pulsar otro botón, habilítalo.
-//Cambiar el placeholder de un input: Al pulsar un botón, cambia el texto del placeholder de un input.
-//Cambiar el texto del propio botón Al hacer clic en un botón, cambia su propio texto.
-//20 Confirmación visual: Al pulsar un botón, muestra un mensaje y cambia su color a verde indicando que la acción fue correcta.
+
+
+/*Ejercicio 14:
+//Cambiar el contenido de un div: Crea un div vacío. Al pulsar un botón, añade texto dentro del div.*/
+
+/*Ejercicio 15:
+//Mostrar la hora actual: Al pulsar un botón, muestra la hora actual dentro de un párrafo usando Date.*/
+
+/*Ejercicio 16:
+//Cambiar el texto de varios elementos (sin bucles): Crea dos o tres elementos con distintos id. Al pulsar un botón, cambia el texto de cada uno manualmente.*/
+
+/*Ejercicio 17:
+//Cambiar atributo disabled: Crea un botón deshabilitado. Al pulsar otro botón, habilítalo.*/
+
+/*Ejercicio 18:
+//Cambiar el placeholder de un input: Al pulsar un botón, cambia el texto del placeholder de un input.*/
+
+/*Ejercicio 19:
+//Cambiar el texto del propio botón Al hacer clic en un botón, cambia su propio texto.*/
+
+/* Ejercicio 20:
+// Confirmación visual: Al pulsar un botón, muestra un mensaje y cambia su color a verde indicando que la acción fue correcta.*/
