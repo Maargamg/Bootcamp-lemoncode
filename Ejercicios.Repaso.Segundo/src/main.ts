@@ -289,9 +289,38 @@ console.log(validarContraseña(1111));
 ////////////////////////////////////////////////////////////////////////////
 
 
-//Ejercicios para modificar el DOM
+//Ejercicios para modificar el DOM:
+
+
 //Cambiar texto de un párrafo: Crea un párrafo con un id. Al pulsar un botón, cambia su texto por otro diferente.
+
+/*const parrafo = document.getElementById("parrafo");
+if (parrafo !== undefined && parrafo !== null && parrafo instanceof HTMLParagraphElement) {
+ const boton = document.getElementById("boton");
+ if (boton !== null && boton !== undefined && boton instanceof HTMLButtonElement) {
+    boton.addEventListener("click", () => {
+    parrafo.textContent = "He conseguido resolver el ejercicio :P";
+})
+ }
+};*/
+
+
+
 //Cambiar el color de un texto: Al hacer clic en un botón, cambia el color de un texto a rojo.
+
+
+/*const textoHtml = document.getElementById("texto");
+if (textoHtml !== null && textoHtml !== undefined && textoHtml instanceof HTMLParagraphElement){  
+const cambiarColor = document.getElementById("botonRojo"); 
+ if (cambiarColor !== null && cambiarColor !== undefined && cambiarColor instanceof HTMLButtonElement) {
+    cambiarColor.addEventListener("click", () => {
+    textoHtml.style.color = "#FF0000";
+    })
+}
+};*/
+
+
+
 //Mostrar un mensaje oculto: Crea un texto oculto (display: none). Al pulsar un botón, haz que el texto se muestre.
 //Ocultar un elemento: Al pulsar un botón, oculta un párrafo de la página.
 //Cambiar el tamaño de la letra: Al hacer clic en un botón, aumenta el tamaño de la letra de un texto
