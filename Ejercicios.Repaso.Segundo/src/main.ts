@@ -401,13 +401,43 @@ if(cambiarFoto !== null && cambiarFoto !== undefined && cambiarFoto instanceof H
 
 /*Ejercicio 8:
 //Cambiar el fondo de la página: Al pulsar un botón, cambia el color de fondo del body.
-*/
+
+const cambiarColorFondo = document.getElementById("boton");
+ if (cambiarColorFondo !== null && cambiarColorFondo !== undefined && cambiarColorFondo instanceof HTMLButtonElement){
+    cambiarColorFondo.addEventListener("click", () => {
+        document.body.style.backgroundColor = "#FF69B4";
+    })
+ };*/
+
+
 
 /*Ejercicio 9:
-//Activar y desactivar una clase: Crea un botón que añada o quite una clase CSS a un elemento.*/
+//Activar y desactivar una clase: Crea un botón que añada o quite una clase CSS a un elemento.
+
+const divClase = document.getElementById("div");
+if (divClase !== null && divClase !== undefined && divClase instanceof HTMLDivElement){
+const modificarClases = document.getElementById("boton");
+ if(modificarClases !== null && modificarClases !== undefined && modificarClases instanceof HTMLButtonElement ) {
+    modificarClases.addEventListener("click", () => {
+     divClase.classList.toggle("activo");
+    })
+ }};*/
+
 
 /*Ejercicio 10:
-//Contador simple (sin bucles):Crea un número inicial (por ejemplo 0). Cada vez que se pulse un botón, el número debe aumentar en 1 y mostrarse en pantalla.*/
+//Contador simple (sin bucles):Crea un número inicial (por ejemplo 0). Cada vez que se pulse un botón, el número debe aumentar en 1 y mostrarse en pantalla.
+
+const marcador = document.getElementById("contador");
+const sumar = document.getElementById("sumar");
+let inicio = 0;
+if(marcador !== null && marcador !== undefined && marcador instanceof HTMLDivElement && 
+    sumar !== null && sumar !== undefined && sumar instanceof HTMLButtonElement){
+    sumar.addEventListener("click", () => {
+      inicio++;
+    marcador.textContent = inicio.toString(); 
+    })
+};*/
+
 
 /*Ejercicio 11:
 //Cambiar texto al pasar el ratón: Cuando el usuario pase el ratón sobre un texto (mouseover), cambia su contenido. Cuandosalga (mouseout), vuelve al texto original.*/
