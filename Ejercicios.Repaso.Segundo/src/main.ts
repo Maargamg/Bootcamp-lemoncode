@@ -440,7 +440,19 @@ if(marcador !== null && marcador !== undefined && marcador instanceof HTMLDivEle
 
 
 /*Ejercicio 11:
-//Cambiar texto al pasar el ratón: Cuando el usuario pase el ratón sobre un texto (mouseover), cambia su contenido. Cuandosalga (mouseout), vuelve al texto original.*/
+//Cambiar texto al pasar el ratón: Cuando el usuario pase el ratón sobre un texto (mouseover), cambia su contenido. Cuandosalga (mouseout), vuelve al texto original.
+const cambiarTextoMouse = document.getElementById("texto");
+if (cambiarTextoMouse !== null && cambiarTextoMouse !== undefined && cambiarTextoMouse instanceof HTMLParagraphElement) {
+    const textOriginal: string = cambiarTextoMouse.textContent ?? "";
+    cambiarTextoMouse.addEventListener("mouseover", () => {
+       cambiarTextoMouse.textContent = "¿Tú no haces caso no?";
+    });
+      cambiarTextoMouse.addEventListener("mouseout", () => {
+        cambiarTextoMouse.textContent = textOriginal;
+    })
+  
+};*/
+
 
 /*Ejercicio 12:
 //Validar un input vacío: Crea un input y un botón. Si el usuario pulsa el botón sin escribir nada, muestra un mensajede error.*/
