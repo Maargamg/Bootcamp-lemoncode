@@ -455,18 +455,52 @@ if (cambiarTextoMouse !== null && cambiarTextoMouse !== undefined && cambiarText
 
 
 /*Ejercicio 12:
-//Validar un input vacío: Crea un input y un botón. Si el usuario pulsa el botón sin escribir nada, muestra un mensajede error.*/
-
+//Validar un input vacío: Crea un input y un botón. Si el usuario pulsa el botón sin escribir nada, muestra un mensajede error.
+const validarBoton = document.getElementById("boton");
+const input = document.getElementById("input");
+const textoInput = document.getElementById("texto");
+if (validarBoton !== null && validarBoton !== undefined && validarBoton instanceof HTMLButtonElement &&
+    input !== null && input !== undefined && input instanceof HTMLInputElement &&
+    textoInput !== null && textoInput !== undefined && textoInput instanceof HTMLParagraphElement){
+    validarBoton.addEventListener("click", () => {
+    if (input.value === ""){
+        textoInput.textContent = "ERROR: El texto introducido no es valido";
+    }else{
+       textoInput.textContent = "Formato valido";
+    }
+    })
+};*/
 
 /*Ejercicio 13:
 Cambiar texto según una condición:
 Crea un botón que:
 Muestre “Encendido” si el texto actual es “Apagado”
-Muestre “Apagado” si el texto actual es “Encendido”*/
+Muestre “Apagado” si el texto actual es “Encendido”
+
+const boton = document.getElementById("boton");
+if ( boton !== null && boton !== undefined && boton instanceof HTMLButtonElement){
+    boton.addEventListener("click", () => {
+        if(boton.textContent === "Apagado") {
+            boton.textContent = "Encendido";
+        } else {
+            boton.textContent = "Apagado";
+        }
+    })
+};*/
 
 
 /*Ejercicio 14:
-//Cambiar el contenido de un div: Crea un div vacío. Al pulsar un botón, añade texto dentro del div.*/
+//Cambiar el contenido de un div: Crea un div vacío. Al pulsar un botón, añade texto dentro del div.
+
+const boton = document.getElementById("boton");
+const textoDiv = document.getElementById("div");
+if (boton !== null && boton !== undefined && boton instanceof HTMLButtonElement &&
+    textoDiv !== null && textoDiv !== undefined && textoDiv instanceof HTMLDivElement){
+        boton.addEventListener("click", () => {
+            textoDiv.textContent = "Texto añadido";
+        })
+    };*/
+
 
 /*Ejercicio 15:
 //Mostrar la hora actual: Al pulsar un botón, muestra la hora actual dentro de un párrafo usando Date.*/
