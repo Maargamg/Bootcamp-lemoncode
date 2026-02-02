@@ -503,19 +503,85 @@ if (boton !== null && boton !== undefined && boton instanceof HTMLButtonElement 
 
 
 /*Ejercicio 15:
-//Mostrar la hora actual: Al pulsar un botón, muestra la hora actual dentro de un párrafo usando Date.*/
+//Mostrar la hora actual: Al pulsar un botón, muestra la hora actual dentro de un párrafo usando Date.
+
+const boton = document.getElementById("boton");
+const parrafo = document.getElementById("parrafo");
+if( boton !== null && boton !== undefined && boton instanceof HTMLButtonElement && 
+    parrafo !== null && parrafo !== undefined && parrafo instanceof HTMLParagraphElement) {
+        boton.addEventListener("click", () => {
+            const mostrarHora = new Date();
+            const horas = mostrarHora.getHours().toString().padStart(2, "0");
+            const minutos = mostrarHora.getMinutes().toString().padStart(2, "0");
+            const segundos = mostrarHora.getSeconds().toString().padStart(2, "0");
+            parrafo.textContent = horas + ":" + minutos + ":" + segundos ;
+        });
+    }*/
+
 
 /*Ejercicio 16:
-//Cambiar el texto de varios elementos (sin bucles): Crea dos o tres elementos con distintos id. Al pulsar un botón, cambia el texto de cada uno manualmente.*/
+//Cambiar el texto de varios elementos (sin bucles): Crea dos o tres elementos con distintos id. Al pulsar un botón, cambia el texto de cada uno manualmente.
+
+const boton = document.getElementById("boton");
+const textoUno = document.getElementById("texto1");
+const textoDos = document.getElementById("texto2");
+if (boton !== null && boton !== undefined && boton instanceof HTMLButtonElement && 
+    textoUno !== null && textoUno !== undefined && textoUno instanceof HTMLParagraphElement &&
+     textoDos !== null && textoDos !== undefined && textoDos instanceof HTMLParagraphElement) {
+        boton.addEventListener("click", () => {
+            textoUno.textContent = "Frases cambiadas";
+            textoDos.textContent = "El ejercicio está bien";
+        })
+     };*/
+
+
 
 /*Ejercicio 17:
-//Cambiar atributo disabled: Crea un botón deshabilitado. Al pulsar otro botón, habilítalo.*/
+//Cambiar atributo disabled: Crea un botón deshabilitado. Al pulsar otro botón, habilítalo.
+
+const habilitar = document.getElementById("Habilitar");
+const deshabilitar = document.getElementById("Deshabilitar");
+if( habilitar !== null && habilitar !== undefined && habilitar instanceof HTMLButtonElement &&
+    deshabilitar !== null && deshabilitar !== undefined && deshabilitar instanceof HTMLButtonElement) {
+        habilitar.addEventListener("click", () => {
+            deshabilitar.disabled = false;
+        });
+    deshabilitar.addEventListener("click", () => {
+            deshabilitar.disabled = true;
+        });
+    }*/
+
 
 /*Ejercicio 18:
-//Cambiar el placeholder de un input: Al pulsar un botón, cambia el texto del placeholder de un input.*/
+//Cambiar el placeholder de un input: Al pulsar un botón, cambia el texto del placeholder de un input.
+
+const boton = document.getElementById("boton");
+const input = document.getElementById("input");
+if( boton !== null && boton !== undefined && boton instanceof HTMLButtonElement &&
+    input !== null && input !== undefined && input instanceof HTMLInputElement) {
+        boton.addEventListener("click", () =>{
+            input.placeholder = "Placeholder modificado";
+        })
+    };*/
 
 /*Ejercicio 19:
-//Cambiar el texto del propio botón Al hacer clic en un botón, cambia su propio texto.*/
+//Cambiar el texto del propio botón Al hacer clic en un botón, cambia su propio texto.
+
+const boton = document.getElementById("boton");
+if( boton !== null && boton !== undefined && boton instanceof HTMLButtonElement) {
+    boton.addEventListener("click", () => {
+        boton.textContent = "Mismo botón diferente texto"
+    })
+};*/
 
 /* Ejercicio 20:
-// Confirmación visual: Al pulsar un botón, muestra un mensaje y cambia su color a verde indicando que la acción fue correcta.*/
+// Confirmación visual: Al pulsar un botón, muestra un mensaje y cambia su color a verde indicando que la acción fue correcta.
+
+const boton = document.getElementById("boton");
+const texto = document.getElementById("texto");
+if(boton !== null && boton !== undefined && boton instanceof HTMLButtonElement &&
+    texto !== null && texto !== undefined && texto instanceof HTMLParagraphElement){
+        boton.addEventListener("click", () => {
+            texto.style.color = "green";
+        })
+    };*/
