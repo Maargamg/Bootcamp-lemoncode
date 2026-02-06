@@ -1,4 +1,4 @@
-const girarFoto = document.getElementById("fotos");
+const girarFoto = document.getElementById("Fotos-Animales");
 if(girarFoto !== null && girarFoto !== undefined && girarFoto instanceof HTMLDivElement) {
 girarFoto.addEventListener("click", () => {
    const fotoAnimal = document.getElementById("foto1");
