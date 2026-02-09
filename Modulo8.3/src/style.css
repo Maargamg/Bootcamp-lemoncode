@@ -1,3 +1,19 @@
+#contenedor {
+  display:grid;
+  grid-template-columns: repeat(4, 120px); 
+  grid-template-rows: repeat(3, 120px); 
+  gap:15px;
+  justify-content:center;
+  margin: 80px;
+}
+
+.carta{
+  background-color:#ffd1dc; 
+  border-radius:10px;
+}
+
+
+/*css para prueba de concepto 2:
 #Fotos-Animales{
   width: 100px;
   height:100px;
@@ -7,8 +23,9 @@
   align-items:center;
 }
 
+
 #foto1{
   width: 80px;
   height:80px;
   display:none;
-}
+}*/
