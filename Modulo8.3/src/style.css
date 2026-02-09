@@ -1,0 +1,14 @@
+#Fotos-Animales{
+  width: 100px;
+  height:100px;
+  background-color:#ffd1dc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#foto1{
+  width: 80px;
+  height:80px;
+  display:none;
+}
