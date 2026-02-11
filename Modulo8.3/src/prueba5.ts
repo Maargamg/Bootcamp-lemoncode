@@ -1,0 +1,1 @@
+const arrayCartas : string[] = ["leon", "buho", "perro", "gallina", "cerdo", "abeja", "leon", "buho", "perro", "gallina", "cerdo", "abeja"];
