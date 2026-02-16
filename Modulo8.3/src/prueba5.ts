@@ -27,6 +27,9 @@ const carta : infoCarta = arrayAnimales[posicionIndice];
 const img = posicion.querySelector("img");
 if(img !== null && img !== undefined && img instanceof HTMLImageElement) {
  img.src = carta.imagen;
+ img.style.display = "block";
+ posicion.style.backgroundColor = "transparent";
+
 }
 
 console.log(`La posicion en el array que has pulsado es ${index}, idFoto ${carta.idFoto}`);
