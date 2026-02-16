@@ -22,6 +22,43 @@
   display:none;
 }
 
+.carta:hover {
+background-color:#e81042;
+cursor: pointer;
+}
+
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+
+#start {
+  display: block;
+  margin: 40px auto;
+  padding: 10px 20px;
+  background-color: #e81042;
+  color:#ffd1dc; 
+  border: 2px solid #e81042;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#start:hover {
+ color: #e81042;
+ background-color: #ffd1dc;
+}
+
+
+
+
+
 
 
 
