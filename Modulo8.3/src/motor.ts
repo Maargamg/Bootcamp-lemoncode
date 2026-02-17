@@ -10,47 +10,49 @@ export const barajarCartas = (cartas : Carta[]): Carta[] => {
 
 
 export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number): boolean => {
-  const carta = tablero.cartas[indice];
-  if (carta.encontrada || carta.estaVuelta) return false;
+  const cartaSeleccionada = tablero.cartas[indice];
+  if (cartaSeleccionada.encontrada || cartaSeleccionada.estaVuelta) return false;
   const cartasVolteadas = tablero.cartas.filter(c => c.estaVuelta && !c.encontrada);
   if (cartasVolteadas.length >= 2) return false;
   return true;
 };
 
-//TO DO : Hacer comprobaciones de esta función.
+export const voltearLaCarta = (tablero: Tablero, indice: number): void => {
+ const cartaClicada = tablero.cartas[indice];
+ if(!cartaClicada.estaVuelta && !cartaClicada.encontrada){
+  cartaClicada.estaVuelta = true;
+ }
+};
 
 
-/*const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
-  //...
-}*/
+const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
+ const cartaA = tablero.cartas[indiceA];
+ const cartaB = tablero.cartas[indiceB];
 
-/*
-  Dos cartas son pareja si en el array de tablero de cada una tienen el mismo id
-*//*
-export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
-  //...
-}*/
+ return cartaA.idFoto === cartaB.idFoto;
+}
 
-/*
-  Aquí asumimos ya que son pareja, lo que hacemos es marcarlas como encontradas y comprobar si la partida esta completa.
-*//*
-const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number) : void => {
-  //...
-}*/
 
-/*
-  Aquí asumimos que no son pareja y las volvemos a poner boca abajo
-*//*
-const parejaNoEncontrada = (tablero: Tablero, indiceA :number, indiceB : number) : void => {
-  // ...
-}*/
+const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number): void => {
+tablero.cartas[indiceA].encontrada === true;
+tablero.cartas[indiceB].encontrada === true;
+};
 
-/*
-  Esto lo podemos comprobar o bien utilizando every, o bien utilizando un contador (cartasEncontradas)
-*//*
-export const esPartidaCompleta(tablero: Tablero) : boolean => {
-  //...
-}*/
+
+const parejaNoEncontrada = (tablero: Tablero, indiceA: number, indiceB: number): void => {
+  const cartaaA = tablero.cartas[indiceA];
+  const cartaaB = tablero.cartas[indiceB];
+ cartaaA.estaVuelta = false;
+ cartaaB.estaVuelta = false;
+}
+
+
+export const esPartidaCompleta = (tablero: Tablero) : boolean => {
+  const todasEncontradas = tablero.cartas.every(c => c.encontrada);
+if(todasEncontradas) {
+  tablero.estadoPartida = "PartidaCompleta";
+} return true;
+}
 
 /*
 Iniciar partida

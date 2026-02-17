@@ -1,16 +1,5 @@
-/*¿Qué debemos hacer aquí?
-Habrá un botón para empezar partida, ese lo que hará es:
-
-Crear el tablero inicial
-Barajar las cartas
-En el HTML tendremos un CSS grid con todas las cartas (boca abajo, src de carta boca abajo) y un atributo data-indice-array en el que tendremos el indice del array al que corresponden, así pues la partida arranca con
-
-Todas las cartas boca abajo.
-Escuchando al evento click de cada carta (cuando el usuario pinche en una leeremos de data-indice-array, la posición del array de la carta).
-En cuanto el usuario pinche en una carta:*/
-
-import { Carta, cartas, tablero  } from "./modelo";
-import { barajarCartas, sePuedeVoltearLaCarta } from "./motor";
+import { cartas, tablero  } from "./modelo";
+import { barajarCartas, sePuedeVoltearLaCarta, voltearLaCarta } from "./motor";
 
 const botonPlay = document.getElementById("start");
 if(botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLButtonElement) {
@@ -18,25 +7,24 @@ if(botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLBut
     barajarCartas(cartas);
     tablero.estadoPartida = "CeroCartasLevantadas";
     botonPlay.disabled = true;
-  })
+  }) 
 };
+
 
 
 const posicionArray = document.querySelectorAll(".carta");
 for(let i = 0; i < posicionArray.length; i++) {
   const posicion = posicionArray[i] as HTMLDivElement;
   posicion.addEventListener("click", () => {
-    const index = posicion.getAttribute("data-indice-id");
-    if(!index) return;
-    const indexNum = Number(index);
+  const posicionIndice = posicion.getAttribute("data-indice-id");
+    if(!posicionIndice) return;
+  const indexNum = Number(posicionIndice);
      if (!sePuedeVoltearLaCarta(tablero, indexNum)) return;
- const cartaPulsada = cartas[indexNum];
- cartaPulsada.estaVuelta = true;
- const posicionIndice = Number(index);
- const posicionCartas : Carta = cartas[posicionIndice];
+ voltearLaCarta(tablero, indexNum);
+ const posicionCarta = tablero.cartas[indexNum];
  const img = posicion.querySelector("img");
  if(img !== null && img !== undefined && img instanceof HTMLImageElement) {
-  img.src = posicionCartas.imagen;
+  img.src = posicionCarta.imagen;
   img.style.display = "block";
   posicion.style.backgroundColor = "transparent";
  }
@@ -66,5 +54,4 @@ Que mejoras puedes implementar:
 
 Mostrar cuantos intentos lleva el usuario.
 Mostrar una animación cuando el usuario pinche en una carta.
-Mostrar un efecto hover cuando el usuario ponga el ratón sobre una carta.
 Que si el usuario pincha en una carta ya volteada le salga un mensaje.*/
