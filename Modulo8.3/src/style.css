@@ -55,6 +55,9 @@ body {
  background-color: #ffd1dc;
 }
 
+#start:disabled {
+  display: none;
+}
 
 
 

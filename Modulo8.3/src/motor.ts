@@ -1,6 +1,4 @@
-import {Carta} from './modelo';
-import { cartas } from './modelo';
-
+import {Carta, Tablero} from './modelo';
 
 export const barajarCartas = (cartas : Carta[]): Carta[] => {
   for(let i = cartas.length -1; i > 0; i--) {
@@ -8,25 +6,21 @@ export const barajarCartas = (cartas : Carta[]): Carta[] => {
     [cartas[i], cartas[j]] = [cartas[j], cartas[i]];
   }
   return cartas;
-}
-
-barajarCartas(cartas);
-console.log(cartas);
-barajarCartas(cartas);
-console.log(cartas);
+};
 
 
+export const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number): boolean => {
+  const carta = tablero.cartas[indice];
+  if (carta.encontrada || carta.estaVuelta) return false;
+  const cartasVolteadas = tablero.cartas.filter(c => c.estaVuelta && !c.encontrada);
+  if (cartasVolteadas.length >= 2) return false;
+  return true;
+};
+
+//TO DO : Hacer comprobaciones de esta función.
 
 
-/*
-/*
-  Una carta se puede voltear si no está encontrada y no está ya volteada, o no hay dos cartas ya volteadas
-*//*
-const sePuedeVoltearLaCarta = (tablero: Tablero, indice: number ): boolean => {
-  //..
-}
-
-const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
+/*const voltearLaCarta = (tablero: Tablero, indice: number) : void => {
   //...
 }*/
 
