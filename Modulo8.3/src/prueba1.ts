@@ -1,9 +1,3 @@
-/*Para esta parte del ejercicio voy a usar la forma de barajar Fisher-Yates, porque según he visto en stack Overflow
-tiene una complejidad O(n), cosa que no ocurre con map + sort, aunque esta sea más sencilla e inmutable, es complejidad O(n log n); 
-Además la función Fisher-Yates baraja los elementos de forma justa, en cambio según he leido usando sort no es matemataticamente justo,
-depende del motor de js, unas combinaciones salen más que otras*/
-
-
 const animales = ['🐈‍⬛', '🦙', '🦥', '🐢', '🦭', '🦤'];
 
 const barajarArray = <T>(array: T[]): T[] => {

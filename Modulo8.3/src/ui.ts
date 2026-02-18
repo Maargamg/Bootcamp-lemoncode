@@ -9,7 +9,7 @@ import {
 } from "./motor";
 
 const botonPlay = document.getElementById("start");
-if (botonPlay && botonPlay instanceof HTMLButtonElement) {
+if(botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLButtonElement) {
   botonPlay.addEventListener("click", () => {
     iniciaPartida(tablero);
     botonPlay.disabled = true;
@@ -26,13 +26,13 @@ posicionArray.forEach((posicion, i) => {
 
   divCarta.addEventListener("click", () => {
     if (bloqueado) return; 
-    const indexNum = i;
+    const indice = i;
 
   
-    if (!sePuedeVoltearLaCarta(tablero, indexNum)) return;
+    if (!sePuedeVoltearLaCarta(tablero, indice)) return;
 
-    voltearLaCarta(tablero, indexNum);
-    const posicionCarta = tablero.cartas[indexNum];
+    voltearLaCarta(tablero, indice);
+    const posicionCarta = tablero.cartas[indice];
     const img = divCarta.querySelector("img") as HTMLImageElement;
     img.src = posicionCarta.imagen;
     img.style.display = "block";
@@ -40,10 +40,10 @@ posicionArray.forEach((posicion, i) => {
 
     
     if (primeraCartaVolteada === null) {
-      primeraCartaVolteada = indexNum;
+      primeraCartaVolteada = indice;
       tablero.estadoPartida = "UnaCartaLevantada";
-    } else if (segundaCartaVolteada === null && indexNum !== primeraCartaVolteada) {
-      segundaCartaVolteada = indexNum;
+    } else if (segundaCartaVolteada === null && indice !== primeraCartaVolteada) {
+      segundaCartaVolteada = indice;
       tablero.estadoPartida = "DosCartasLevantadas";
       bloqueado = true; 
 
@@ -64,7 +64,7 @@ posicionArray.forEach((posicion, i) => {
             const cartaDiv = posicionArray[i] as HTMLDivElement;
             const img = cartaDiv.querySelector("img") as HTMLImageElement;
             img.style.display = "none";
-            cartaDiv.style.backgroundColor = ""; 
+            cartaDiv.style.backgroundColor = "transparent"; 
           });
 
           
@@ -79,24 +79,7 @@ posicionArray.forEach((posicion, i) => {
 });
 
 
-/*Miramos si la carta es volteable (ver motor).
-Si es volteable la voltearemos (cambiamos el src de la imagen), para la imagen sería recomendable crear data-indice-imagen,
-va a coincidir con el índice del div para pintar la imagen correspondiente al índice del array de cartas.
-Comprobamos si estamos elegiendo una carta o estamos en la segunda.
-Si estamos en la segunda comprobamos si son pareja o no.
-En caso de que si las dejamos fijas.
-En caso de que no esperamos un segundo (setTimeout) y las ponemos boca abajo (reseteamos su estado sin voltear)
-Vuelta a empezar
-¿Qué es esto de setTimeout?
-
-Es una función de javascript que nos permite ejecutar una función pasados X milisegundos, por ejemplo:
-
-setTimeout(() => {
-  console.log("Hola");
-}, 1000);
-Esto ejecutará el console.log("Hola") pasados 1000 milisegundos (1 segundo).
-
-Apartados opcionales
+/*Apartados opcionales
 Que mejoras puedes implementar:
 
 Mostrar cuantos intentos lleva el usuario.
