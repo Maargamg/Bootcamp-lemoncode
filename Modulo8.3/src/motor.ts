@@ -25,7 +25,7 @@ export const voltearLaCarta = (tablero: Tablero, indice: number): void => {
 };
 
 
-const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
+export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean => {
  const cartaA = tablero.cartas[indiceA];
  const cartaB = tablero.cartas[indiceB];
 
@@ -33,13 +33,13 @@ const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): boolean 
 }
 
 
-const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number): void => {
-tablero.cartas[indiceA].encontrada === true;
-tablero.cartas[indiceB].encontrada === true;
+export const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number): void => {
+tablero.cartas[indiceA].encontrada = true;
+tablero.cartas[indiceB].encontrada = true;
 };
 
 
-const parejaNoEncontrada = (tablero: Tablero, indiceA: number, indiceB: number): void => {
+export const parejaNoEncontrada = (tablero: Tablero, indiceA: number, indiceB: number): void => {
   const cartaaA = tablero.cartas[indiceA];
   const cartaaB = tablero.cartas[indiceB];
  cartaaA.estaVuelta = false;
@@ -51,13 +51,12 @@ export const esPartidaCompleta = (tablero: Tablero) : boolean => {
   const todasEncontradas = tablero.cartas.every(c => c.encontrada);
 if(todasEncontradas) {
   tablero.estadoPartida = "PartidaCompleta";
-} return true;
+ return true;
+} return false;
 }
 
-/*
-Iniciar partida
-*/
-/*
+
 export const iniciaPartida = (tablero: Tablero): void => {
-  //...
-};*/
+  barajarCartas(tablero.cartas);
+  tablero.estadoPartida = "CeroCartasLevantadas";
+};

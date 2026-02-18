@@ -1,35 +1,82 @@
-import { cartas, tablero  } from "./modelo";
-import { barajarCartas, sePuedeVoltearLaCarta, voltearLaCarta } from "./motor";
+import { tablero } from "./modelo";
+import { 
+  iniciaPartida, 
+  sePuedeVoltearLaCarta, 
+  voltearLaCarta, 
+  sonPareja, 
+  parejaEncontrada, 
+  parejaNoEncontrada 
+} from "./motor";
 
 const botonPlay = document.getElementById("start");
-if(botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLButtonElement) {
+if (botonPlay && botonPlay instanceof HTMLButtonElement) {
   botonPlay.addEventListener("click", () => {
-    barajarCartas(cartas);
-    tablero.estadoPartida = "CeroCartasLevantadas";
+    iniciaPartida(tablero);
     botonPlay.disabled = true;
-  }) 
-};
+  });
+}
 
-
+let primeraCartaVolteada: number | null = null;
+let segundaCartaVolteada: number | null = null;
+let bloqueado = false; 
 
 const posicionArray = document.querySelectorAll(".carta");
-for(let i = 0; i < posicionArray.length; i++) {
-  const posicion = posicionArray[i] as HTMLDivElement;
-  posicion.addEventListener("click", () => {
-  const posicionIndice = posicion.getAttribute("data-indice-id");
-    if(!posicionIndice) return;
-  const indexNum = Number(posicionIndice);
-     if (!sePuedeVoltearLaCarta(tablero, indexNum)) return;
- voltearLaCarta(tablero, indexNum);
- const posicionCarta = tablero.cartas[indexNum];
- const img = posicion.querySelector("img");
- if(img !== null && img !== undefined && img instanceof HTMLImageElement) {
-  img.src = posicionCarta.imagen;
-  img.style.display = "block";
-  posicion.style.backgroundColor = "transparent";
- }
-})
-}
+posicionArray.forEach((posicion, i) => {
+  const divCarta = posicion as HTMLDivElement;
+
+  divCarta.addEventListener("click", () => {
+    if (bloqueado) return; 
+    const indexNum = i;
+
+  
+    if (!sePuedeVoltearLaCarta(tablero, indexNum)) return;
+
+    voltearLaCarta(tablero, indexNum);
+    const posicionCarta = tablero.cartas[indexNum];
+    const img = divCarta.querySelector("img") as HTMLImageElement;
+    img.src = posicionCarta.imagen;
+    img.style.display = "block";
+    divCarta.style.backgroundColor = "transparent";
+
+    
+    if (primeraCartaVolteada === null) {
+      primeraCartaVolteada = indexNum;
+      tablero.estadoPartida = "UnaCartaLevantada";
+    } else if (segundaCartaVolteada === null && indexNum !== primeraCartaVolteada) {
+      segundaCartaVolteada = indexNum;
+      tablero.estadoPartida = "DosCartasLevantadas";
+      bloqueado = true; 
+
+    
+      if (sonPareja(primeraCartaVolteada, segundaCartaVolteada, tablero)) {
+        parejaEncontrada(tablero, primeraCartaVolteada, segundaCartaVolteada);
+        bloqueado = false;
+        primeraCartaVolteada = null;
+        segundaCartaVolteada = null;
+        tablero.estadoPartida = "CeroCartasLevantadas";
+      } else {
+        
+        setTimeout(() => {
+          parejaNoEncontrada(tablero, primeraCartaVolteada!, segundaCartaVolteada!);
+
+          
+          [primeraCartaVolteada!, segundaCartaVolteada!].forEach(i => {
+            const cartaDiv = posicionArray[i] as HTMLDivElement;
+            const img = cartaDiv.querySelector("img") as HTMLImageElement;
+            img.style.display = "none";
+            cartaDiv.style.backgroundColor = ""; 
+          });
+
+          
+          primeraCartaVolteada = null;
+          segundaCartaVolteada = null;
+          tablero.estadoPartida = "CeroCartasLevantadas";
+          bloqueado = false; 
+        }, 1000);
+      }
+    }
+  });
+});
 
 
 /*Miramos si la carta es volteable (ver motor).
