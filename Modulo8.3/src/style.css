@@ -116,6 +116,27 @@ body {
   margin-top: 200px;
 }
 
+#restart {
+  display: none;
+  margin: 50px auto;
+  padding: 10px 20px;
+  background-color: #f440b5;
+  color:#ffd1dc; 
+  border: 2px solid #f440b5;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#restart:hover {
+ color:#f440b5;
+ background-color: #ffd1dc;
+}
+
+#restart:disabled {
+  display: none;
+}
+
 
 
 

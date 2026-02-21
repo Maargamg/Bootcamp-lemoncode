@@ -85,14 +85,15 @@ posicionArray.forEach((posicion, i) => {
   if (sonPareja(primeraCartaVolteada, segundaCartaVolteada, tablero)) {
     parejaEncontrada(tablero, primeraCartaVolteada, segundaCartaVolteada);
     const fin = document.getElementById("victoria");
-    if(fin !== null && fin !== undefined && fin instanceof HTMLDivElement ){
+    if(fin !== null && fin !== undefined && fin instanceof HTMLDivElement && 
+      restart !== null && restart !== undefined && restart instanceof HTMLButtonElement){
     if (esPartidaCompleta(tablero)) {
    h1.style.display = "none";
    intentos.style.display = "none";
-   cartasDiv.style.display = "none";
-   botonPlay.style.display = "none";
+   cartas.style.display = "none";
    fin.textContent = "🎉 ¡HAS GANADO! 🎉";
    fin.style.display = "block";
+   restart.style.display = "block";
 }}
     bloqueado = false;
     primeraCartaVolteada = null;
@@ -117,6 +118,52 @@ posicionArray.forEach((posicion, i) => {
       }
     }
  }});
+
+const restart = document.getElementById("restart");
+
+if (restart !== null && restart instanceof HTMLButtonElement) {
+  restart.addEventListener("click", () => {
+
+   
+    iniciaPartida(tablero);
+    primeraCartaVolteada = null;
+    segundaCartaVolteada = null;
+    contador = 0;
+    bloqueado = false;
+
+   const restart = document.getElementById("restart");
+
+if (restart !== null && restart instanceof HTMLButtonElement) {
+  restart.addEventListener("click", () => {
+    iniciaPartida(tablero);
+    primeraCartaVolteada = null;
+    segundaCartaVolteada = null;
+    contador = 0;
+    bloqueado = false;
+
+   if (contadorIntentos instanceof HTMLInputElement) {
+   contadorIntentos.value = "00";
+   }
+})};
+
+
+ document.querySelectorAll(".carta").forEach((carta) => {
+ const div = carta as HTMLDivElement;
+ div.style.backgroundColor = "#ffd1dc";
+
+const img = div.querySelector("img") as HTMLImageElement;
+  img.style.display = "none";
+});
+
+   
+const fin = document.getElementById("victoria") as HTMLDivElement;
+fin.style.display = "none";
+h1.style.display = "none";
+intentos.style.display = "none";
+cartas.style.display = "none";
+h2.style.display = "block";
+});
+}
 });
 
 
