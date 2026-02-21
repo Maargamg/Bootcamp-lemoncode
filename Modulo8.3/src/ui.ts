@@ -127,30 +127,27 @@ if (restart !== null && restart instanceof HTMLButtonElement) {
     segundaCartaVolteada = null;
     contador = 0;
     bloqueado = false;
+if (contadorIntentos instanceof HTMLInputElement) {
+    contadorIntentos.value = "00";
+    }
 
-   if (contadorIntentos instanceof HTMLInputElement) {
-   contadorIntentos.value = "00";
-   }
-})};
+  document.querySelectorAll(".carta").forEach((carta) => {
+    const div = carta as HTMLDivElement;
+    div.style.backgroundColor = "#ffd1dc";
+    const img = div.querySelector("img") as HTMLImageElement;
+    img.style.display = "none";
+    });
 
+    const fin = document.getElementById("victoria") as HTMLDivElement;
+    fin.style.display = "none";
+    h1.style.display = "block";
+    intentos.style.display = "flex";
+    cartas.style.display = "grid";
+    h2.style.display = "none";
 
- document.querySelectorAll(".carta").forEach((carta) => {
- const div = carta as HTMLDivElement;
- div.style.backgroundColor = "#ffd1dc";
-
-const img = div.querySelector("img") as HTMLImageElement;
-  img.style.display = "none";
+  });
+}
 });
-
-   
-const fin = document.getElementById("victoria") as HTMLDivElement;
-fin.style.display = "none";
-h1.style.display = "none";
-intentos.style.display = "none";
-cartas.style.display = "none";
-h2.style.display = "block";
-});
-
 
 
 
