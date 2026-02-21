@@ -1,3 +1,44 @@
+h1 {
+  font-size: 20px;
+  text-align: center;
+  color:#f440b5;
+  margin-top: 20px;
+  display: none;
+
+}
+
+h2 {
+  font-size: 50px;
+  text-align: center;
+  color:#f440b5;
+  margin-top: 200px;
+  display: block;
+}
+
+#mensaje {
+  color: #f440b5;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#intentos {
+  display: flex;
+  text-align: center;
+  width: 150px;
+  height: 40px;
+  justify-content: center;
+  font-size: 40px;
+  gap: 15px;
+  color:#f440b5;
+  background-color: #ffd1dc;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 2px solid #f440b5;
+  align-items: center;
+  display: none;
+}
+
+
 #cartas {
   display: grid;
   grid-template-columns: 120px 120px 120px 120px;
@@ -5,6 +46,7 @@
   gap: 15px;
   justify-content: center;
   margin: 80px;
+  display: none;
 }
 
 .carta{
@@ -23,8 +65,17 @@
 }
 
 .carta:hover {
-background-color:#e81042;
+background-color:#f440b5;
 cursor: pointer;
+}
+
+.carta.animacion {
+  animation: flip 0.3s ease;
+}
+
+@keyframes flip {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(180deg); }
 }
 
 
@@ -33,25 +84,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
 }
 
 
 #start {
   display: block;
-  margin: 40px auto;
+  margin: 50px auto;
   padding: 10px 20px;
-  background-color: #e81042;
+  background-color: #f440b5;
   color:#ffd1dc; 
-  border: 2px solid #e81042;
+  border: 2px solid #f440b5;
   border-radius: 8px;
   cursor: pointer;
   font-size: 18px;
 }
 
 #start:hover {
- color: #e81042;
+ color:#f440b5;
  background-color: #ffd1dc;
 }
 
@@ -59,7 +109,12 @@ body {
   display: none;
 }
 
-
+#victoria {
+  display: none;
+  color: #f440b5;
+  font-weight: bold;
+  margin-top: 200px;
+}
 
 
 
