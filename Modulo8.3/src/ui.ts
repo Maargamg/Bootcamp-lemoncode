@@ -120,19 +120,6 @@ posicionArray.forEach((posicion, i) => {
  }});
 
 const restart = document.getElementById("restart");
-
-if (restart !== null && restart instanceof HTMLButtonElement) {
-  restart.addEventListener("click", () => {
-
-   
-    iniciaPartida(tablero);
-    primeraCartaVolteada = null;
-    segundaCartaVolteada = null;
-    contador = 0;
-    bloqueado = false;
-
-   const restart = document.getElementById("restart");
-
 if (restart !== null && restart instanceof HTMLButtonElement) {
   restart.addEventListener("click", () => {
     iniciaPartida(tablero);
@@ -163,8 +150,7 @@ intentos.style.display = "none";
 cartas.style.display = "none";
 h2.style.display = "block";
 });
-}
-});
+
 
 
 
