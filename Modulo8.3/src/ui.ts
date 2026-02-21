@@ -127,7 +127,7 @@ if (restart !== null && restart instanceof HTMLButtonElement) {
     segundaCartaVolteada = null;
     contador = 0;
     bloqueado = false;
-if (contadorIntentos instanceof HTMLInputElement) {
+if (contadorIntentos !== null && contadorIntentos !== undefined && contadorIntentos instanceof HTMLInputElement) {
     contadorIntentos.value = "00";
     }
 
