@@ -15,6 +15,30 @@ const intentos = document.getElementById("intentos") as HTMLInputElement;
 const cartas = document.getElementById("cartas") as HTMLDivElement;
 const fin = document.getElementById("victoria") as HTMLDivElement;
 
+const reiniciarPartida = () => {
+  contador = 0;
+  marcador();
+ for (let i = 0; i < tablero.cartas.length; i++) {
+    const img = document.querySelector(`img[data-indice-id="${i}"]`) as HTMLImageElement;
+    const div = document.querySelector(`div[data-indice-id="${i}"]`) as HTMLDivElement;
+  if (img) {
+    img.src = "";
+    img.style.display = "none";
+    }
+    if (div) {
+      div.style.backgroundColor = "#ffd1dc";
+    }
+  }
+
+  tablero.cartas.forEach(carta => {
+    carta.estaVuelta = false;
+    carta.encontrada = false;
+  });
+  tablero.indiceCartaVolteadaA = undefined;
+  tablero.indiceCartaVolteadaB = undefined;
+  tablero.estadoPartida = "PartidaNoIniciada";
+};
+
 const botonPlay = document.getElementById("start");
 if (botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLButtonElement) {
   botonPlay.addEventListener("click", () => {
@@ -27,10 +51,31 @@ if (botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLBu
   });
 }
 
+const botonRestart = document.getElementById("restart");
+if (botonRestart !== null && botonRestart !== undefined && botonRestart instanceof HTMLButtonElement) {
+  botonRestart.addEventListener("click", () => {
+    reiniciarPartida();
+    botonRestart.style.display = "none";
+    fin.style.display = "none";
+    h2.style.display = "block";
+    h1.style.display = "none";
+    intentos.style.display = "none";
+    cartas.style.display = "none";
+
+  if (botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLButtonElement) {
+      botonPlay.disabled = false;
+    }
+  });
+}
+
+
+
+const marcador = () => { 
 const contadorIntentos = document.getElementById("intentos");
 if (contadorIntentos !== null && contadorIntentos !== undefined && contadorIntentos instanceof HTMLInputElement) {
-  contadorIntentos.value = "00";
-}
+  contadorIntentos.value = contador.toString();
+} 
+};
 
 let contador = 0;
 
@@ -40,6 +85,7 @@ const mapearDivsCartas = () => {
     clickCarta(indice);
   }
 }
+
 
 const mostrarImagen = (indice: number) => {
   const miImagen = document.querySelector(`img[data-indice-id="${indice}"]`);
@@ -67,9 +113,7 @@ const clickCarta = (indice: number) => {
     }  
         mostrarImagen(indice);
         mirarSiEsLaSegundaCarta();
-        contador++;
-      if(contadorIntentos !== null && contadorIntentos !== undefined && contadorIntentos instanceof HTMLInputElement)
-        contadorIntentos.value = contador.toString().padStart(2, "0");
+
       } else {
         mostrarMensaje("¡Esta carta ya está girada!!")
       }
@@ -100,70 +144,65 @@ const animacion = (indice: number) => {
   }
 }
 
+const ocultarCartas = (indiceA: number, indiceB: number) => {
+  [indiceA, indiceB].forEach(i => {
+    const img = document.querySelector(`img[data-indice-id="${i}"]`);
+    if (img !== null && img !== undefined && img instanceof HTMLImageElement) {
+      img.src = "";
+      img.style.display = "none";
+    }
+    const fondoRosa = document.querySelector(`div[data-indice-id="${i}"]`);
+    if (fondoRosa !== null && fondoRosa !== undefined && fondoRosa instanceof HTMLDivElement) {
+      fondoRosa.style.backgroundColor = "#ffd1dc";
+    }
+  });
+};
+
+const mostrarVictoria = () => {
+  const restart = document.getElementById("restart");
+  if (restart !== null && restart !== undefined && restart instanceof HTMLButtonElement) {
+    restart.style.display = "block";
+  }
+  fin.textContent = "🎉 ¡HAS GANADO! 🎉";
+  fin.style.display = "block";
+  cartas.style.display = "none";
+  intentos.style.display = "none";
+  h1.style.display = "none";
+};
+
+const cuandoSonPareja = (indiceA: number, indiceB: number) => {
+  parejaEncontrada(tablero, indiceA, indiceB);
+  if (esPartidaCompleta(tablero)) {
+    mostrarVictoria();
+  }
+};
+
+const cuandoNoPareja = (indiceA: number, indiceB: number) => {
+  setTimeout(() => {
+    parejaNoEncontrada(tablero, indiceA, indiceB);
+    ocultarCartas(indiceA, indiceB);
+    tablero.indiceCartaVolteadaA = undefined;
+    tablero.indiceCartaVolteadaB = undefined;
+  }, 1000);
+};
 
 const mirarSiEsLaSegundaCarta = () => {
   const indiceCartaA = tablero.indiceCartaVolteadaA;
   const indiceCartaB = tablero.indiceCartaVolteadaB;
 
   if (indiceCartaA !== undefined && indiceCartaB !== undefined) {
+    contador++;
+    marcador();
     if (sonPareja(indiceCartaA, indiceCartaB, tablero)) {
-      parejaEncontrada(tablero, indiceCartaA, indiceCartaB);
-
-    if (esPartidaCompleta(tablero)) {
-    fin.textContent = "🎉 ¡HAS GANADO! 🎉";
-    fin.style.display = "block";
-    cartas.style.display = "none";
-    intentos.style.display = "none";
-    h1.style.display = "none";
+      cuandoSonPareja(indiceCartaA, indiceCartaB);
+    } else {
+      cuandoNoPareja(indiceCartaA, indiceCartaB);
+    }
   }
-
-} else {
-   setTimeout(() => {
-   parejaNoEncontrada(tablero, indiceCartaA, indiceCartaB);
-  [indiceCartaA, indiceCartaB].forEach(i => {
-  const img = document.querySelector(`img[data-indice-id="${i}"]`);
-     if (img !== null && img !== undefined && img instanceof HTMLImageElement){
-    img.src = "";
-    img.style.display = "none";
-  } 
-
-   const fondoRosa = document.querySelector(`div[data-indice-id="${i}"]`);
-  if (fondoRosa !== null && fondoRosa !== undefined && fondoRosa instanceof HTMLDivElement) {
-  fondoRosa.style.backgroundColor = "#ffd1dc"; 
-}
-});
-  
-    tablero.indiceCartaVolteadaA = undefined;
-    tablero.indiceCartaVolteadaB = undefined;
-}, 1000);
-}}
 };
-
-
-  const restart = document.getElementById("restart");
- if (restart !== null && restart !== undefined &&  restart instanceof HTMLButtonElement) {
-     restart.addEventListener("click", () => {
-       iniciaPartida(tablero);
-       contador = 0;
-  if(contadorIntentos !== null && contadorIntentos !== undefined && contadorIntentos instanceof HTMLInputElement)
-       contadorIntentos.value = "00";
-      tablero.indiceCartaVolteadaA = undefined;
-       tablero.indiceCartaVolteadaB = undefined;
-
-  for (let i = 0; i < tablero.cartas.length; i++) {
-  const imagen = document.querySelector(`img[data-indice-id="${i}"]`);
-  if (imagen !== null && imagen !== undefined && imagen instanceof HTMLImageElement) {
-    imagen.src = "";
-    imagen.style.display = "none";
-    fin.style.display = "none";
-    cartas.style.display = "grid";
-    intentos.style.display = "flex";
-    h1.style.display = "block";
-  }}
-  });
-}
 
 
 document.addEventListener('DOMContentLoaded', () => {
   mapearDivsCartas();
 });
+

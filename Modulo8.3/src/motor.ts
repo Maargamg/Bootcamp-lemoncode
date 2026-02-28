@@ -36,6 +36,8 @@ export const sonPareja = (indiceA: number, indiceB: number, tablero: Tablero): b
 export const parejaEncontrada = (tablero: Tablero, indiceA: number, indiceB: number): void => {
 tablero.cartas[indiceA].encontrada = true;
 tablero.cartas[indiceB].encontrada = true;
+tablero.indiceCartaVolteadaA = undefined;
+tablero.indiceCartaVolteadaB = undefined;
 };
 
 
