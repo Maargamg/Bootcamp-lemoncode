@@ -1,6 +1,60 @@
 
 
-export interface FichaAlumno {
+/*export const validarTarjetaMasterCard = (numeroTarjeta: string): boolean => {
+  
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*export interface FichaAlumno {
     alumno: string;
     nota: number[];
 }
@@ -65,4 +119,4 @@ export const calcularNotaFinal = (notaMediaPracticas: number, notaMediaExamenes:
  const notaFinalRedondeada = Number(notaFinal.toFixed(2));
 
  return notaFinalRedondeada;
-};
+};*/

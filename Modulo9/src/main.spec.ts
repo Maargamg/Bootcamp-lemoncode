@@ -1,4 +1,68 @@
-import { calcularNotaMedia, calcularNotaMediaAlumnos, FichaAlumno, Notas, calcularNotaFinal , calcularCalificacionAlumno, fichaFinalAlumno, calificacionesAlumno} from "./main";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import { calcularNotaMedia, calcularNotaMediaAlumnos, FichaAlumno, Notas, calcularNotaFinal , calcularCalificacionAlumno, fichaFinalAlumno, calificacionesAlumno} from "./main";
 
 
 describe( "calcularNotaMedia", () => {
@@ -167,4 +231,4 @@ describe ("calcularCalificacionAlumnos", () => {
     expect(resultado).toEqual(notasFinales);
 
  });
-});
+});*/

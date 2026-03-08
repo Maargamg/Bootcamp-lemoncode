@@ -1,4 +1,4 @@
-import { calcularNotaFinal } from "./calcular-nota-final";
+/*import { calcularNotaFinal } from "./calcular-nota-final";
 
 describe("calcularNotaFinal", () => {
     it('Deberia devolver la nota final de un alumno', () => {
@@ -38,4 +38,4 @@ describe("calcularNotaFinal", () => {
 
         expect(resultado).toEqual(notaFinal);
     });
-});
+});*/
