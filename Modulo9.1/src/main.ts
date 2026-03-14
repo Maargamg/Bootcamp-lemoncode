@@ -113,7 +113,9 @@ let precioSinIva = 0;
    
   }
 
-  return {nombre, cantidad, precioSinIva,  valorDelIva,  tipoIva, precioConIva};
+  return lineasTicket{nombre, cantidad, precioSinIva, tipoDeIva, precioConIva};
+
+  return totalTicket{ totalSinIva, totalConIva, totalIva};
 };
 
 
