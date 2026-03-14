@@ -21,6 +21,18 @@ type TipoIva =
   | "superreducidoC"
   | "sinIva";
 
+  const obtenerIva = (tipoIva: TipoIva): number => {
+ switch (tipoIva) {
+ case "general": return 21;
+ case "reducido": return 10;
+ case "superreducidoA": return 5;
+ case "superreducidoB": return 4;
+ case "superreducidoC": return 0;
+ case "sinIva": return 0;
+ default: return 0;
+ }
+}; 
+
 interface Producto {
   nombre: string;
   precio: number;
@@ -71,59 +83,36 @@ const productos: LineaTicket[] = [
   },
 ];
 
-const obtenerIva = (tipoIva: TipoIva): number => {
- switch (tipoIva) {
- case "general": return 21;
- case "reducido": return 10;
- case "superreducidoA": return 5;
- case "superreducidoB": return 4;
- case "superreducidoC": return 0;
- case "sinIva": return 0;
- default: return 0;
- }
-}; 
 
+interface TotalPorTipoIva {
+  tipoIva: TipoIva;
+  cantidad : number;
+  precio: number;
+}
+
+interface ResultadoTotalTicket {
+  totalSinIva: number;
+  totalConIva: number;
+  totalIva: number;
+}
+
+//TotalPorTipoIva[]
 const calcularPrecio = (cantidad: number, precio: number, tipoIva: number): number => {
-    const precioSinIva = cantidad * precio;
-    const precioConIva = precioSinIva * (1 + tipoIva / 100);
-
-    return precioConIva;
+    const totalSinIva = (cantidad * precio);
+    const totalConIva = totalSinIva * (1 + tipoIva / 100);
+    const totalIva = totalConIva - totalSinIva;
+  
+    return totalIva;
 };
+
+
+
+
 
 /*Nota: El precio de los productos es el precio unitario, es decir, el precio de una unidad del producto.
 Puedes añadir más productos si lo deseas.
 La estructura inicial de la función para calcular el ticket sería la siguiente:*/
 
-const calculaTicket = (lineasTicket: LineaTicket[]) => {
-
-let precioConIva = 0;
-let precioSinIva = 0;
-
-
-  for (let i = 0; i < lineasTicket.length; i++) {
-    const linea = lineasTicket[i];
-    const nombre = linea.producto.nombre;
-    const cantidad = linea.cantidad;
-    const precio = linea.producto.precio;
-    const tipoIva = linea.producto.tipoIva;
-
-    const precionSinIva = Number((cantidad * precio).toFixed(2));
-    const precioConIva = Number(calcularPrecio(cantidad, precio, obtenerIva(tipoIva)).toFixed(2));
-    const valorDelIva = Number((precioConIva - precionSinIva).toFixed(2));
-   
-  }
-
-  return lineasTicket{nombre, cantidad, precioSinIva, tipoDeIva, precioConIva};
-
-  return totalTicket{ totalSinIva, totalConIva, totalIva};
-};
-
-
-
-/*La función calculaTicket devolverá un ticket que contendrá la siguiente información:
-
-Por cada producto queremos el nombre, la cantidad, el precio sin IVA, el tipo de IVA y el precio con IVA.
-Tendremos la siguiente interfaz:*/
 
 interface ResultadoLineaTicket {
   nombre: string;
@@ -134,29 +123,54 @@ interface ResultadoLineaTicket {
 }
 
 
+const calculaTicket = (lineasTicket: LineaTicket[]) => {
+  for (let i = 0; i < lineasTicket.length; i++) {
+    const linea = lineasTicket[i];
+    const nombre = linea.producto.nombre;
+    const cantidad = linea.cantidad;
+    const precio = linea.producto.precio;
+    const tipoIva = linea.producto.tipoIva;
+
+    const precioSinIva = cantidad * precio;
+    const precioConIva = precioSinIva * (1 + (obtenerIva(tipoIva))/ 100);
+    const totalIva = precioConIva - precioSinIva;
+
+
+    
+  
+    return resultado {
+   nombre, cantidad, precio, precioSinIva, tipoIva, precioConIva
+    }
+  }
+};
+
+
+
+
+/*La función calculaTicket devolverá un ticket que contendrá la siguiente información:
+
+Por cada producto queremos el nombre, la cantidad, el precio sin IVA, el tipo de IVA y el precio con IVA.
+Tendremos la siguiente interfaz:*/
+
+
+
 /*En cuanto a los totales:
 El total sin IVA.
 El IVA.
 Un desglose del total por tipo de IVA, es decir, la suma de los importes correspondientes a cada tipo de IVA.
 El total del ticket, incluyendo el IVA.
 Para esto tendremos las siguientes interfaces:*/
-
-interface ResultadoTotalTicket {
-  totalSinIva: number;
-  totalConIva: number;
-  totalIva: number;
-}
-
-interface TotalPorTipoIva {
-  tipoIva: TipoIva;
-  cuantia : number;
-}
-
 interface TicketFinal {
   lineas: ResultadoLineaTicket[];
   total: ResultadoTotalTicket;
   desgloseIva: TotalPorTipoIva[];
 }
+
+const Final = (lineas: ResultadoLineaTicket[], total: ResultadoLineaTicket[], desgloseIva: TotalPorTipoIva[]): TicketFinal[] => {
+
+}
+
+
 
 /*Pistas:
 
