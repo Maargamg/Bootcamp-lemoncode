@@ -97,7 +97,7 @@ La estructura inicial de la función para calcular el ticket sería la siguiente
 const calculaTicket = (lineasTicket: LineaTicket[]) => {
 
 let precioConIva = 0;
-let precionSinIva = 0;
+let precioSinIva = 0;
 
 
   for (let i = 0; i < lineasTicket.length; i++) {
