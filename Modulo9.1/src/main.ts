@@ -107,13 +107,13 @@ let precionSinIva = 0;
     const precio = linea.producto.precio;
     const tipoIva = linea.producto.tipoIva;
 
-    const precionSinIva = cantidad * precio;
-    const precioConIva = calcularPrecio(cantidad, precio, obtenerIva(tipoIva));
-    const valorDelIva = precioConIva - precionSinIva;
+    const precionSinIva = Number((cantidad * precio).toFixed(2));
+    const precioConIva = Number(calcularPrecio(cantidad, precio, obtenerIva(tipoIva)).toFixed(2));
+    const valorDelIva = Number((precioConIva - precionSinIva).toFixed(2));
    
   }
 
-  return {nombre, cantidad, precioSinIva, tipoIva, precioConIva};
+  return {nombre, cantidad, precioSinIva,  valorDelIva,  tipoIva, precioConIva};
 };
 
 
