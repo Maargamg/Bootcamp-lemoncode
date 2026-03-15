@@ -1,18 +1,3 @@
-/*En este laboratorio vamos a hacer un programa que nos calcule el precio de un ticket de compra.
-El ticket de compra tendrá una serie de líneas de ticket, cada una de ellas con un producto y una cantidad.
-Cada producto tendrá un nombre, un precio y un tipo de IVA.
-
-Esto son los tipos de IVA que vamos a tener:
-
-Tipo de IVA	Porcentaje	Bienes y servicios que graba
-General	21%	Más común y afecta a la mayoría de productos y servicios: electrónica, ropa, automóviles, mobiliario, etc.
-Reducido	10%	Cultura, alimentación y transporte.
-Superreducido A	5%	Nuevo tipo de IVA desde el 01/01/2023 aplicable a: aceites de oliva y de semillas y pastas alimenticias.
-Superreducido B	4%	Alimentación esencial, libros o medicamentos.
-Superreducido C	0%	Nuevo tipo de IVA desde el 01/01/2023 aplicable a: pan común, harina panificables, leches, quesos, huevos, frutas, verduras, hortalizas, legumbres, tubérculos y cereales.
-Sin IVA	0%	Servicios de asistencia sanitaria o educación.
-Cada producto va a tener esta interfaz:*/
-
 type TipoIva =
   | "general"
   | "reducido"
@@ -21,7 +6,8 @@ type TipoIva =
   | "superreducidoC"
   | "sinIva";
 
-  const obtenerIva = (tipoIva: TipoIva): number => {
+
+export const obtenerIva = (tipoIva: TipoIva): number => {
  switch (tipoIva) {
  case "general": return 21;
  case "reducido": return 10;
@@ -96,21 +82,14 @@ interface ResultadoTotalTicket {
 }
 
 //TotalPorTipoIva[]
-const calcularPrecio = (cantidad: number, precio: number, tipoIva: number): number => {
+export const calcularPrecio = (cantidad: number, precio: number, tipoIva: number): number => {
     const totalSinIva = (cantidad * precio);
     const totalConIva = totalSinIva * (1 + tipoIva / 100);
     const totalIva = totalConIva - totalSinIva;
   
-    return totalIva;
+    return Number(totalIva.toFixed(2));
 };
 
-
-
-
-
-/*Nota: El precio de los productos es el precio unitario, es decir, el precio de una unidad del producto.
-Puedes añadir más productos si lo deseas.
-La estructura inicial de la función para calcular el ticket sería la siguiente:*/
 
 
 interface ResultadoLineaTicket {
@@ -122,7 +101,10 @@ interface ResultadoLineaTicket {
 }
 
 
-const calculaTicket = (lineasTicket: LineaTicket[]) => { 
+export const calculaTicket = (lineasTicket: LineaTicket[]) => { 
+  if(!lineasTicket) {
+    throw new Error("Algo está fallando");
+  }
 
   for (let i = 0; i < lineasTicket.length; i++) {
     const linea = lineasTicket[i];
@@ -141,7 +123,7 @@ const calculaTicket = (lineasTicket: LineaTicket[]) => {
     
   
     return {
-      LineaTicket: [ 
+      LineaTicket:  
     nombre,
     cantidad,
     precio,
@@ -149,12 +131,12 @@ const calculaTicket = (lineasTicket: LineaTicket[]) => {
     tipoIva,
     precioConIva,
     totalIva
-    ]}
+    }
   }
 };
 
-const resultadoLineaTicket = (resultado: LineaTicket[]): ResultadoLineaTicket[] => {
-  calculaTicket(productos) = resultado = {nombre, cantidad, precionSinIva, tipoIva, precioConIva} 
+export const resultadoLineaTicket = (resultado: LineaTicket[]): ResultadoLineaTicket[] => {
+ // calculaTicket(productos) = resultado = {nombre, cantidad, precionSinIva, tipoIva, precioConIva} 
 }
 
 
@@ -179,18 +161,7 @@ interface TicketFinal {
   desgloseIva: TotalPorTipoIva[];
 }
 
-const Final = (lineas: ResultadoLineaTicket[], total: ResultadoLineaTicket[], desgloseIva: TotalPorTipoIva[]): TicketFinal[] => {
+export const Final = (lineas: ResultadoLineaTicket[], total: ResultadoLineaTicket[], desgloseIva: TotalPorTipoIva[]): TicketFinal[] => {
+//TODO
+};
 
-}
-
-
-
-/*Pistas:
-
-Para calcular el IVA de un producto, se multiplica el precio del producto por el porcentaje de IVA y se divide entre 100.
-
-Por ejemplo, si el precio del producto es 10 y el IVA es el 21%, el IVA será 2,1.
-
-Para redondear un número a dos decimales, se puede utilizar el método toFixed de JavaScript.
-
-Si necesitas crear funciones auxiliares, se recomienda crearlas. Así, la función principal será más sencilla de leer.*/
