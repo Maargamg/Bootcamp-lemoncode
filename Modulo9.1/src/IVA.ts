@@ -87,7 +87,6 @@ const productos: LineaTicket[] = [
 interface TotalPorTipoIva {
   tipoIva: TipoIva;
   cantidad : number;
-  precio: number;
 }
 
 interface ResultadoTotalTicket {
@@ -123,7 +122,8 @@ interface ResultadoLineaTicket {
 }
 
 
-const calculaTicket = (lineasTicket: LineaTicket[]) => {
+const calculaTicket = (lineasTicket: LineaTicket[]) => { 
+
   for (let i = 0; i < lineasTicket.length; i++) {
     const linea = lineasTicket[i];
     const nombre = linea.producto.nombre;
@@ -131,18 +131,31 @@ const calculaTicket = (lineasTicket: LineaTicket[]) => {
     const precio = linea.producto.precio;
     const tipoIva = linea.producto.tipoIva;
 
+    
+
     const precioSinIva = cantidad * precio;
     const precioConIva = precioSinIva * (1 + (obtenerIva(tipoIva))/ 100);
-    const totalIva = precioConIva - precioSinIva;
+    const totalIva = Number((precioConIva - precioSinIva).toFixed(2));
 
 
     
   
-    return resultado {
-   nombre, cantidad, precio, precioSinIva, tipoIva, precioConIva
-    }
+    return {
+      LineaTicket: [ 
+    nombre,
+    cantidad,
+    precio,
+    precioSinIva,
+    tipoIva,
+    precioConIva,
+    totalIva
+    ]}
   }
 };
+
+const resultadoLineaTicket = (resultado: LineaTicket[]): ResultadoLineaTicket[] => {
+  calculaTicket(productos) = resultado = {nombre, cantidad, precionSinIva, tipoIva, precioConIva} 
+}
 
 
 
