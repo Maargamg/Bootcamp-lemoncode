@@ -165,3 +165,118 @@ export const Final = (lineas: ResultadoLineaTicket[], total: ResultadoLineaTicke
 //TODO
 };
 
+
+/*
+type TipoIva =
+  | "general"
+  | "reducido"
+  | "superreducidoA"
+  | "superreducidoB"
+  | "superreducidoC"
+  | "sinIva";
+
+interface Producto {
+  nombre: string;
+  precio: number;
+  tipoIva: TipoIva;
+}
+
+interface LineaTicket {
+  producto: Producto;
+  cantidad: number;
+}
+
+interface ResultadoLineaTicket {
+  nombre: string;
+  cantidad: number;
+  precionSinIva: number;
+  tipoIva: TipoIva;
+  precioConIva: number;
+}
+
+interface ResultadoTotalTicket {
+  totalSinIva: number;
+  totalConIva: number;
+  totalIva: number;
+}
+
+interface TotalPorTipoIva {
+  tipoIva: TipoIVA;
+  cuantia : number;
+}
+
+interface TicketFinal {
+  lineas: ResultadoLineaTicket[];
+  total: ResultadoTotalTicket;
+  desgloseIva: TotalPorTipoIva[];
+}
+
+// helpers.ts
+
+const obtenerSubtotalProductos = (lineasTicket: LineaTicket[]): number => {
+	const subtotalAcumulado = lineasTicket.reduce((acumulado, lineaTicket) => {
+		const subtotal = lineaTicket.producto.precio * lineaTicket.cantidad;
+		acumulado = acumulado + subtotal;
+		return acumulado;
+	}, 0);
+	
+	return subtotalAcumulado;
+}
+
+const obtenerCantidadIva = (tipoIva: TipoIva): number => {
+	switch (tipoIva) {
+		case general:
+			return 21;
+		case reducido:
+			return 10;
+		...
+	}
+}
+
+const obtenerIvaProductosAcumulado = (lineasTicket: LineaTicket[]): number => {
+	const totalIvaAcumulado = lineasTicket.reduce((acumulado, lineaTicket) => {
+		const subtotal = lineaTicket.producto.precio * lineaTicket.cantidad;
+		const iva = obtenerCantidadIva(lineaTicket.producto.tipoIva);
+		const ivaProducto = subtotal * iva / 100;
+		acumulado = acumulado + ivaProducto;
+		return acumulado;
+	}, 0);
+	
+	return totalIvaAcumulado;
+}
+
+const obtenerResultadoLineasTicket = (lineasTicket: LineaTicket[]): ResultadoLineaTicket[]  => {
+	const resultadoLineasTicket: ResultadoLineaTicket[] = lineasTicket.map((lineaTicket) => {
+		const subtotal = lineaTicket.producto.precio * lineaTicket.cantidad;
+		const iva = obtenerCantidadIva(lineaTicket.producto.tipoIva);
+		const ivaProducto = subtotal * iva / 100;
+		const total = subtotal + ivaProducto;
+		
+		return {
+			nombre: lineaTicket.producto.nombre,
+			cantidad: lineaTicket.cantidad,
+			precionSinIva: subtotal,
+			tipoIva: lineaTicket.producto.tipoIva,
+			precioConIva: total,
+		}
+	});
+}
+
+// main.ts
+
+import { obtenerSubtotalProductos, obtenerIvaProductosAcumulado, obtenerResultadoLineasTicket } from './helpers';
+
+const calculaTicket = (lineasTicket: LineaTicket[]): TicketFinal => {
+	const subtotal = obtenerSubtotalProductos(lineasTicket);
+	const ivaAcumulado = obtenerIvaProductosAcumulado(lineasTicket);
+	
+	return {
+		lineas: obtenerResultadoLineasTicket(lineasTicket),
+		desgloseIva: [],
+		total: {
+			totalSinIva: subtotal,
+			totalIva: ivaAcumulado,
+			totalConIva: subtotal + ivaAcumulado,
+		}
+	}
+};/*
