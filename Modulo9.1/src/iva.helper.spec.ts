@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {obtenerIva, calcularPrecio, calculaTicket, resultadoLineaTicket, Final} from './iva';
+import {obtenerIva, calcularPrecio, calculaTicket} from './iva';
 
 describe("obtenerIva", () => {
     it("Debería devolver 21 si el IVA es de tipo general", () => {
