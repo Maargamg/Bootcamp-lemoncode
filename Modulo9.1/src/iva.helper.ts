@@ -61,3 +61,20 @@ export const calcularDesgloseIva = (lineasTicket: LineaTicket[]): TotalPorTipoIv
   return resultadoDesglose;
 };
 
+/*intentos:
+export const calcularDesgloseIva = (lineasTicket: LineaTicket[]): TotalPorTipoIva[] => {
+  const resultadoDesglose = lineasTicket.reduce((acc, lineaTicket, indice) => acc + lineaTicket.producto.tipoIva [indice], 0);
+  return resultadoDesglose;
+}
+  
+export const calcularDesgloseIva = (lineasTicket: LineaTicket[]): TotalPorTipoIva[] => {
+const desglose = lineasTicket.reduce((acc, lineaTicket) => {
+const total = lineaTicket.producto.tipoIva;
+total++;
+return{
+  tipoIva: lineaTicket.producto.tipoIva,
+  cuantia: ,
+};
+})
+ return desglose;
+}*/
