@@ -1,4 +1,4 @@
-import {calcularIva, obtenerIvaProducto, obtenerLineas} from './iva.helper';
+import {calcularDesgloseIva, calcularIva, obtenerIvaProducto, obtenerLineas} from './iva.helper';
 
 export type TipoIva =
   | "general"
@@ -59,7 +59,7 @@ export const obtenerIva = (tipoIva: TipoIva): number => {
 
 
 
-const productos: LineaTicket[] = [
+export const productos: LineaTicket[] = [
   {
     producto: {
       nombre: "Legumbres",
@@ -107,7 +107,7 @@ const ivaAcc = obtenerIvaProducto(lineasTicket);
 
 return {
   lineas: obtenerLineas(lineasTicket),
-  //Todo desgloseIva: [],
+  desgloseIva: calcularDesgloseIva(lineasTicket),
   total: {
   totalSinIva: subtotal,
   totalIva: ivaAcc,
@@ -116,4 +116,6 @@ return {
 }
 };
 
+
+console.log(calculaTicket(productos));
 

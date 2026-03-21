@@ -1,4 +1,4 @@
-import {LineaTicket, obtenerIva, ResultadoLineaTicket} from './iva';
+import {LineaTicket, obtenerIva, ResultadoLineaTicket, TotalPorTipoIva } from './iva';
 
 export const calcularIva = (lineasTicket: LineaTicket[]): number => {
 const subtotalAcumulado = lineasTicket.reduce((acc, lineaTicket) => {
@@ -43,4 +43,21 @@ export const obtenerLineas = (lineasTicket: LineaTicket[]): ResultadoLineaTicket
 };
 
 
+
+export const calcularDesgloseIva = (lineasTicket: LineaTicket[]): TotalPorTipoIva[] => {
+  const resultadoDesglose: TotalPorTipoIva[] = [];
+  for (let i = 0; i < lineasTicket.length; i++) {
+    const total = lineasTicket[i].producto.precio * lineasTicket[i].cantidad;
+    const iva = obtenerIva(lineasTicket[i].producto.tipoIva);
+    const cuantia = total * iva / 100;
+    const indice = resultadoDesglose.findIndex(linea => linea.tipoIva === lineasTicket[i].producto.tipoIva);
+    if (indice >= 0) {
+      resultadoDesglose[indice].cuantia += cuantia;
+    } else {
+      resultadoDesglose.push({ tipoIva: lineasTicket[i].producto.tipoIva, cuantia });
+    }
+  }
+
+  return resultadoDesglose;
+};
 
