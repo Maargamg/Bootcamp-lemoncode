@@ -1,14 +1,6 @@
-/*En el proceso que de creación de una cuenta queremos evitar que el usuario puede crear una clave débil, para ellos nos piden que:
+import {tieneMayusculasYMinusculas, tieneNumeros, tieneCaracteresEspeciales, tieneLongitudMinima, tieneNombreUsuario, tienePalabrasComunes } from './clave.helper';
 
-La clave debe de tener mayúsculas y minúsculas.
-La clave debe de tener números.
-La clave debe de tener caracteres especiales (@,#,+, _, ...)
-La clave debe de tener una longitud mínima de 8 caracteres.
-La clave no debe tener el nombre del usuario.
-La clave no debe de contener palabras comunes (le pasaremos un array de palabras comunes).
-En la firma debemos de evaluar si pasa o no, y también devolver un tipo de error indicando donde ha fallado*/
-
-const commonPasswords: string[] = [
+export const commonPasswords: string[] = [
   "password",
   "123456",
   "qwerty",
@@ -62,89 +54,52 @@ const commonPasswords: string[] = [
   "password12",
   "1234567890",
 ];
-/*Nos crearemos una función para validar la clave, que nos devolverá un objeto con dos propiedades:
 
-esValida: booleano que nos indica si la clave es válida o no.
-error: string que nos indica el error que ha ocurrido.
-Vamos a crear un interfaz para la salida de la función:*/
-
-interface ValidacionClave {
+export interface ValidacionClave {
   esValida: boolean;
   error?: string;
 }
-//Y la función tendrá la siguiente firma:
 
-const validarClave = (
-  nombreUsuario: string,
-  clave: string,
-  commonPasswords: string[]
-): ValidacionClave => {
-  // ...
+
+const validarClave = (nombreUsuario: string, clave: string, commonPasswords: string[]): ValidacionClave => {
+  const mayusYMin = tieneMayusculasYMinusculas(clave);
+  if (!mayusYMin.esValida) return mayusYMin;
+
+  const numeros = tieneNumeros(clave);
+  if (!numeros.esValida) return numeros;
+
+  const caracteres = tieneCaracteresEspeciales(clave);
+  if (!caracteres.esValida) return caracteres;
+
+  const lengthMin = tieneLongitudMinima(clave);
+  if (!lengthMin.esValida) return lengthMin;
+
+  const noEsNombreDeUsuario = tieneNombreUsuario(nombreUsuario, clave);
+  if (!noEsNombreDeUsuario.esValida) return noEsNombreDeUsuario;
+
+  const noCommon = tienePalabrasComunes(clave, commonPasswords);
+  if (!noCommon.esValida) return noCommon;
+
+  return {
+     esValida: true
+   };
 };
 
 
-/*Lo siguiente que vamos a hacer, es ir analizando cada una de las condiciones, para que nuestra clave sea válida:
-
-Pistas:
-
-Si la clave no tiene mayúsculas y minúsculas, el error será: "La clave debe de tener mayúsculas y minúsculas".
-Si la clave no tiene números, el error será: "La clave debe de tener números".
-Si la clave no tiene caracteres especiales, el error será: "La clave debe de tener caracteres especiales".
-Si la clave no tiene una longitud mínima de 8 caracteres, el error será: "La clave debe de tener una longitud mínima de 8 caracteres".
-Si la clave tiene el nombre del usuario, el error será: "La clave no debe tener el nombre del usuario".
-Si la clave tiene palabras comunes, el error será: "La clave no debe de contener palabras comunes".
-La clave debe de tener mayúsculas y minúsculas.*/
-
-const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
-  // ...
-};
-
-
-//La clave debe de tener números.
-const tieneNumeros = (clave: string): ValidacionClave => {
-  // ...
-};
+const mensajeError = document.getElementById("texto") ;
+const usuario = document.getElementById("usuario");
+const contraseña = document.getElementById("contraseña");
+if(usuario !== null && usuario !== undefined && usuario instanceof HTMLInputElement &&
+  contraseña !== null && contraseña !== undefined && contraseña instanceof HTMLInputElement &&
+mensajeError !== null && mensajeError !== undefined && mensajeError instanceof HTMLParagraphElement){
+    contraseña.addEventListener("input", () => {
+    const resultado = validarClave(usuario.value, contraseña.value, commonPasswords);
+    if(resultado.esValida) {
+      mensajeError.textContent = "🪄Clave Valida✨";
+    } else {
+      mensajeError.textContent = "❌⛔¡¡Clave no valida!!🚫🔴" + resultado.error;
+    }
+    });
+  }
 
 
-//La clave debe de tener caracteres especiales (@,#,+, _, ...)
-const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
-  // ...
-};
-
-
-//La clave debe de tener una longitud mínima de 8 caracteres.
-const tieneLongitudMinima = (clave: string): ValidacionClave => {
-  // ...
-};
-
-
-//La clave no debe tener el nombre del usuario.
-const tieneNombreUsuario = (
-  nombreUsuario: string
-  clave: string,
-): ValidacionClave => {
- // ...
-};
-
-//La clave no debe de contener palabras comunes (le pasaremos un array de palabras comunes).
-const tienePalabrasComunes = (
-  clave: string,
-  commonPasswords: string[]
-): ValidacionClave => {
-  // ...
-};
-
-
-/*Una vez que tenemos todas las funciones, ya estamos listos para crear la función validarClave que nos devolverá un objeto con dos propiedades:
-
-esValida: booleano, que nos indica si la clave es válida o no.
-error: string, que nos devolverá el primer error que encuentre, en caso de que tuviera.*/
-
-
-const validarClave = (
-  nombreUsuario: string,
-  clave: string,
-  commonPasswords: string[]
-): ValidacionClave => {
-  // ...
-};
