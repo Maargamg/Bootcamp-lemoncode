@@ -15,5 +15,5 @@
     "noImplicitReturns": true,
     "skipLibCheck": true
   },
-  "include": ["src", "src/clave.ts"]
+  "include": ["src", "src/motor.ts"]
 }
