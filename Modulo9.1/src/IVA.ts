@@ -119,3 +119,14 @@ return {
 
 console.log(calculaTicket(productos));
 
+
+/*Las interfaces las puedes mover a un fichero que sea modelo.ts.
+
+En el index.html tienes un error en el nombre del script, no es iva.ts es IVA.ts (todo en mayúsculas).
+
+Tienes también un fallo de dependencias circulares, IVA.ts está usando iva.helper.ts y viceversa, iva.helper.ts está usando IVA.ts.
+
+Para el apartado del desglose lo vemos por meet.
+
+Ten cuidado con esos pequeños detalles, pero por lo demás está bien.*/
+

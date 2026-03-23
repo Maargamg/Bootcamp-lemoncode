@@ -206,3 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
   mapearDivsCartas();
 });
 
+
+/*En la función de cuandoNoPareja en vez de hacer ahí esta parte del código:
+
+tablero.indiceCartaVolteadaA = undefined;
+tablero.indiceCartaVolteadaB = undefined;
+Mejor moverlo a parejaNoEncontrada
+
+En reiniciarPartida en vez de usar el as HTMLImageElement y el as HTMLDivElement usa el distinto de null y undefined y el instanceof.
+
+Por todo lo demás muy buen trabajo. :D enhorabuena!!*/
+

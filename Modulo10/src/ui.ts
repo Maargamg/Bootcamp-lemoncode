@@ -16,9 +16,3 @@ mensajeError !== null && mensajeError !== undefined && mensajeError instanceof H
     }
     });
   }
-
-  /*Mueve la interfaz de ValidacionClave a otro fichero que se llame model.ts o algo parecido
-
-Si lo mantienes ahí, los test mirarán el fichero de motor.ts y te darán un error (te están dando un error) por que tienes import de ui y estos están usando DOM.
-
-Por lo demás muy buen trabajo :D*/
