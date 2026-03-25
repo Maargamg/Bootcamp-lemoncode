@@ -1,61 +1,9 @@
 import {calcularDesgloseIva, calcularIva, obtenerIvaProducto, obtenerLineas} from './iva.helper';
-
-export type TipoIva =
-  | "general"
-  | "reducido"
-  | "superreducidoA"
-  | "superreducidoB"
-  | "superreducidoC"
-  | "sinIva";
-
-export interface Producto {
-  nombre: string;
-  precio: number;
-  tipoIva: TipoIva;
-}
-
-export interface LineaTicket {
-  producto: Producto;
-  cantidad: number;
-}
-
-export interface ResultadoLineaTicket {
-  nombre: string;
-  cantidad: number;
-  precionSinIva: number;
-  tipoIva: TipoIva;
-  precioConIva: number;
-}
-
-export interface ResultadoTotalTicket {
-  totalSinIva: number;
-  totalConIva: number;
-  totalIva: number;
-}
-
-export interface TotalPorTipoIva {
-  tipoIva: TipoIva;
-  cuantia : number;
-}
-
-export interface TicketFinal {
-  lineas: ResultadoLineaTicket[];
-  total: ResultadoTotalTicket;
-  desgloseIva: TotalPorTipoIva[];
-}
+import {LineaTicket} from './modelo';
 
 
-export const obtenerIva = (tipoIva: TipoIva): number => {
- switch (tipoIva) {
- case "general": return 21;
- case "reducido": return 10;
- case "superreducidoA": return 5;
- case "superreducidoB": return 4;
- case "superreducidoC": return 0;
- case "sinIva": return 0;
- default: return 0;
- }
-}; 
+
+
 
 
 
@@ -120,13 +68,4 @@ return {
 console.log(calculaTicket(productos));
 
 
-/*Las interfaces las puedes mover a un fichero que sea modelo.ts.
-
-En el index.html tienes un error en el nombre del script, no es iva.ts es IVA.ts (todo en mayúsculas).
-
-Tienes también un fallo de dependencias circulares, IVA.ts está usando iva.helper.ts y viceversa, iva.helper.ts está usando IVA.ts.
-
-Para el apartado del desglose lo vemos por meet.
-
-Ten cuidado con esos pequeños detalles, pero por lo demás está bien.*/
 

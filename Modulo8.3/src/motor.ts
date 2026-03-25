@@ -44,8 +44,10 @@ tablero.indiceCartaVolteadaB = undefined;
 export const parejaNoEncontrada = (tablero: Tablero, indiceA: number, indiceB: number): void => {
   const cartaaA = tablero.cartas[indiceA];
   const cartaaB = tablero.cartas[indiceB];
- cartaaA.estaVuelta = false;
- cartaaB.estaVuelta = false;
+  cartaaA.estaVuelta = false;
+  cartaaB.estaVuelta = false;
+  tablero.indiceCartaVolteadaA = undefined;
+  tablero.indiceCartaVolteadaB = undefined;
 }
 
 

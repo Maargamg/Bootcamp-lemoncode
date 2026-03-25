@@ -19,13 +19,13 @@ const reiniciarPartida = () => {
   contador = 0;
   marcador();
  for (let i = 0; i < tablero.cartas.length; i++) {
-    const img = document.querySelector(`img[data-indice-id="${i}"]`) as HTMLImageElement;
-    const div = document.querySelector(`div[data-indice-id="${i}"]`) as HTMLDivElement;
-  if (img) {
+    const img = document.querySelector(`img[data-indice-id="${i}"]`);
+    const div = document.querySelector(`div[data-indice-id="${i}"]`);
+  if (img !== null && img !== undefined && img instanceof HTMLImageElement) {
     img.src = "";
     img.style.display = "none";
     }
-    if (div) {
+    if (div !== null && div !== undefined && div instanceof HTMLDivElement) {
       div.style.backgroundColor = "#ffd1dc";
     }
   }
@@ -181,8 +181,6 @@ const cuandoNoPareja = (indiceA: number, indiceB: number) => {
   setTimeout(() => {
     parejaNoEncontrada(tablero, indiceA, indiceB);
     ocultarCartas(indiceA, indiceB);
-    tablero.indiceCartaVolteadaA = undefined;
-    tablero.indiceCartaVolteadaB = undefined;
   }, 1000);
 };
 
@@ -206,14 +204,4 @@ document.addEventListener('DOMContentLoaded', () => {
   mapearDivsCartas();
 });
 
-
-/*En la función de cuandoNoPareja en vez de hacer ahí esta parte del código:
-
-tablero.indiceCartaVolteadaA = undefined;
-tablero.indiceCartaVolteadaB = undefined;
-Mejor moverlo a parejaNoEncontrada
-
-En reiniciarPartida en vez de usar el as HTMLImageElement y el as HTMLDivElement usa el distinto de null y undefined y el instanceof.
-
-Por todo lo demás muy buen trabajo. :D enhorabuena!!*/
 

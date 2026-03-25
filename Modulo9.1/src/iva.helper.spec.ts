@@ -1,4 +1,5 @@
-import {obtenerIva, calculaTicket} from './iva';
+import {calculaTicket} from './iva';
+import { obtenerIva } from './iva.helper';
 
 describe("obtenerIva", () => {
     it("Debería devolver 21 si el IVA es de tipo general", () => {

@@ -1,4 +1,4 @@
-import {ValidacionClave} from './motor';
+import {ValidacionClave} from './modelo';
 
 
 export const commonPasswords: string[] = [

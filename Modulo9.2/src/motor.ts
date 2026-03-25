@@ -1,10 +1,6 @@
 import {tieneMayusculasYMinusculas, tieneNumeros, tieneCaracteresEspeciales, tieneLongitudMinima, tieneNombreUsuario, tienePalabrasComunes } from './motor.helper';
-import './ui';
+import {ValidacionClave} from  './modelo';
 
-export interface ValidacionClave {
-  esValida: boolean;
-  error?: string;
-}
 
 
 export const validarClave = (nombreUsuario: string, clave: string, commonPasswords: string[]): ValidacionClave => {
