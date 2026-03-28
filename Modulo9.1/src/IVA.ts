@@ -1,4 +1,4 @@
-import {calcularDesgloseIva, calcularIva, obtenerIvaProducto, obtenerLineas} from './iva.helper';
+import {calcularDesgloseIva, calcularIva, obtenerIvaProducto, obtenerLineas} from './IVA.helper';
 import {LineaTicket} from './modelo';
 
 

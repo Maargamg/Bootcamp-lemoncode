@@ -1,6 +1,13 @@
 import {LineaTicket, ResultadoLineaTicket, TotalPorTipoIva, TipoIva } from './modelo';
 
-
+export const tiposIva: TipoIva[] = [
+  "general",
+  "reducido",
+  "superreducidoA",
+  "superreducidoB",
+  "superreducidoC",
+  "sinIva"
+]
 
 
 export const obtenerIva = (tipoIva: TipoIva): number => {
@@ -60,36 +67,15 @@ export const obtenerLineas = (lineasTicket: LineaTicket[]): ResultadoLineaTicket
 
 
 export const calcularDesgloseIva = (lineasTicket: LineaTicket[]): TotalPorTipoIva[] => {
-  const resultadoDesglose: TotalPorTipoIva[] = [];
-  for (let i = 0; i < lineasTicket.length; i++) {
-    const total = lineasTicket[i].producto.precio * lineasTicket[i].cantidad;
-    const iva = obtenerIva(lineasTicket[i].producto.tipoIva);
-    const cuantia = total * iva / 100;
-    const indice = resultadoDesglose.findIndex(linea => linea.tipoIva === lineasTicket[i].producto.tipoIva);
-    if (indice >= 0) {
-      resultadoDesglose[indice].cuantia += cuantia;
-    } else {
-      resultadoDesglose.push({ tipoIva: lineasTicket[i].producto.tipoIva, cuantia });
+  const resultadoDesgloseIva: TotalPorTipoIva[] = tiposIva.map((tipoIva) => {
+    const listadoProductosPorIva = lineasTicket.filter(lineaTicket => lineaTicket.producto.tipoIva === tipoIva);
+
+    return {
+      tipoIva: tipoIva,
+      cuantia: obtenerIvaProducto(listadoProductosPorIva)
     }
-  }
+  })
 
-  return resultadoDesglose;
+  return resultadoDesgloseIva.filter(desglose => desglose.cuantia > 0);
 };
 
-/*intentos:
-export const calcularDesgloseIva = (lineasTicket: LineaTicket[]): TotalPorTipoIva[] => {
-  const resultadoDesglose = lineasTicket.reduce((acc, lineaTicket, indice) => acc + lineaTicket.producto.tipoIva [indice], 0);
-  return resultadoDesglose;
-}
-  
-export const calcularDesgloseIva = (lineasTicket: LineaTicket[]): TotalPorTipoIva[] => {
-const desglose = lineasTicket.reduce((acc, lineaTicket) => {
-const total = lineaTicket.producto.tipoIva;
-total++;
-return{
-  tipoIva: lineaTicket.producto.tipoIva,
-  cuantia: ,
-};
-})
- return desglose;
-}*/
