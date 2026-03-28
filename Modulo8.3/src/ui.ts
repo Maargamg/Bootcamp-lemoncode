@@ -9,14 +9,11 @@ import {
   esPartidaCompleta
 } from "./motor";
 
-const h1 = document.querySelector("h1") as HTMLHeadingElement;
-const h2 = document.querySelector("h2") as HTMLHeadingElement;
-const intentos = document.getElementById("intentos") as HTMLInputElement;
-const cartas = document.getElementById("cartas") as HTMLDivElement;
-const fin = document.getElementById("victoria") as HTMLDivElement;
+
+
 
 const reiniciarPartida = () => {
-  contador = 0;
+  tablero.contador = 0;
   marcador();
  for (let i = 0; i < tablero.cartas.length; i++) {
     const img = document.querySelector(`img[data-indice-id="${i}"]`);
@@ -43,11 +40,27 @@ const botonPlay = document.getElementById("start");
 if (botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLButtonElement) {
   botonPlay.addEventListener("click", () => {
     iniciaPartida(tablero);
+
+    const h1 = document.querySelector("h1");
+    if(h1 !== null && h1 !== undefined && h1 instanceof HTMLHeadingElement){ 
     h1.style.display = "block";
+  }
     botonPlay.disabled = true;
+    const h2 = document.querySelector("h2");
+    if(h2 !== null && h2 !== undefined && h2 instanceof HTMLHeadingElement) {
     h2.style.display = "none";
+    }
+    
+    const intentos = document.querySelector("intentos");
+    if(intentos !== null && intentos !== undefined && intentos instanceof HTMLInputElement){
     intentos.style.display = "flex";
+    }
+    
+    const cartas = document.getElementById("cartas");
+    if(cartas !== null && cartas !== undefined && cartas instanceof HTMLDivElement){
     cartas.style.display = "grid";
+    }
+   
   });
 }
 
@@ -56,13 +69,34 @@ if (botonRestart !== null && botonRestart !== undefined && botonRestart instance
   botonRestart.addEventListener("click", () => {
     reiniciarPartida();
     botonRestart.style.display = "none";
-    fin.style.display = "none";
-    h2.style.display = "block";
-    h1.style.display = "none";
-    intentos.style.display = "none";
-    cartas.style.display = "none";
 
-  if (botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLButtonElement) {
+const fin = document.getElementById("victoria");
+if(fin !== null && fin !== undefined && fin instanceof HTMLDivElement) {
+   fin.style.display = "none";
+}
+
+const h2 = document.querySelector("h2");
+if(h2 !== null && h2 !== undefined && h2 instanceof HTMLHeadingElement) {
+ h2.style.display = "block";
+}
+
+const h1 = document.querySelector("h1");
+if(h1 !== null && h1 !== undefined && h1 instanceof HTMLHeadingElement) {
+ h1.style.display = "none";
+}
+   
+const intentos = document.querySelector("intentos");
+if(intentos !== null && intentos !== undefined && intentos instanceof HTMLInputElement) {
+ intentos.style.display = "none";
+}
+   
+const cartas = document.getElementById("cartas");
+if(cartas !== null && cartas !== undefined && cartas instanceof HTMLDivElement) {
+cartas.style.display = "none";
+}
+    
+
+if (botonPlay !== null && botonPlay !== undefined && botonPlay instanceof HTMLButtonElement) {
       botonPlay.disabled = false;
     }
   });
@@ -73,11 +107,11 @@ if (botonRestart !== null && botonRestart !== undefined && botonRestart instance
 const marcador = () => { 
 const contadorIntentos = document.getElementById("intentos");
 if (contadorIntentos !== null && contadorIntentos !== undefined && contadorIntentos instanceof HTMLInputElement) {
-  contadorIntentos.value = contador.toString();
+  contadorIntentos.value = tablero.contador.toString();
 } 
 };
 
-let contador = 0;
+
 
 
 const mapearDivsCartas = () => {
@@ -89,19 +123,19 @@ const mapearDivsCartas = () => {
 
 const mostrarImagen = (indice: number) => {
   const miImagen = document.querySelector(`img[data-indice-id="${indice}"]`);
-  const colorDeFondo = document.querySelector(`div[data-indice-id="${indice}"]`);
-  if (miImagen !== null && miImagen !== undefined && miImagen instanceof HTMLImageElement
-    && colorDeFondo !== null && colorDeFondo !== undefined && colorDeFondo instanceof HTMLDivElement) {
+  if (miImagen !== null && miImagen !== undefined && miImagen instanceof HTMLImageElement) {
     miImagen.src = tablero.cartas[indice].imagen;
     miImagen.style.display = "block";
-    colorDeFondo.style.backgroundColor = "transparent";
+    }
+  const colorDeFondo = document.querySelector(`div[data-indice-id="${indice}"]`);
+  if(colorDeFondo !== null && colorDeFondo !== undefined && colorDeFondo instanceof HTMLDivElement) {
+     colorDeFondo.style.backgroundColor = "transparent";
   }
 };
 
 const clickCarta = (indice: number) => {
-  const miDiv = document.querySelector(`div[data-indice-id="${indice}"]`);
-  
-  if (miDiv !== null && miDiv !== undefined && miDiv instanceof HTMLDivElement) {
+const miDiv = document.querySelector(`div[data-indice-id="${indice}"]`);
+ if (miDiv !== null && miDiv !== undefined && miDiv instanceof HTMLDivElement) {
     miDiv.addEventListener('click', () => {
       if (sePuedeVoltearLaCarta(tablero, indice)) {
         animacion(indice);
@@ -163,12 +197,26 @@ const mostrarVictoria = () => {
   if (restart !== null && restart !== undefined && restart instanceof HTMLButtonElement) {
     restart.style.display = "block";
   }
+  const fin = document.getElementById("victoria");
+  if(fin !== null && fin !== undefined && fin instanceof HTMLDivElement){
   fin.textContent = "🎉 ¡HAS GANADO! 🎉";
   fin.style.display = "block";
+  }
+  const cartas = document.getElementById("cartas");
+  if(cartas !== null && cartas !== undefined && cartas instanceof HTMLDivElement) {
   cartas.style.display = "none";
+  }
+  
+  const intentos = document.querySelector("intentos");
+  if(intentos !== null && intentos !== undefined && intentos instanceof HTMLInputElement) {
   intentos.style.display = "none";
+  }
+ 
+  const h1 = document.querySelector("h1");
+  if(h1 !== null && h1 !== undefined && h1 instanceof HTMLHeadingElement) {
   h1.style.display = "none";
-};
+  }
+ };
 
 const cuandoSonPareja = (indiceA: number, indiceB: number) => {
   parejaEncontrada(tablero, indiceA, indiceB);
@@ -189,7 +237,7 @@ const mirarSiEsLaSegundaCarta = () => {
   const indiceCartaB = tablero.indiceCartaVolteadaB;
 
   if (indiceCartaA !== undefined && indiceCartaB !== undefined) {
-    contador++;
+    tablero.contador++;
     marcador();
     if (sonPareja(indiceCartaA, indiceCartaB, tablero)) {
       cuandoSonPareja(indiceCartaA, indiceCartaB);
