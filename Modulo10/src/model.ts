@@ -11,7 +11,7 @@ export interface Movie {
  
 
 export interface Actors {
-    id: number,
+    id: string,
     name: string,
     movies: string[],
     bio: string,

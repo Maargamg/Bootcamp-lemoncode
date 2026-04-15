@@ -4,7 +4,7 @@ import { vi } from "vitest";
 import Axios from "axios";
 
 describe("leePeliculas", () => {
- it("Debería devolver peliculas cuando la solicitud tiene una respuesta correcta", () => {
+ it("Debería devolver peliculas cuando la solicitud tiene una respuesta correcta", async () => {
       
  // Arrange
 
@@ -24,9 +24,53 @@ describe("leePeliculas", () => {
  });
 
  // Act
- const resultado = leePeliculas();
+ const resultado = await leePeliculas()
+
 
  // Assert
  expect(resultado).toEqual(peliculasMock);
  });
+
+it("Debería devolver 'Demasiadas peliculas'", async () => {
+    //Arrange
+    vi.spyOn(Axios, "get").mockRejectedValue({
+        response: {
+            status: 403
+        }
+    });
+
+
+    //Act
+    try{
+        await leePeliculas();
+    } catch(error) {
+         //Assert
+         expect(error).toEqual("Demasiadas peticiones a la API de peliculas");
+
+    }
+   
 });
+
+
+it("Debería devolver 'La API está caida'", async () => {
+    //Arrange
+    vi.spyOn(Axios, "get").mockRejectedValue({
+        response: {
+            status: 503
+        }
+    });
+
+
+    //Act
+    try{
+        await leePeliculas();
+    } catch(error) {
+         //Assert
+         expect(error).toEqual("La API está caída");
+
+    }
+   
+});
+
+ });
+
