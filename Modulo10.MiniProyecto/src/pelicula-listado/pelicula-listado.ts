@@ -1,7 +1,9 @@
 import { crearBotonParams, Movie } from "./pelicula-listado.model";
 import { obtenerPeliculas } from "./pelicula-listado.api"; 
+
+
 const editaPelicula = (id: string) => {
-    console.log("Edita película con id:", id);
+  window.location.href = `../pelicula-editar/index.html?id=${encodeURIComponent(id)}`;
 };
 
 const borrarPelicula = (id: string) => {
@@ -90,7 +92,7 @@ const pintarPeliculas = async () => {
     const listado = document.querySelector("#listado-peliculas");
 
     if(listado && listado instanceof HTMLDivElement) {
-        peliculas.forEach(pelicula => {
+        peliculas.forEach((pelicula) => {
              const contenedorPelicula = creaContenedorPelicula(pelicula);
              listado.appendChild(contenedorPelicula);
         });

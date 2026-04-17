@@ -3,10 +3,11 @@ export interface Movie {
     title: string;
     year: number;
     director: string;
+    description: string,
     cover_url: string;
 }
 
-export interface crearBotonParams {
+export interface CrearBotonParams {
     texto: string;
     id: string;
     nombreClase: string;
