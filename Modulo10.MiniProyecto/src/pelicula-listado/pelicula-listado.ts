@@ -88,7 +88,7 @@ const creaContenedorPelicula = (pelicula: Movie): HTMLDivElement => {
    const director = crearElementoParrafo(pelicula.director);
    elementoPelicula.appendChild(director);
 
-   const year = crearElementoParrafo(pelicula.year.toString());
+   const year = crearElementoParrafo(pelicula.year?.toString() ?? "Año desconocido");
    elementoPelicula.appendChild(year);
 
    const grupoBotones = crearGrupoBotones(pelicula.id);
