@@ -1,13 +1,24 @@
 import { crearBotonParams, Movie } from "./pelicula-listado.model";
-import { obtenerPeliculas } from "./pelicula-listado.api"; 
+import { obtenerPeliculas, borrarPelicula   } from "./pelicula-listado.api"; 
 
 
 const editaPelicula = (id: string) => {
   window.location.href = `../pelicula-editar/index.html?id=${encodeURIComponent(id)}`;
 };
 
-const borrarPelicula = (id: string) => {
-    console.log("Borra la película con id:", id);
+const borraPelicula = async (id: string) => {
+    try {
+  await borrarPelicula(id);
+  const listado = document.querySelector("#listado-peliculas");
+  if(listado && listado instanceof HTMLDivElement) {
+    listado.innerHTML = "";
+    pintarPeliculas();
+    alert("Película borrada con éxito");
+  } else {
+    throw new Error("Error al eliminar la película");
+  }} catch (error) {
+    alert(error);
+  }
 };
 
 const crearElementoImagen = (
@@ -54,7 +65,7 @@ const crearGrupoBotones = (id: string): HTMLDivElement => {
         texto: "Borrar",
         id: id,
         nombreClase: "boton-borrar",
-        onClick: () => borrarPelicula(id),
+        onClick: () => borraPelicula(id),
     });
 
     grupoBotones.appendChild(botonEditar);
