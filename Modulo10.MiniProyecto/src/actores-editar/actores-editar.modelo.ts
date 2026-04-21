@@ -1,7 +1,7 @@
-export interface Movie {
+export interface Actor {
     id: string;
     name: string;
-    movies: string[];
+    movies: string;
     bio: string;
     cover_url: string;
 }
