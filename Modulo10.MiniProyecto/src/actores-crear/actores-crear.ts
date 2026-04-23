@@ -22,7 +22,7 @@ const creaActor = async (evento: Event): Promise<void> => {
   name: obtenerValorCampo("name"),
   movies: obtenerValorCampo("movies"),
   bio: obtenerValorCampo("bio"),
-  cover_url: obtenerValorCampo("cover_url"),
+  image: obtenerValorCampo("cover_url"),
  };
 
  try {

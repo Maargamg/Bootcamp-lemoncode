@@ -79,7 +79,7 @@ const creaContenedorPelicula = (actor: Actor): HTMLDivElement => {
    const elementoActor = document.createElement("div");
    elementoActor.classList.add("actores-contenedor");
 
-   const imagen = crearElementoImagen(actor.cover_url, actor.name);
+   const imagen = crearElementoImagen(actor.image, actor.name);
    elementoActor.appendChild(imagen);
 
    const name = crearElementoParrafo(actor.name);

@@ -3,7 +3,7 @@ export interface Actor {
     name: string;
     movies: string;
     bio: string;
-    cover_url: string;
+    image: string;
 }
 
 export interface crearBotonParams {

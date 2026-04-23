@@ -36,7 +36,7 @@ const pintarDatosActor = async(): Promise<void> => {
     }
 
     if(cover_url && cover_url instanceof HTMLInputElement){
-        cover_url.value = actor.cover_url;
+        cover_url.value = actor.image;
     } else {
         throw new Error("Error al obtener la url de la imagen");
     }
@@ -61,7 +61,7 @@ const actualizaActor = async(evento: Event) : Promise<void> => {
         name: obtenerValorCampo("name"),
         movies: obtenerValorCampo("movies"),
         bio: obtenerValorCampo("bio"),
-        cover_url: obtenerValorCampo("cover_url"),
+        image: obtenerValorCampo("cover_url"),
     };
 
     try {
