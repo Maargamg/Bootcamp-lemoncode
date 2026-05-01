@@ -8,7 +8,25 @@
         <title>Mortadelo y Filemón</title>
     </head>
     <body>
-       
+         <main class="contenedor">
+        <div class="contenedor-h1">
+           <h1 class="cabecera-h1">Personajes de Mortadelo y Filemón</h1>
+        </div>
+        <div class="card">
+            <form class="contenedor-formulario" id="formulario">
+               <div class="grupo-formulario">
+                <label for="personajes"></label>
+                <textarea
+                id="personajes"
+                name="personajes"
+                rows="2"
+                required
+                ></textarea>
+               </div>
+                <button id="button" type="button">Filtrar</button>
+            </form>
+        </div>
+    </main>
         <script type="module" src="./personajes.ts"></script>
         
     </body>
