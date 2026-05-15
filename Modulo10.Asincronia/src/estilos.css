@@ -93,17 +93,12 @@ textarea {
 }
 
 
-.listado-peliculas {
+.listado-personajes {
  width: 85%;
  margin: 0 auto;
 }
 
-.listado-actores {
- width: 85%;
- margin: 0 auto;
-}
-
-.pelicula-contenedor {
+.personajes-contenedor {
  display: grid;
  grid-template-columns: 5% repeat(4, 1fr);
  grid-gap: 10px;
@@ -113,11 +108,11 @@ textarea {
  padding: 10px;
 }
 
-.pelicula-contenedor img {
+.personajes-contenedor img {
  max-width: 60px;
 }
 
-.actores-contenedor {
+.personajes-contenedor {
  display: grid;
  grid-template-columns: 5% repeat(4, 1fr);
  grid-gap: 10px;
@@ -127,9 +122,6 @@ textarea {
  padding: 10px;
 }
 
-.actores-contenedor img {
- max-width: 60px;
-}
 
 .grupo-botones {
  display: flex;
@@ -165,32 +157,19 @@ textarea {
 
 
 @media screen and (max-width: 1200px) {
- .pelicula-contenedor {
+ .personajes-contenedor {
  grid-template-columns: auto;
  justify-content: center;
  padding: 20px;
  }
- .pelicula-contenedor img {
+ .personajes-contenedor img {
  max-width: 300px;
  }
- .pelicula-contenedor p {
+ .personajes-contenedor p {
  text-align: center;
  }
 }
 
-@media screen and (max-width: 1200px) {
- .actores-contenedor {
- grid-template-columns: auto;
- justify-content: center;
- padding: 20px;
- }
- .actores-contenedor img {
- max-width: 300px;
- }
- .actores-contenedor p {
- text-align: center;
- }
-}
 
 .card {
     background-color: transparent;
